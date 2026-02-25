@@ -1,0 +1,310 @@
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(135deg, #1e1e2f, #2b2b45);
+    padding: 30px;
+    color: #333;
+}
+
+.resume {
+    max-width: 950px;
+    margin: auto;
+    background: #fff;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+    animation: fadeIn 1.2s ease-in-out;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.header h1 {
+    font-size: 32px;
+    color: #0077ff;
+}
+
+.subtitle {
+    color: #777;
+    margin: 8px 0 15px;
+}
+
+.contact span {
+    display: inline-block;
+    margin: 5px 10px;
+    font-size: 14px;
+    color: #555;
+}
+
+.contact i {
+    color: #0077ff;
+    margin-right: 5px;
+}
+
+
+.section {
+    margin-bottom: 30px;
+}
+
+.section h2 {
+    font-size: 20px;
+    margin-bottom: 15px;
+    border-left: 4px solid #0077ff;
+    padding-left: 10px;
+    color: #222;
+}
+
+.section h2 i {
+    margin-right: 8px;
+    color: #0077ff;
+}
+
+
+.profiles a {
+    margin-right: 20px;
+    text-decoration: none;
+    color: #0077ff;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+.profiles a:hover {
+    color: #0056cc;
+}
+
+
+.job {
+    margin-bottom: 20px;
+}
+
+.job-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.job-header h3 {
+    margin-bottom: 5px;
+}
+
+.date {
+    text-align: right;
+    font-size: 14px;
+    color: #777;
+}
+
+ul {
+    margin-top: 10px;
+    padding-left: 20px;
+}
+
+li {
+    margin-bottom: 6px;
+}
+
+
+.skills {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.skill-card {
+    flex: 1;
+    min-width: 200px;
+    background: #f5f7ff;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    transition: 0.4s;
+}
+
+.skill-card i {
+    font-size: 28px;
+    color: #0077ff;
+    margin-bottom: 10px;
+}
+
+.skill-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+.section {
+    border-top: 1px solid #999;
+    padding: 15px 0;
+    font-family: Arial, sans-serif;
+}
+
+.section-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 40px;
+}
+
+
+.section-title {
+    width: 170px;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.section-title i {
+    margin-right: 6px;
+    color: #0077ff;
+}
+
+
+.certification {
+    display: flex;
+    justify-content: space-between;
+    width: 350px;
+    margin-bottom: 10px;
+}
+
+.cert-left {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+.year {
+    font-weight: bold;
+}
+.section {
+    border-top: 1px solid #999;
+    padding: 15px 0;
+    font-family: Arial, sans-serif;
+}
+
+.section-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 40px;
+}
+
+/* Section Title */
+.section-title {
+    width: 170px;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.section-title i {
+    margin-right: 6px;
+    color: #0077ff;
+}
+
+/* Projects Layout */
+.projects {
+    flex: 1;
+}
+
+.project {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
+
+.project-left {
+    display: flex;
+    gap: 10px;
+    max-width: 600px;
+}
+
+.project-icon {
+    font-size: 18px;
+    color: #0077ff;
+    margin-top: 4px;
+}
+
+.project-role {
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .section-header {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .project {
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    .project-role {
+        font-weight: normal;
+        color: #555;
+    }
+}
+
+
+.languages {
+    display: flex;
+    gap: 80px;
+}
+
+.language-box {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+
+.icon {
+    font-size: 16px;
+    color:0077ff;
+    margin-top: 3px;
+}
+
+
+.references {
+    font-weight: bold;
+}
+
+
+
+
+.fade-in {
+    animation: fadeIn 1.2s ease-in-out;
+}
+
+.slide-up {
+    animation: slideUp 1s ease forwards;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 768px) {
+    .job-header {
+        flex-direction: column;
+    }
+    .date {
+        text-align: left;
+        margin-top: 5px;
+    }
+}
