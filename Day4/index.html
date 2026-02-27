@@ -1,0 +1,1445 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="./output.css" rel="stylesheet" />
+    <link rel="stylesheet" href="input.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="bg-black">
+    <!-- header section----------------------------------- -->
+    <section>
+      <header class="bg-[#191919] w-full text-white">
+        <nav
+          class="flex items-center justify-between max-w-[1728px] mx-auto py-6 xl:px-[167px] lg:px-[80px] md:px-[40px] px-[20px] relative"
+        >
+          <!-- Logo -->
+          <div>
+            <p class="text-[27px] font-bold">Logo</p>
+          </div>
+
+          <!-- Mobile Button -->
+          <button id="menuBtn" class="md:hidden text-3xl">☰</button>
+
+          <!-- Menu -->
+          <ul
+            id="menu"
+            class="md:flex md:items-center xl:gap-[62px] lg:gap-[40px] gap-[25px] text-[18px] font-semibold md:static absolute md:bg-transparent bg-black md:w-auto w-full left-0 top-full md:p-0 p-6 hidden md:flex flex-col md:flex-row"
+          >
+            <li class="hover:text-orange-400 cursor-pointer">About</li>
+            <li class="hover:text-orange-400 cursor-pointer">Collection</li>
+            <li class="hover:text-orange-400 cursor-pointer">Creater</li>
+            <li class="hover:text-orange-400 cursor-pointer">Roadmap</li>
+
+            <li>
+              <button
+                class="bg-[#DA8F4D] hover:bg-orange-600 transition font-bold border border-white xl:px-[60px] px-[35px] py-[12px] rounded-[22px]"
+              >
+                Sign In
+              </button>
+            </li>
+          </ul>
+        </nav>
+      </header>
+    </section>
+
+    <!-- hero sectionb--------------------   -->
+    <section
+      class="relative min-h-screen flex items-center justify-center overflow-hidden py-24 2xl:py-0"
+    >
+      <!-- Background Image -->
+      <img
+        src="public//image 103.png"
+        alt="Hero Background"
+        class="absolute inset-0 w-full h-full brightness-50 object-cover -z-10"
+      />
+
+      <!-- Content Container (Example content to show background) -->
+      <div
+        class="px-6 md:px-12 2xl:pl-[217px] 2xl:pr-[201px] grid grid-cols-1 2xl:grid-cols-2 gap-4 lg:gap-16 2xl:gap-0 items-center w-full max-w-[1728px] mx-auto"
+      >
+        <div
+          class="flex flex-col order-first 2xl:order-last items-center text-center 2xl:items-start 2xl:text-left mt-10 2xl:mt-0"
+        >
+          <h1
+            class="font-bold text-5xl md:text-6xl 2xl:text-[86px] text-white leading-tight"
+          >
+            We Have High <br class="hidden 2xl:block" />
+            Quality
+            <span class="text-orange relative inline-block"
+              >NFT
+
+              <svg
+                class="absolute -right-[40px] top-[0px] w-[50px] 2xl:-right-[130px] 2xl:top-[20px] 2xl:w-[103px]"
+                height="102"
+                viewBox="0 0 103 102"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M51.3 0.000976562L52.1675 23.4122C52.6983 37.7351 64.1888 49.2218 78.5094 49.7453L102.6 50.626L78.5094 51.5066C64.1888 52.0302 52.6983 63.5168 52.1675 77.8398L51.3 101.251L50.4325 77.8398C49.9017 63.5168 38.4112 52.0302 24.0906 51.5066L0 50.626L24.0906 49.7453C38.4112 49.2218 49.9017 37.7351 50.4325 23.4122L51.3 0.000976562Z"
+                  fill="white"
+                />
+              </svg>
+            </span>
+            <br />
+            Collections
+          </h1>
+          <p
+            class="text-light-gray font-bold text-[13px] max-w-[609px] mt-6 2xl:mt-0"
+          >
+            Lorem ipsum dolor sit amet consectetur. Rhoncus massa suspendisse
+            turpis sed viverra tempus tortor. Habitant accumsan sagittis in
+            facilisi placerat ac. Laoreet scelerisque viverra viverra ornare
+            fermentum faucibus sit purus volutpat. Egestas lectus ornare
+            convallis ornare nullam enim neque.
+          </p>
+          <div
+            class="flex flex-col md:flex-row gap-4 md:gap-[50px] mt-10 2xl:mt-[58px] items-center text-sm md:text-[17px] text-white"
+          >
+            <button
+              class="bg-orange font-bold border border-white px-8 py-3 2xl:px-[42px] 2xl:py-[16px] rounded-[22px] w-full md:w-auto"
+            >
+              Get Whitelist
+            </button>
+
+            <button
+              class="font-bold border border-white px-8 py-3 2xl:px-[42px] 2xl:py-[16px] rounded-[22px] w-full md:w-auto"
+            >
+              Contact Us
+            </button>
+
+            <!-- glass section -->
+          </div>
+          <div
+            class="relative mt-[50px] 2xl:mt-[70px] overflow-hidden w-full max-w-[599.51px] 2xl:w-[599.51px] h-auto 2xl:h-[162.16px] bg-glass rounded-[39.312px] flex flex-wrap 2xl:flex-nowrap items-center justify-center 2xl:justify-between py-8 2xl:py-0 px-6 2xl:px-[60px] gap-8 2xl:gap-0 z-10 font-sans"
+          >
+            <!-- Ellipse 127 -->
+            <div
+              class="absolute w-[191.65px] h-[164.62px] left-[143.54px] top-[-82.3px] bg-ellipse-orange rounded-full"
+            ></div>
+            <div
+              class="flex flex-col gap-1 items-center 2xl:items-start z-10 text-center 2xl:text-left min-w-[120px]"
+            >
+              <span
+                class="text-white text-3xl 2xl:text-[34px] font-bold tracking-wide"
+                >240k+</span
+              >
+              <span
+                class="text-white text-xl md:text-2xl 2xl:text-[29px] tracking-wide"
+                >Total Sale</span
+              >
+            </div>
+            <div
+              class="flex flex-col gap-1 items-center 2xl:items-start z-10 text-center 2xl:text-left min-w-[120px]"
+            >
+              <span
+                class="text-white text-3xl 2xl:text-[34px] font-bold tracking-wide"
+                >100k+</span
+              >
+              <span
+                class="text-white text-xl md:text-2xl 2xl:text-[29px] tracking-wide"
+                >Auctions</span
+              >
+            </div>
+            <div
+              class="flex flex-col gap-1 items-center 2xl:items-start z-10 text-center 2xl:text-left min-w-[120px]"
+            >
+              <span
+                class="text-white text-3xl 2xl:text-[34px] font-bold tracking-wide"
+                >240k+</span
+              >
+              <span
+                class="text-white text-xl md:text-2xl 2xl:text-[29px] tracking-wide"
+                >Artists</span
+              >
+            </div>
+          </div>
+        </div>
+
+        <!-- Image and Decoration Group 865 -->
+        <div
+          class="flex items-end order-first 2xl:order-last justify-center 2xl:ml-[50px] mt-16 2xl:mt-0 pb-20 2xl:pb-0"
+        >
+          <div
+            class="relative w-[90%] max-w-[450px] 2xl:max-w-none 2xl:w-[570px] aspect-[4/5] 2xl:aspect-auto 2xl:h-[700px] flex items-center justify-center 2xl:justify-self-end mt-[-30px]"
+          >
+            <!-- Decorative Border Line (Rectangle 198) -->
+            <div
+              class="absolute inset-0 right-[20px] 2xl:right-[40px] border-[1.35px] border-white rounded-[100px_100px_0px_100px] 2xl:rounded-[181.695px_181.695px_0px_181.695px]"
+            ></div>
+
+            <!-- Background Shape (Rectangle 197) -->
+            <div
+              class="absolute inset-[0_0_0_20px] 2xl:inset-[0_0_0_40px] bg-bg-rect rounded-[100px_100px_0px_100px] 2xl:rounded-[181.695px_181.695px_0px_181.695px] z-0"
+            ></div>
+
+            <!-- Bottom Left Star SVG -->
+            <svg
+              class="absolute -left-[30px] 2xl:-left-[50px] -bottom-[15px] 2xl:-bottom-[30px] z-20 w-[45px] 2xl:w-[75px] h-[45px] 2xl:h-[75px]"
+              viewBox="0 0 75 75"
+              fill="none"
+              xmlns="public/wide.png"
+            >
+              <path
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                d="M68.2135 37.125C52.4957 40.1291 40.1291 52.4957 37.125 68.2135C34.1209 52.4957 21.7543 40.1291 6.03648 37.125C21.7543 34.1209 34.1209 21.7543 37.125 6.03649C40.1291 21.7543 52.4957 34.1209 68.2135 37.125ZM74.25 36.4509C54.421 35.7392 38.5108 19.829 37.7991 0H36.4509C35.7392 19.829 19.829 35.7392 0 36.4509V37.7991C19.829 38.5108 35.7392 54.421 36.4509 74.25H37.7991C38.5108 54.421 54.421 38.5108 74.25 37.7991V36.4509Z"
+                fill="white"
+              />
+            </svg>
+
+            <!-- The Image -->
+            <img
+              src="public/a.png"
+              class="absolute mb-5 w-[85%] 2xl:w-[487.61px] h-[92%] 2xl:h-[652.62px] object-cover rounded-[100px_100px_0px_100px] 2xl:rounded-[181.695px_181.695px_0px_181.695px] right-[2px] bottom-0 z-10"
+              alt=""
+            />
+          </div>
+          <!-- Right floating arrow button -->
+          <div
+            class="hidden 2xl:flex pt-[168px] pb-[136px] mb-5 px-4 border-y border-r border-white rounded-tr-3xl rounded-br-3xl flex items-center justify-center z-20 cursor-pointer"
+          >
+            <svg
+              width="6"
+              height="10"
+              viewBox="0 0 6 10"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M1 9L5 5L1 1"
+                stroke="white"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- about section---------------------------------------- -->
+    <section class="bg-black w-full flex justify-center">
+      <div class="max-w-[1728px] w-full">
+        <!-- Spacer Above (match Figma positioning) -->
+        <div class="pt-[160px] pb-[80px] flex justify-center">
+          <h2
+            class="text-white text-[54px] font-bold leading-[100%] tracking-[0%] w-[778.01px] h-[68.57px] text-center font-['Poppins']"
+          >
+            About Us
+          </h2>
+        </div>
+      </div>
+    </section>
+
+    <!-- Abouts us cards---------------------- -->
+    <section
+      class="bg-gradient-to-r from-black via-[#1a0d02] to-black text-white py-[80px]"
+    >
+      <div
+        class="max-w-[1400px] mx-auto px-[80px] py-[-10px] grid md:grid-cols-2 gap-[120px] items-stretch"
+      >
+        <!-- LEFT SIDE - NFT GRID -->
+        <div class="grid grid-cols-2 gap-[40px]">
+          <div class="bg-[#1c1c1c] rounded-[20px] p-[18px]">
+            <img
+              src="public/image 104.png"
+              class="w-full h-[270px] object-cover rounded-[14px]"
+            />
+          </div>
+
+          <div class="bg-[#1c1c1c] rounded-[20px] p-[18px]">
+            <img
+              src="public/image 105.png"
+              class="w-full h-[270px] object-cover rounded-[14px]"
+            />
+          </div>
+
+          <div class="bg-[#1c1c1c] rounded-[20px] p-[18px]">
+            <img
+              src="public/image 106.png"
+              class="w-full h-[270px] object-cover rounded-[14px]"
+            />
+          </div>
+
+          <div class="bg-[#1c1c1c] rounded-[20px] p-[18px]">
+            <img
+              src="public/image 107.png"
+              class="w-full h-[270px] object-cover rounded-[14px]"
+            />
+          </div>
+        </div>
+
+        <!-- RIGHT SIDE -->
+        <div class="flex flex-col h-full">
+          <!-- TEXT -->
+          <div>
+            <p
+              class="text-gray-300 font-bold leading-[36px] text-[18px] max-w-[720px]"
+            >
+              Lorem ipsum dolor sit amet consectetur. Pharetra faucibus donec
+              ultrices eros elit metus morbi aliquam quis. Suspendisse massa
+              ullamcorper tortor morbi nisi leo. Ultrices leo vel tincidunt nunc
+              eget elit. Gravida et duis ipsum pellentesque libero.
+            </p>
+
+            <p
+              class="text-gray-300 font-bold leading-[36px] text-[18px] mt-[45px] max-w-[720px]"
+            >
+              Tellus rhoncus metus et eget mattis fringilla nec id. Amet
+              ultrices quam ridiculus tellus. Leo adipiscing tincidunt amet nisi
+              semper adipiscing quam in est. Tempor sed dui nunc diam adipiscing
+              at. Pellentesque habitant morbi tristique senectus et netus et
+              malesuada fames. Integer vitae justo eget magna fermentum iaculis
+              eu non diam.
+            </p>
+          </div>
+
+          <!-- BUTTON WRAPPER -->
+          <div class="flex items-center justify-start flex-1">
+            <button
+              class="px-[48px] py-[16px] bg-[#3b3228] border border-[#6a5c4a] text-white font-semibold rounded-[12px] hover:bg-[#DA8F4D] hover:text-black transition duration-300"
+            >
+              Connect Wallet
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= TOP COLLECTIONS SECTION ================= -->
+    <section class="relative text-white py-[110px] overflow-hidden">
+      <!-- BASE BLACK -->
+      <div class="absolute inset-0 bg-black"></div>
+
+      <!-- WHITE LEFT LOWER FADE -->
+      <div
+        class="absolute inset-0 bg-[radial-gradient(circle_at_0%_100%,rgba(255,255,255,0.35),transparent_55%)]"
+      ></div>
+
+      <!-- CONTENT -->
+      <div class="relative max-w-4xl mx-auto text-center px-6">
+        <h2 class="text-4xl md:text-5xl font-bold tracking-tight">
+          Top Collections
+        </h2>
+
+        <p class="mt-6 text-gray-200 text-sm leading-relaxed">
+          The largest and unique Super rare NFT marketplace
+          <br class="hidden md:block" />
+          For crypto-collectibles
+        </p>
+      </div>
+    </section>
+
+    <!-- top collection cards---- -->
+
+    <section class="relative overflow-hidden pt-[20px] pb-[100px]">
+      <!-- Background Image -->
+      <img
+        src="public/b.png"
+        alt="Top Collections Background"
+        class="absolute inset-0 w-full h-full brightness-30 object-cover -z-10"
+      />
+
+      <div class="max-w-[1728px] mx-auto">
+        <!-- Card Grid -->
+        <div
+          class="grid grid-cols-1 md:grid-cols-2 2xl:grid-cols-3 gap-8 2xl:gap-[30px] px-6 md:px-12 2xl:px-[146px]"
+        >
+          <!-- Card 1 -->
+          <div
+            class="w-full bg-card-bg-nft rounded-[18.53px] p-4 2xl:p-[18.53px] flex flex-col box-border min-h-auto 2xl:min-h-[531.9px]"
+          >
+            <!-- Header -->
+            <div class="flex flex-col gap-[4.63px]">
+              <span
+                class="font-['Clash_Display'] text-base 2xl:text-[18.53px] leading-relaxed 2xl:leading-[28px] text-text-creator"
+                >Created by</span
+              >
+              <div class="flex flex-row items-center gap-[9.27px]">
+                <div
+                  class="w-[27.8px] h-[27.8px] bg-avatar-bg rounded-full"
+                ></div>
+                <span
+                  class="font-['Clash_Display'] font-semibold text-base 2xl:text-[18.53px] leading-relaxed 2xl:leading-[28px] text-author-name"
+                  >James Watson</span
+                >
+              </div>
+            </div>
+            <!-- Image -->
+            <div class="mt-[50px] mb-[35px] flex justify-center">
+              <div
+                class="w-full max-w-[299.7px] aspect-square rounded-[36px] overflow-hidden shrink-0"
+              >
+                <img
+                  src="public/Ellipse 129.png"
+                  class="w-full h-full object-cover"
+                  alt="NFT"
+                />
+              </div>
+            </div>
+            <!-- Footer Text -->
+            <div class="mt-auto flex flex-col gap-[4.63px]">
+              <h3
+                class="font-['Poppins',sans-serif] font-bold text-xl 2xl:text-[27px] leading-relaxed 2xl:leading-[28px] text-card-title"
+              >
+                Nfts Collections
+              </h3>
+              <span
+                class="font-['Clash_Display'] text-base 2xl:text-[18.53px] leading-relaxed 2xl:leading-[28px] text-card-subtitle"
+                >Created by
+                <span class="text-author-name font-semibold"
+                  >James Watson</span
+                ></span
+              >
+            </div>
+          </div>
+
+          <!-- Card 2 -->
+          <div
+            class="w-full bg-card-bg-nft rounded-[18.53px] p-4 2xl:p-[18.53px] flex flex-col box-border min-h-auto 2xl:min-h-[531.9px]"
+          >
+            <!-- Header -->
+            <div class="flex flex-col gap-[4.63px]">
+              <span
+                class="font-['Clash_Display'] text-base 2xl:text-[18.53px] leading-relaxed 2xl:leading-[28px] text-text-creator"
+                >Created by</span
+              >
+              <div class="flex flex-row items-center gap-[9.27px]">
+                <div
+                  class="w-[27.8px] h-[27.8px] bg-avatar-bg rounded-full"
+                ></div>
+                <span
+                  class="font-['Clash_Display'] font-semibold text-base 2xl:text-[18.53px] leading-relaxed 2xl:leading-[28px] text-author-name"
+                  >James Watson</span
+                >
+              </div>
+            </div>
+            <!-- Image -->
+            <div class="mt-[50px] mb-[35px] flex justify-center">
+              <div
+                class="w-full max-w-[299.7px] aspect-square rounded-[36px] overflow-hidden shrink-0"
+              >
+                <img
+                  src="public/Ellipse 133.png"
+                  class="w-full h-full object-cover"
+                  alt="NFT"
+                />
+              </div>
+            </div>
+            <!-- Footer Text -->
+            <div class="mt-auto flex flex-col gap-[4.63px]">
+              <h3
+                class="font-['Poppins',sans-serif] font-bold text-xl 2xl:text-[27px] leading-relaxed 2xl:leading-[28px] text-card-title"
+              >
+                Nfts Collections
+              </h3>
+              <span
+                class="font-['Clash_Display'] text-base 2xl:text-[18.53px] leading-relaxed 2xl:leading-[28px] text-card-subtitle"
+                >Created by
+                <span class="text-author-name font-semibold"
+                  >James Watson</span
+                ></span
+              >
+            </div>
+          </div>
+
+          <!-- Card 3 -->
+          <div
+            class="w-full bg-card-bg-nft rounded-[18.53px] p-4 2xl:p-[18.53px] flex flex-col box-border min-h-auto 2xl:min-h-[531.9px]"
+          >
+            <!-- Header -->
+            <div class="flex flex-col gap-[4.63px]">
+              <span
+                class="font-['Clash_Display'] text-base 2xl:text-[18.53px] leading-relaxed 2xl:leading-[28px] text-text-creator"
+                >Created by</span
+              >
+              <div class="flex flex-row items-center gap-[9.27px]">
+                <div
+                  class="w-[27.8px] h-[27.8px] bg-avatar-bg rounded-full"
+                ></div>
+                <span
+                  class="font-['Clash_Display'] font-semibold text-base 2xl:text-[18.53px] leading-relaxed 2xl:leading-[28px] text-author-name"
+                  >James Watson</span
+                >
+              </div>
+            </div>
+            <!-- Image -->
+            <div class="mt-[50px] mb-[35px] flex justify-center">
+              <div
+                class="w-full max-w-[299.7px] aspect-square rounded-[36px] overflow-hidden shrink-0"
+              >
+                <img
+                  src="public/Ellipse 132.png"
+                  class="w-full h-full object-cover"
+                  alt="NFT"
+                />
+              </div>
+            </div>
+            <!-- Footer Text -->
+            <div class="mt-auto flex flex-col gap-[4.63px]">
+              <h3
+                class="font-['Poppins',sans-serif] font-bold text-xl 2xl:text-[27px] leading-relaxed 2xl:leading-[28px] text-card-title"
+              >
+                Nfts Collections
+              </h3>
+              <span
+                class="font-['Clash_Display'] text-base 2xl:text-[18.53px] leading-relaxed 2xl:leading-[28px] text-card-subtitle"
+                >Created by
+                <span class="text-author-name font-semibold"
+                  >James Watson</span
+                ></span
+              >
+            </div>
+          </div>
+
+          <!-- Card 4 -->
+          <div
+            class="w-full bg-card-bg-nft rounded-[18.53px] p-4 2xl:p-[18.53px] flex flex-col box-border min-h-auto 2xl:min-h-[531.9px]"
+          >
+            <!-- Header -->
+            <div class="flex flex-col gap-[4.63px]">
+              <span
+                class="font-['Clash_Display'] text-base 2xl:text-[18.53px] leading-relaxed 2xl:leading-[28px] text-text-creator"
+                >Created by</span
+              >
+              <div class="flex flex-row items-center gap-[9.27px]">
+                <div
+                  class="w-[27.8px] h-[27.8px] bg-avatar-bg rounded-full"
+                ></div>
+                <span
+                  class="font-['Clash_Display'] font-semibold text-base 2xl:text-[18.53px] leading-relaxed 2xl:leading-[28px] text-author-name"
+                  >James Watson</span
+                >
+              </div>
+            </div>
+            <!-- Image -->
+            <div class="mt-[50px] mb-[35px] flex justify-center">
+              <div
+                class="w-full max-w-[299.7px] aspect-square rounded-[36px] overflow-hidden shrink-0"
+              >
+                <img
+                  src="public/Ellipse 130.png"
+                  class="w-full h-full object-cover"
+                  alt="NFT"
+                />
+              </div>
+            </div>
+            <!-- Footer Text -->
+            <div class="mt-auto flex flex-col gap-[4.63px]">
+              <h3
+                class="font-['Poppins',sans-serif] font-bold text-xl 2xl:text-[27px] leading-relaxed 2xl:leading-[28px] text-card-title"
+              >
+                Nfts Collections
+              </h3>
+              <span
+                class="font-['Clash_Display'] text-base 2xl:text-[18.53px] leading-relaxed 2xl:leading-[28px] text-card-subtitle"
+                >Created by
+                <span class="text-author-name font-semibold"
+                  >James Watson</span
+                ></span
+              >
+            </div>
+          </div>
+
+          <!-- Card 5 -->
+          <div
+            class="w-full bg-card-bg-nft rounded-[18.53px] p-4 2xl:p-[18.53px] flex flex-col box-border min-h-auto 2xl:min-h-[531.9px]"
+          >
+            <!-- Header -->
+            <div class="flex flex-col gap-[4.63px]">
+              <span
+                class="font-['Clash_Display'] text-base 2xl:text-[18.53px] leading-relaxed 2xl:leading-[28px] text-text-creator"
+                >Created by</span
+              >
+              <div class="flex flex-row items-center gap-[9.27px]">
+                <div
+                  class="w-[27.8px] h-[27.8px] bg-avatar-bg rounded-full"
+                ></div>
+                <span
+                  class="font-['Clash_Display'] font-semibold text-base 2xl:text-[18.53px] leading-relaxed 2xl:leading-[28px] text-author-name"
+                  >James Watson</span
+                >
+              </div>
+            </div>
+            <!-- Image -->
+            <div class="mt-[50px] mb-[35px] flex justify-center">
+              <div
+                class="w-full max-w-[299.7px] aspect-square rounded-[36px] overflow-hidden shrink-0"
+              >
+                <img
+                  src="public/Ellipse 131.png"
+                  class="w-full h-full object-cover"
+                  alt="NFT"
+                />
+              </div>
+            </div>
+            <!-- Footer Text -->
+            <div class="mt-auto flex flex-col gap-[4.63px]">
+              <h3
+                class="font-['Poppins',sans-serif] font-bold text-xl 2xl:text-[27px] leading-relaxed 2xl:leading-[28px] text-card-title"
+              >
+                Nfts Collections
+              </h3>
+              <span
+                class="font-['Clash_Display'] text-base 2xl:text-[18.53px] leading-relaxed 2xl:leading-[28px] text-card-subtitle"
+                >Created by
+                <span class="text-author-name font-semibold"
+                  >James Watson</span
+                ></span
+              >
+            </div>
+          </div>
+
+          <!-- Card 6 -->
+          <div
+            class="w-full bg-card-bg-nft rounded-[18.53px] p-4 2xl:p-[18.53px] flex flex-col box-border min-h-auto 2xl:min-h-[531.9px]"
+          >
+            <!-- Header -->
+            <div class="flex flex-col gap-[4.63px]">
+              <span
+                class="font-['Clash_Display'] text-base 2xl:text-[18.53px] leading-relaxed 2xl:leading-[28px] text-text-creator"
+                >Created by</span
+              >
+              <div class="flex flex-row items-center gap-[9.27px]">
+                <div
+                  class="w-[27.8px] h-[27.8px] bg-avatar-bg rounded-full"
+                ></div>
+                <span
+                  class="font-['Clash_Display'] font-semibold text-base 2xl:text-[18.53px] leading-relaxed 2xl:leading-[28px] text-author-name"
+                  >James Watson</span
+                >
+              </div>
+            </div>
+            <!-- Image -->
+            <div class="mt-[50px] mb-[35px] flex justify-center">
+              <div
+                class="w-full max-w-[299.7px] aspect-square rounded-[36px] overflow-hidden shrink-0"
+              >
+                <img
+                  src="public/Ellipse 134.png"
+                  class="w-full h-full object-cover"
+                  alt="NFT"
+                />
+              </div>
+            </div>
+            <!-- Footer Text -->
+            <div class="mt-auto flex flex-col gap-[4.63px]">
+              <h3
+                class="font-['Poppins',sans-serif] font-bold text-xl 2xl:text-[27px] leading-relaxed 2xl:leading-[28px] text-card-title"
+              >
+                Nfts Collections
+              </h3>
+              <span
+                class="font-['Clash_Display'] text-base 2xl:text-[18.53px] leading-relaxed 2xl:leading-[28px] text-card-subtitle"
+                >Created by
+                <span class="text-author-name font-semibold"
+                  >James Watson</span
+                ></span
+              >
+            </div>
+          </div>
+        </div>
+
+        <!-- Explore More Button -->
+        <div class="flex justify-center mt-[80px]">
+          <button
+            class="bg-glass text-white border border-white font-['Poppins',sans-serif] font-bold text-[18px] px-[50px] py-[18px] rounded-full hover:bg-orange hover:border-orange transition-all tracking-wide"
+          >
+            Explore More
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- top creators section---------------------- -->
+    <section class="bg-black text-white py-32 relative overflow-hidden">
+      <div class="max-w-[1400px] mx-auto px-10">
+        <!-- Heading -->
+        <div class="text-center mb-20">
+          <h2 class="text-[40px] font-semibold tracking-tight">Top Creators</h2>
+          <p class="text-[14px] text-gray-400 mt-3">
+            Checkout Top Rated Creators On The NFT Marketplace
+          </p>
+        </div>
+
+        <!-- Grid -->
+        <div
+          class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-[45px] justify-items-center"
+        >
+          <!-- CARD 1 -->
+          <div
+            class="relative w-[324px] rounded-[27px] p-[27px] bg-[#E6DCBA33] border border-white/5 flex flex-col items-center text-center transition duration-500 hover:translate-y-[-6px]"
+          >
+            <div
+              class="absolute inset-0 rounded-[27px] bg-[radial-gradient(circle_at_top,rgba(230,140,20,0.15),transparent_70%)] pointer-events-none"
+            ></div>
+            <span
+              class="absolute top-[18px] left-[22px] text-[12px] text-gray-500"
+              >1</span
+            >
+            <img
+              src="public/5.png"
+              class="w-[110px] h-[110px] rounded-full object-cover mt-6 mb-6 relative z-10"
+            />
+            <h3 class="text-[18px] font-medium text-white relative z-10">
+              Name NFT
+            </h3>
+            <p class="text-[13px] text-gray-400 mt-2 relative z-10">
+              Total Sales:
+              <span class="text-white">34.53 ETH</span>
+            </p>
+          </div>
+
+          <!-- CARD 2 -->
+          <div
+            class="relative w-[324px] rounded-[27px] p-[27px] bg-[#E6DCBA33] border border-white/5 flex flex-col items-center text-center transition duration-500 hover:translate-y-[-6px]"
+          >
+            <div
+              class="absolute inset-0 rounded-[27px] bg-[radial-gradient(circle_at_top,rgba(230,140,20,0.15),transparent_70%)] pointer-events-none"
+            ></div>
+            <span
+              class="absolute top-[18px] left-[22px] text-[12px] text-gray-500"
+              >2</span
+            >
+            <img
+              src="public/6.png"
+              class="w-[110px] h-[110px] rounded-full object-cover mt-6 mb-6 relative z-10"
+            />
+            <h3 class="text-[18px] font-medium text-white relative z-10">
+              Name NFT
+            </h3>
+            <p class="text-[13px] text-gray-400 mt-2 relative z-10">
+              Total Sales:
+              <span class="text-white">34.53 ETH</span>
+            </p>
+          </div>
+
+          <!-- CARD 3 -->
+          <div
+            class="relative w-[324px] rounded-[27px] p-[27px] bg-[#E6DCBA33] border border-white/5 flex flex-col items-center text-center transition duration-500 hover:translate-y-[-6px]"
+          >
+            <div
+              class="absolute inset-0 rounded-[27px] bg-[radial-gradient(circle_at_top,rgba(230,140,20,0.15),transparent_70%)] pointer-events-none"
+            ></div>
+            <span
+              class="absolute top-[18px] left-[22px] text-[12px] text-gray-500"
+              >3</span
+            >
+            <img
+              src="public/4.png"
+              class="w-[110px] h-[110px] rounded-full object-cover mt-6 mb-6 relative z-10"
+            />
+            <h3 class="text-[18px] font-medium text-white relative z-10">
+              Name NFT
+            </h3>
+            <p class="text-[13px] text-gray-400 mt-2 relative z-10">
+              Total Sales:
+              <span class="text-white">34.53 ETH</span>
+            </p>
+          </div>
+
+          <!-- CARD 4 -->
+          <div
+            class="relative w-[324px] rounded-[27px] p-[27px] bg-[#E6DCBA33] border border-white/5 flex flex-col items-center text-center transition duration-500 hover:translate-y-[-6px]"
+          >
+            <div
+              class="absolute inset-0 rounded-[27px] bg-[radial-gradient(circle_at_top,rgba(230,140,20,0.15),transparent_70%)] pointer-events-none"
+            ></div>
+            <span
+              class="absolute top-[18px] left-[22px] text-[12px] text-gray-500"
+              >4</span
+            >
+            <img
+              src="public/3.png"
+              class="w-[110px] h-[110px] rounded-full object-cover mt-6 mb-6 relative z-10"
+            />
+            <h3 class="text-[18px] font-medium text-white relative z-10">
+              Name NFT
+            </h3>
+            <p class="text-[13px] text-gray-400 mt-2 relative z-10">
+              Total Sales:
+              <span class="text-white">34.53 ETH</span>
+            </p>
+          </div>
+
+          <!-- CARD 5 -->
+          <div
+            class="relative w-[324px] rounded-[27px] p-[27px] bg-[#E6DCBA33] border border-white/5 flex flex-col items-center text-center transition duration-500 hover:translate-y-[-6px]"
+          >
+            <div
+              class="absolute inset-0 rounded-[27px] bg-[radial-gradient(circle_at_top,rgba(230,140,20,0.15),transparent_70%)] pointer-events-none"
+            ></div>
+            <span
+              class="absolute top-[18px] left-[22px] text-[12px] text-gray-500"
+              >5</span
+            >
+            <img
+              src="public/1.png"
+              class="w-[110px] h-[110px] rounded-full object-cover mt-6 mb-6 relative z-10"
+            />
+            <h3 class="text-[18px] font-medium text-white relative z-10">
+              Name NFT
+            </h3>
+            <p class="text-[13px] text-gray-400 mt-2 relative z-10">
+              Total Sales:
+              <span class="text-white">34.53 ETH</span>
+            </p>
+          </div>
+
+          <!-- CARD 6 -->
+          <div
+            class="relative w-[324px] rounded-[27px] p-[27px] bg-[#E6DCBA33] border border-white/5 flex flex-col items-center text-center transition duration-500 hover:translate-y-[-6px]"
+          >
+            <div
+              class="absolute inset-0 rounded-[27px] bg-[radial-gradient(circle_at_top,rgba(230,140,20,0.15),transparent_70%)] pointer-events-none"
+            ></div>
+            <span
+              class="absolute top-[18px] left-[22px] text-[12px] text-gray-500"
+              >6</span
+            >
+            <img
+              src="public/2.png"
+              class="w-[110px] h-[110px] rounded-full object-cover mt-6 mb-6 relative z-10"
+            />
+            <h3 class="text-[18px] font-medium text-white relative z-10">
+              Name NFT
+            </h3>
+            <p class="text-[13px] text-gray-400 mt-2 relative z-10">
+              Total Sales:
+              <span class="text-white">34.53 ETH</span>
+            </p>
+          </div>
+
+          <!-- CARD 7 -->
+          <div
+            class="relative w-[324px] rounded-[27px] p-[27px] bg-[#E6DCBA33] border border-white/5 flex flex-col items-center text-center transition duration-500 hover:translate-y-[-6px]"
+          >
+            <div
+              class="absolute inset-0 rounded-[27px] bg-[radial-gradient(circle_at_top,rgba(230,140,20,0.15),transparent_70%)] pointer-events-none"
+            ></div>
+            <span
+              class="absolute top-[18px] left-[22px] text-[12px] text-gray-500"
+              >7</span
+            >
+            <img
+              src="public/8.png"
+              class="w-[110px] h-[110px] rounded-full object-cover mt-6 mb-6 relative z-10"
+            />
+            <h3 class="text-[18px] font-medium text-white relative z-10">
+              Name NFT
+            </h3>
+            <p class="text-[13px] text-gray-400 mt-2 relative z-10">
+              Total Sales:
+              <span class="text-white">34.53 ETH</span>
+            </p>
+          </div>
+
+          <!-- CARD 8 -->
+          <div
+            class="relative w-[324px] rounded-[27px] p-[27px] bg-[#E6DCBA33] border border-white/5 flex flex-col items-center text-center transition duration-500 hover:translate-y-[-6px]"
+          >
+            <div
+              class="absolute inset-0 rounded-[27px] bg-[radial-gradient(circle_at_top,rgba(230,140,20,0.15),transparent_70%)] pointer-events-none"
+            ></div>
+            <span
+              class="absolute top-[18px] left-[22px] text-[12px] text-gray-500"
+              >8</span
+            >
+            <img
+              src="public/7.png"
+              class="w-[110px] h-[110px] rounded-full object-cover mt-6 mb-6 relative z-10"
+            />
+            <h3 class="text-[18px] font-medium text-white relative z-10">
+              Name NFT
+            </h3>
+            <p class="text-[13px] text-gray-400 mt-2 relative z-10">
+              Total Sales:
+              <span class="text-white">34.53 ETH</span>
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- road map decription------------------------------------------ -->
+
+    <section class="relative w-full overflow-hidden py-[120px]">
+      <img
+        src="public/b.png"
+        alt="Timeline Background"
+        class="absolute inset-0 w-full h-full brightness-[0.25] object-cover -z-10"
+      />
+      <div class="relative max-w-[1728px] mx-auto px-6 md:px-[146px]">
+        <!-- Header -->
+        <div class="flex justify-center mb-[100px]">
+          <h2 class="text-white font-bold text-[54px]">Road Map</h2>
+        </div>
+        <!-- Vertical Center Line -->
+        <div
+          class="absolute left-[34px] md:left-1/2 top-[220px] bottom-[50px] md:-translate-x-1/2"
+          style="
+            width: 4.62px;
+            background: linear-gradient(
+              to bottom,
+              rgba(228, 223, 206, 0.7) 0%,
+              rgba(230, 187, 39, 0.7) 50%,
+              rgba(228, 223, 206, 0.7) 100%
+            );
+          "
+        ></div>
+        <div class="relative flex flex-col gap-10 md:gap-[80px]">
+          <!-- Item (Left) -->
+          <div
+            class="flex flex-col md:flex-row justify-between w-full relative group"
+          >
+            <div
+              class="w-full md:w-[calc(50%-60px)] pl-[60px] md:pl-0 flex justify-end"
+            >
+              <div class="w-full max-w-[500px] relative">
+                <!-- Glowing Half Border -->
+                <div
+                  class="absolute rounded-[18.46px] pointer-events-none"
+                  style="
+                    top: -14px;
+                    right: -14px;
+                    bottom: -14px;
+                    left: 0px;
+                    background: linear-gradient(
+                      270deg,
+                      #e5e0cf 0.12%,
+                      #cf9833 15%,
+                      rgba(238, 227, 188, 0) 65%
+                    );
+                    border-radius: 18.46px;
+                    padding: 6.92px;
+                    -webkit-mask:
+                      linear-gradient(#fff 0 0) content-box,
+                      linear-gradient(#fff 0 0);
+                    -webkit-mask-composite: xor;
+                    mask-composite: exclude;
+                    clip-path: inset(0 0 0 65%);
+                  "
+                ></div>
+                <!-- Card -->
+                <div
+                  class="rounded-[9.23px] bg-timeline-bg border-[1.15px] border-timeline-border p-[40px] relative backdrop-blur-md"
+                >
+                  <h4
+                    class="text-white text-center font-['Clash_Display',sans-serif] text-[18px] mb-4 tracking-wide relative"
+                  >
+                    January
+                  </h4>
+                  <h3
+                    class="text-white font-bold text-[36px] font-['Clash_Display',sans-serif] mb-5 tracking-wide relative"
+                  >
+                    Brief
+                  </h3>
+                  <p
+                    class="text-light-gray font-['Poppins',sans-serif] text-[14px] leading-[26px] relative"
+                  >
+                    Lorem ipsum dolor sit amet consectetur. Elit massa erat
+                    vitae non semper quis. Morbi sed aliquet donec facilisis.
+                    Senectus eget.
+                  </p>
+                </div>
+                <!-- Connector Line (Desktop) -->
+                <div
+                  class="hidden md:block absolute top-1/2 -translate-y-1/2 -right-[46px] w-[46px] border-t-[1px] border-dashed border-[#E2DDD0] opacity-50 -z-10"
+                ></div>
+              </div>
+            </div>
+            <!-- Center Dot -->
+            <div
+              class="absolute left-[24px] md:left-1/2 top-1/2 w-[27px] h-[27px] rounded-full bg-[#E4E0CF] shadow-[0_0_15px_#E4E0CF80] -translate-x-1/2 -translate-y-1/2 z-10"
+            ></div>
+            <!-- Spacer -->
+            <div class="hidden md:block w-full md:w-[calc(50%-60px)]"></div>
+          </div>
+          <!-- Item (Right) -->
+          <div
+            class="flex flex-col md:flex-row justify-between w-full relative group"
+          >
+            <!-- Spacer -->
+            <div class="hidden md:block w-full md:w-[calc(50%-60px)]"></div>
+            <!-- Center Dot -->
+            <div
+              class="absolute left-[24px] md:left-1/2 top-1/2 w-[27px] h-[27px] rounded-full bg-[#E08C3C] shadow-[0_0_15px_#E08C3C80] -translate-x-1/2 -translate-y-1/2 z-10"
+            ></div>
+            <!-- Content -->
+            <div
+              class="w-full md:w-[calc(50%-60px)] pl-[60px] md:pl-0 flex justify-start"
+            >
+              <div class="w-full max-w-[500px] relative">
+                <!-- Glowing Half Border -->
+                <div
+                  class="absolute rounded-[18.46px] pointer-events-none"
+                  style="
+                    top: -14px;
+                    left: -14px;
+                    bottom: -14px;
+                    right: 0px;
+                    background: linear-gradient(
+                      90deg,
+                      #e5e0cf 0.12%,
+                      #cf9833 15%,
+                      rgba(238, 227, 188, 0) 65%
+                    );
+                    border-radius: 18.46px;
+                    padding: 6.92px;
+                    -webkit-mask:
+                      linear-gradient(#fff 0 0) content-box,
+                      linear-gradient(#fff 0 0);
+                    -webkit-mask-composite: xor;
+                    mask-composite: exclude;
+                    clip-path: inset(0 65% 0 0);
+                  "
+                ></div>
+                <!-- Connector Line (Desktop) -->
+                <div
+                  class="hidden md:block absolute top-1/2 -translate-y-1/2 -left-[46px] w-[46px] border-t-[1px] border-dashed border-[#E08C3C] opacity-50 -z-10"
+                ></div>
+                <!-- Card -->
+                <div
+                  class="rounded-[9.23px] bg-timeline-bg border-[1.15px] border-timeline-border p-[40px] relative backdrop-blur-md"
+                >
+                  <h4
+                    class="text-white text-center font-['Clash_Display',sans-serif] text-[18px] mb-4 tracking-wide relative"
+                  >
+                    February
+                  </h4>
+                  <h3
+                    class="text-white font-bold text-[36px] font-['Clash_Display',sans-serif] mb-5 tracking-wide relative"
+                  >
+                    Research
+                  </h3>
+                  <p
+                    class="text-light-gray font-['Poppins',sans-serif] text-[14px] leading-[26px] relative"
+                  >
+                    Lorem ipsum dolor sit amet consectetur. Elit massa erat
+                    vitae non semper quis. Morbi sed aliquet donec facilisis.
+                    Senectus eget.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Item (Left) -->
+          <div
+            class="flex flex-col md:flex-row justify-between w-full relative group"
+          >
+            <div
+              class="w-full md:w-[calc(50%-60px)] pl-[60px] md:pl-0 flex justify-end"
+            >
+              <div class="w-full max-w-[500px] relative">
+                <!-- Glowing Half Border -->
+                <div
+                  class="absolute rounded-[18.46px] pointer-events-none"
+                  style="
+                    top: -14px;
+                    right: -14px;
+                    bottom: -14px;
+                    left: 0px;
+                    background: linear-gradient(
+                      270deg,
+                      #e5e0cf 0.12%,
+                      #cf9833 15%,
+                      rgba(238, 227, 188, 0) 65%
+                    );
+                    border-radius: 18.46px;
+                    padding: 6.92px;
+                    -webkit-mask:
+                      linear-gradient(#fff 0 0) content-box,
+                      linear-gradient(#fff 0 0);
+                    -webkit-mask-composite: xor;
+                    mask-composite: exclude;
+                    clip-path: inset(0 0 0 65%);
+                  "
+                ></div>
+                <!-- Card -->
+                <div
+                  class="rounded-[9.23px] bg-timeline-bg border-[1.15px] border-timeline-border p-[40px] relative backdrop-blur-md"
+                >
+                  <h4
+                    class="text-white text-center font-['Clash_Display',sans-serif] text-[18px] mb-4 tracking-wide relative"
+                  >
+                    March
+                  </h4>
+                  <h3
+                    class="text-white font-bold text-[36px] font-['Clash_Display',sans-serif] mb-5 tracking-wide relative"
+                  >
+                    Discover
+                  </h3>
+                  <p
+                    class="text-light-gray font-['Poppins',sans-serif] text-[14px] leading-[26px] relative"
+                  >
+                    Lorem ipsum dolor sit amet consectetur. Elit massa erat
+                    vitae non semper quis. Morbi sed aliquet donec facilisis.
+                    Senectus eget.
+                  </p>
+                </div>
+                <!-- Connector Line (Desktop) -->
+                <div
+                  class="hidden md:block absolute top-1/2 -translate-y-1/2 -right-[46px] w-[46px] border-t-[1px] border-dashed border-[#E2DDD0] opacity-50 -z-10"
+                ></div>
+              </div>
+            </div>
+            <!-- Center Dot -->
+            <div
+              class="absolute left-[24px] md:left-1/2 top-1/2 w-[27px] h-[27px] rounded-full bg-[#E4E0CF] shadow-[0_0_15px_#E4E0CF80] -translate-x-1/2 -translate-y-1/2 z-10"
+            ></div>
+            <!-- Spacer -->
+            <div class="hidden md:block w-full md:w-[calc(50%-60px)]"></div>
+          </div>
+          <!-- Item (Right) -->
+          <div
+            class="flex flex-col md:flex-row justify-between w-full relative group"
+          >
+            <!-- Spacer -->
+            <div class="hidden md:block w-full md:w-[calc(50%-60px)]"></div>
+            <!-- Center Dot -->
+            <div
+              class="absolute left-[24px] md:left-1/2 top-1/2 w-[27px] h-[27px] rounded-full bg-[#E08C3C] shadow-[0_0_15px_#E08C3C80] -translate-x-1/2 -translate-y-1/2 z-10"
+            ></div>
+            <!-- Content -->
+            <div
+              class="w-full md:w-[calc(50%-60px)] pl-[60px] md:pl-0 flex justify-start"
+            >
+              <div class="w-full max-w-[500px] relative">
+                <!-- Glowing Half Border -->
+                <div
+                  class="absolute rounded-[18.46px] pointer-events-none"
+                  style="
+                    top: -14px;
+                    left: -14px;
+                    bottom: -14px;
+                    right: 0px;
+                    background: linear-gradient(
+                      90deg,
+                      #e5e0cf 0.12%,
+                      #cf9833 15%,
+                      rgba(238, 227, 188, 0) 65%
+                    );
+                    border-radius: 18.46px;
+                    padding: 6.92px;
+                    -webkit-mask:
+                      linear-gradient(#fff 0 0) content-box,
+                      linear-gradient(#fff 0 0);
+                    -webkit-mask-composite: xor;
+                    mask-composite: exclude;
+                    clip-path: inset(0 65% 0 0);
+                  "
+                ></div>
+                <!-- Connector Line (Desktop) -->
+                <div
+                  class="hidden md:block absolute top-1/2 -translate-y-1/2 -left-[46px] w-[46px] border-t-[1px] border-dashed border-[#E08C3C] opacity-50 -z-10"
+                ></div>
+                <!-- Card -->
+                <div
+                  class="rounded-[9.23px] bg-timeline-bg border-[1.15px] border-timeline-border p-[40px] relative backdrop-blur-md"
+                >
+                  <h4
+                    class="text-white text-center font-['Clash_Display',sans-serif] text-[18px] mb-4 tracking-wide relative"
+                  >
+                    April
+                  </h4>
+                  <h3
+                    class="text-white font-bold text-[36px] font-['Clash_Display',sans-serif] mb-5 tracking-wide relative"
+                  >
+                    Design
+                  </h3>
+                  <p
+                    class="text-light-gray font-['Poppins',sans-serif] text-[14px] leading-[26px] relative"
+                  >
+                    Lorem ipsum dolor sit amet consectetur. Elit massa erat
+                    vitae non semper quis. Morbi sed aliquet donec facilisis.
+                    Senectus eget.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Item (Left) -->
+          <div
+            class="flex flex-col md:flex-row justify-between w-full relative group"
+          >
+            <div
+              class="w-full md:w-[calc(50%-60px)] pl-[60px] md:pl-0 flex justify-end"
+            >
+              <div class="w-full max-w-[500px] relative">
+                <!-- Glowing Half Border -->
+                <div
+                  class="absolute rounded-[18.46px] pointer-events-none"
+                  style="
+                    top: -14px;
+                    right: -14px;
+                    bottom: -14px;
+                    left: 0px;
+                    background: linear-gradient(
+                      270deg,
+                      #e5e0cf 0.12%,
+                      #cf9833 15%,
+                      rgba(238, 227, 188, 0) 65%
+                    );
+                    border-radius: 18.46px;
+                    padding: 6.92px;
+                    -webkit-mask:
+                      linear-gradient(#fff 0 0) content-box,
+                      linear-gradient(#fff 0 0);
+                    -webkit-mask-composite: xor;
+                    mask-composite: exclude;
+                    clip-path: inset(0 0 0 65%);
+                  "
+                ></div>
+                <!-- Card -->
+                <div
+                  class="rounded-[9.23px] bg-timeline-bg border-[1.15px] border-timeline-border p-[40px] relative backdrop-blur-md"
+                >
+                  <h4
+                    class="text-white text-center font-['Clash_Display',sans-serif] text-[18px] mb-4 tracking-wide relative"
+                  >
+                    May
+                  </h4>
+                  <h3
+                    class="text-white font-bold text-[36px] font-['Clash_Display',sans-serif] mb-5 tracking-wide relative"
+                  >
+                    Testing
+                  </h3>
+                  <p
+                    class="text-light-gray font-['Poppins',sans-serif] text-[14px] leading-[26px] relative"
+                  >
+                    Lorem ipsum dolor sit amet consectetur. Elit massa erat
+                    vitae non semper quis. Morbi sed aliquet donec facilisis.
+                    Senectus eget.
+                  </p>
+                </div>
+                <!-- Connector Line (Desktop) -->
+                <div
+                  class="hidden md:block absolute top-1/2 -translate-y-1/2 -right-[46px] w-[46px] border-t-[1px] border-dashed border-[#E2DDD0] opacity-50 -z-10"
+                ></div>
+              </div>
+            </div>
+            <!-- Center Dot -->
+            <div
+              class="absolute left-[24px] md:left-1/2 top-1/2 w-[27px] h-[27px] rounded-full bg-[#E4E0CF] shadow-[0_0_15px_#E4E0CF80] -translate-x-1/2 -translate-y-1/2 z-10"
+            ></div>
+            <!-- Spacer -->
+            <div class="hidden md:block w-full md:w-[calc(50%-60px)]"></div>
+          </div>
+          <!-- Item (Right) -->
+          <div
+            class="flex flex-col md:flex-row justify-between w-full relative group"
+          >
+            <!-- Spacer -->
+            <div class="hidden md:block w-full md:w-[calc(50%-60px)]"></div>
+            <!-- Center Dot -->
+            <div
+              class="absolute left-[24px] md:left-1/2 top-1/2 w-[27px] h-[27px] rounded-full bg-[#E08C3C] shadow-[0_0_15px_#E08C3C80] -translate-x-1/2 -translate-y-1/2 z-10"
+            ></div>
+            <!-- Content -->
+            <div
+              class="w-full md:w-[calc(50%-60px)] pl-[60px] md:pl-0 flex justify-start"
+            >
+              <div class="w-full max-w-[500px] relative">
+                <!-- Glowing Half Border -->
+                <div
+                  class="absolute rounded-[18.46px] pointer-events-none"
+                  style="
+                    top: -14px;
+                    left: -14px;
+                    bottom: -14px;
+                    right: 0px;
+                    background: linear-gradient(
+                      90deg,
+                      #e5e0cf 0.12%,
+                      #cf9833 15%,
+                      rgba(238, 227, 188, 0) 65%
+                    );
+                    border-radius: 18.46px;
+                    padding: 6.92px;
+                    -webkit-mask:
+                      linear-gradient(#fff 0 0) content-box,
+                      linear-gradient(#fff 0 0);
+                    -webkit-mask-composite: xor;
+                    mask-composite: exclude;
+                    clip-path: inset(0 65% 0 0);
+                  "
+                ></div>
+                <!-- Connector Line (Desktop) -->
+                <div
+                  class="hidden md:block absolute top-1/2 -translate-y-1/2 -left-[46px] w-[46px] border-t-[1px] border-dashed border-[#E08C3C] opacity-50 -z-10"
+                ></div>
+                <!-- Card -->
+                <div
+                  class="rounded-[9.23px] bg-timeline-bg border-[1.15px] border-timeline-border p-[40px] relative backdrop-blur-md"
+                >
+                  <h4
+                    class="text-white text-center font-['Clash_Display',sans-serif] text-[18px] mb-4 tracking-wide relative"
+                  >
+                    June
+                  </h4>
+                  <h3
+                    class="text-white font-bold text-[36px] font-['Clash_Display',sans-serif] mb-5 tracking-wide relative"
+                  >
+                    Launch & Feedback
+                  </h3>
+                  <p
+                    class="text-light-gray font-['Poppins',sans-serif] text-[14px] leading-[26px] relative"
+                  >
+                    Lorem ipsum dolor sit amet consectetur. Elit massa erat
+                    vitae non semper quis. Morbi sed aliquet donec facilisis.
+                    Senectus eget.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- how its work ---------------------------------------------------------------------- -->
+    <section class="bg-black text-white py-[160px] font-['Poppins']">
+      <div class="max-w-[1200px] mx-auto px-8">
+        <!-- Section Title -->
+        <div class="text-center mb-[120px]">
+          <h2 class="text-[40px] font-semibold">How It Works</h2>
+        </div>
+
+        <!-- STEP 1 -->
+        <div class="grid md:grid-cols-2 items-center gap-[120px] mb-[160px]">
+          <!-- Image -->
+          <div class="flex justify-center">
+            <img src="public/image 110.png" class="w-[420px]" />
+          </div>
+
+          <!-- Text -->
+          <div>
+            <h3 class="text-[59.76px] font-bold leading-[120%] mb-6">
+              Setup And Connect
+              <br />
+              Your Wallet.
+            </h3>
+
+            <p class="text-[15px] text-gray-400 max-w-[520px] leading-[180%]">
+              Lorem ipsum dolor sit amet consectetur. Pharetra faucibus donec
+              ultrices eros elit metus morbi aliquam quis.
+            </p>
+          </div>
+        </div>
+
+        <!-- STAR -->
+        <div class="flex justify-center mb-[160px]">
+          <img src="public/wide.png" class="w-[40px]" />
+        </div>
+
+        <!-- STEP 2 -->
+        <div class="grid md:grid-cols-2 items-center gap-[120px] mb-[160px]">
+          <!-- Text -->
+          <div>
+            <h3 class="text-[59.76px] font-bold leading-[120%] mb-6">
+              Create Your Own
+              <br />
+              Digital NFT
+            </h3>
+
+            <p class="text-[15px] text-gray-400 max-w-[520px] leading-[180%]">
+              Lorem ipsum dolor sit amet consectetur. Pharetra faucibus donec
+              ultrices eros elit metus morbi aliquam quis.
+            </p>
+          </div>
+
+          <!-- Image -->
+          <div class="flex justify-center">
+            <img src="public/image 111.png" class="w-[420px] rounded-[28px]" />
+          </div>
+        </div>
+
+        <!-- STAR -->
+        <div class="flex justify-center mb-[160px]">
+          <img src="public/wide.png" class="w-[40px]" />
+        </div>
+
+        <!-- STEP 3 -->
+        <div class="grid md:grid-cols-2 items-center gap-[120px]">
+          <!-- Image -->
+          <div class="flex justify-center">
+            <img src="public/image 113.png" class="w-[420px]" />
+          </div>
+
+          <!-- Text -->
+          <div>
+            <h3 class="text-[59.76px] font-bold leading-[120%] mb-6">
+              Setup And Connect
+              <br />
+              Your Wallet.
+            </h3>
+
+            <p class="text-[15px] text-gray-400 max-w-[520px] leading-[180%]">
+              Lorem ipsum dolor sit amet consectetur. Pharetra faucibus donec
+              ultrices eros elit metus morbi aliquam quis.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- footer section------------------------------------------------------------ -->
+
+    <section class="relative w-full h-[578px] font-['Poppins'] overflow-hidden">
+      <!-- Background Image -->
+      <img
+        src="public/c.png"
+        class="absolute inset-0 w-full h-full object-cover"
+      />
+
+      <!-- Dark Overlay -->
+      <!-- <div class="absolute inset-0 bg-black/75"></div> -->
+
+      <!-- Content -->
+      <div
+        class="relative z-10 h-full flex flex-col items-center justify-center text-center px-8"
+      >
+        <!-- Heading -->
+        <h2 class="text-white text-[48px] font-bold leading-[120%] mb-6">
+          Join OurCommunity
+        </h2>
+
+        <!-- Paragraph -->
+        <p class="text-gray-300 text-[14px] max-w-[620px] leading-[180%] mb-10">
+          Lorem Ipsum Dolor Sit Amet Consectetur. Donec Vitae Pellentesque Nunc
+          Ut Sit A Volutpat Elementum. Nunc Elit Nisi Pellentesque Porta
+          Elementum. Id Mattis Neque Diam Nulla. Amet Et A Felis Pellentesque
+          Sed Odio.
+        </p>
+
+        <!-- Input + Button -->
+        <div class="flex items-center gap-6">
+          <!-- Input -->
+          <input
+            type="email"
+            placeholder="Your Email"
+            class="w-[420px] h-[58px] rounded-full bg-white text-black text-[14px] px-6 outline-none"
+          />
+
+          <!-- Button -->
+          <button
+            class="h-[58px] px-10 rounded-full bg-[#C88A2A] text-white text-[14px] font-medium hover:opacity-90 transition"
+          >
+            Join Now
+          </button>
+        </div>
+
+        <!-- Small Footer Text -->
+        <p class="text-gray-400 text-[12px] mt-8">
+          © NFT Market. Use this template freely.
+        </p>
+      </div>
+    </section>
+  </body>
+</html>
