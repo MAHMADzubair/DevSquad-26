@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./assets/images/favicon-32x32.png"
+    />
+    <link href="./src/output.css" rel="stylesheet" />
+
+    <title>Frontend Mentor | Age calculator app</title>
+  </head>
+  <body
+    class="bg-neutral-200 min-h-screen flex items-center justify-center p-4"
+  >
+    <!-- CARD -->
+    <div
+      class="bg-white w-full max-w-2xl p-6 md:p-10 rounded-2xl rounded-br-[150px] shadow-xl"
+    >
+      <!-- INPUTS -->
+      <div class="grid grid-cols-3 gap-4 max-w-md">
+        <div>
+          <label
+            class="block text-xs tracking-[0.2em] text-neutral-500 font-bold"
+          >
+            DAY
+          </label>
+          <input
+            id="day"
+            type="number"
+            placeholder="DD"
+            class="w-full border border-neutral-300 rounded-lg p-3 mt-1 text-xl font-bold focus:border-violet-600 focus:outline-none"
+          />
+        </div>
+
+        <div>
+          <label
+            class="block text-xs tracking-[0.2em] text-neutral-500 font-bold"
+          >
+            MONTH
+          </label>
+          <input
+            id="month"
+            type="number"
+            placeholder="MM"
+            class="w-full border border-neutral-300 rounded-lg p-3 mt-1 text-xl font-bold focus:border-violet-600 focus:outline-none"
+          />
+        </div>
+
+        <div>
+          <label
+            class="block text-xs tracking-[0.2em] text-neutral-500 font-bold"
+          >
+            YEAR
+          </label>
+          <input
+            id="year"
+            type="number"
+            placeholder="YYYY"
+            class="w-full border border-neutral-300 rounded-lg p-3 mt-1 text-xl font-bold focus:border-violet-600 focus:outline-none"
+          />
+        </div>
+      </div>
+
+      <!-- DIVIDER + BUTTON -->
+      <div class="relative my-12">
+        <!-- Divider -->
+        <div class="border-t border-neutral-300"></div>
+
+        <!-- Button -->
+        <button
+          id="calculate"
+          class="absolute -top-8 bg-violet-600 hover:bg-violet-700 w-16 h-16 flex items-center justify-center rounded-full text-white text-2xl shadow-lg transition /* Mobile Center */ left-1/2 -translate-x-1/2 /* Desktop Right */ md:left-auto md:right-0 md:translate-x-0"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="46"
+            height="44"
+            viewBox="0 0 46 44"
+          >
+            <g fill="none" stroke="#FFF" stroke-width="2">
+              <path
+                d="M1 22.019C8.333 21.686 23 25.616 23 44M23 44V0M45 22.019C37.667 21.686 23 25.616 23 44"
+              />
+            </g>
+          </svg>
+        </button>
+      </div>
+
+      <!-- RESULT -->
+      <div class="text-5xl md:text-7xl font-extrabold italic leading-tight">
+        <p>
+          <span id="years" class="text-violet-600">--</span>
+          <span class="text-black">years</span>
+        </p>
+
+        <p>
+          <span id="months" class="text-violet-600">--</span>
+          <span class="text-black">months</span>
+        </p>
+
+        <p>
+          <span id="days" class="text-violet-600">--</span>
+          <span class="text-black">days</span>
+        </p>
+      </div>
+    </div>
+
+    <script>
+      const dayInput = document.getElementById("day");
+      const monthInput = document.getElementById("month");
+      const yearInput = document.getElementById("year");
+
+      const yearsEl = document.getElementById("years");
+      const monthsEl = document.getElementById("months");
+      const daysEl = document.getElementById("days");
+
+      document
+        .getElementById("calculate")
+        .addEventListener("click", calculateAge);
+
+      function calculateAge() {
+        const day = parseInt(dayInput.value);
+        const month = parseInt(monthInput.value);
+        const year = parseInt(yearInput.value);
+
+        if (!day || !month || !year) return;
+
+        const today = new Date();
+        const birthDate = new Date(year, month - 1, day);
+
+        if (birthDate > today) return;
+
+        let years = today.getFullYear() - birthDate.getFullYear();
+        let months = today.getMonth() - birthDate.getMonth();
+        let days = today.getDate() - birthDate.getDate();
+
+        // Borrow days
+        if (days < 0) {
+          months--;
+          const prevMonth = new Date(today.getFullYear(), today.getMonth(), 0);
+          days += prevMonth.getDate();
+        }
+
+        // Borrow months
+        if (months < 0) {
+          years--;
+          months += 12;
+        }
+
+        animate(yearsEl, years);
+        animate(monthsEl, months);
+        animate(daysEl, days);
+      }
+
+      function animate(element, value) {
+        let start = 0;
+        const duration = 800;
+        const increment = value / (duration / 16);
+
+        function step() {
+          start += increment;
+          if (start < value) {
+            element.textContent = Math.floor(start);
+            requestAnimationFrame(step);
+          } else {
+            element.textContent = value;
+          }
+        }
+
+        step();
+      }
+    </script>
+  </body>
+</html>
