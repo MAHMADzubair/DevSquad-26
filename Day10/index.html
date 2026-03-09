@@ -1,0 +1,129 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link href="./src/output.css" rel="stylesheet" />
+</head>
+
+<body class="bg-black text-white">
+
+<!-- HEADER -->
+<header class="w-full h-[42px] bg-[#1a1a1a] border-b border-gray-700 sticky top-0 z-50">
+
+<div class="flex items-center justify-between px-10 h-full">
+
+<!-- LEFT -->
+<div class="flex items-center gap-6">
+
+<!-- LOGO -->
+<a href="#">
+<img src="assets/image 2.png" alt="Logo" class="h-6">
+</a>
+
+<!-- NAV -->
+<nav class="hidden md:flex items-center text-sm text-gray-300">
+
+<a href="#" class="navLink active">STORE</a>
+<a href="#" class="navLink">FAQ</a>
+<a href="#" class="navLink">HELP</a>
+<a href="#" class="navLink">UNREAL ENGINE</a>
+
+</nav>
+
+</div>
+
+<!-- RIGHT -->
+<div class="flex items-center gap-2">
+
+<a href="#" class="hidden md:flex items-center text-sm text-gray-300 hover:text-white gap-1">
+
+<img src="assets/Frame (2).png" class="h-4 w-4 mr-4">
+
+<img src="assets/Frame.png" class="h-4 w-4 rounded-full">
+
+SIGN IN
+
+</a>
+
+<!-- DOWNLOAD BUTTON (UNCHANGED) -->
+<a
+href="#"
+class="bg-[#007AFF] px-2 py-2.5 text-sm font-semibold text-white hover:bg-blue-700 h-full flex items-center justify-center -mr-10 ml-4"
+>
+DOWNLOAD
+</a>
+
+<!-- HAMBURGER -->
+<button id="menuBtn" class="md:hidden text-xl ml-2">
+☰
+</button>
+
+</div>
+
+</div>
+
+<!-- MOBILE MENU -->
+<div id="mobileMenu" class="hidden flex-col bg-[#1a1a1a] text-white px-6 py-4 md:hidden space-y-3">
+
+<a href="#">STORE</a>
+<a href="#">FAQ</a>
+<a href="#">HELP</a>
+<a href="#">UNREAL ENGINE</a>
+<a href="#">SIGN IN</a>
+
+</div>
+
+</header>
+
+<style>
+
+.navLink{
+position:relative;
+padding:0 12px;
+height:42px;
+display:flex;
+align-items:center;
+transition:color .3s;
+}
+
+.navLink:hover{
+color:white;
+}
+
+.navLink::after{
+content:"";
+position:absolute;
+left:0;
+bottom:0;
+width:0%;
+height:3px;
+background:#2563eb;
+transition:width .3s;
+}
+
+.navLink:hover::after{
+width:100%;
+}
+
+.active::after{
+width:100%;
+}
+
+</style>
+
+<script>
+
+const menuBtn = document.getElementById("menuBtn")
+const mobileMenu = document.getElementById("mobileMenu")
+
+menuBtn.addEventListener("click",()=>{
+
+mobileMenu.classList.toggle("hidden")
+
+})
+
+</script>
+
+</body>
+</html>
