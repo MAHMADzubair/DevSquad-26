@@ -1,5 +1,7 @@
 const express = require("express");
 const taskRoutes = require("./routes/taskRoutes");
+const errorHandler = require("./middlewares/errorMiddleware");
+
 const swaggerUi = require("swagger-ui-express");
 const swaggerSpec = require("./swagger");
 
@@ -9,7 +11,9 @@ app.use(express.json());
 
 app.use("/api/tasks", taskRoutes);
 
-// Swagger route
+/* Swagger Docs */
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
-module.exports = app;
+app.use(errorHandler);
+
+module.exports = app;   // ✅ export for Vercel

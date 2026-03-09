@@ -1,5 +1,10 @@
 const swaggerJsdoc = require("swagger-jsdoc");
 
+const serverUrl =
+  process.env.VERCEL_URL
+    ? `https://${process.env.VERCEL_URL}`
+    : "http://localhost:3000";
+
 const options = {
   definition: {
     openapi: "3.0.0",
@@ -10,15 +15,11 @@ const options = {
     },
     servers: [
       {
-        url: process.env.VERCEL_URL
-          ? `https://${process.env.VERCEL_URL}`
-          : "http://localhost:3000",
+        url: serverUrl,
       },
     ],
   },
-  apis: ["./routes/*.js"],
+  apis: ["./routes/*.js"], // keep routes documentation
 };
 
-const swaggerSpec = swaggerJsdoc(options);
-
-module.exports = swaggerSpec;
+module.exports = swaggerJsdoc(options);
