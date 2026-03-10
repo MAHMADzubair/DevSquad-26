@@ -1,0 +1,116 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="./src/output.css" rel="stylesheet" />
+  </head>
+
+  <body class="bg-black text-white">
+    <!-- CONTAINER -->
+    <div class="max-w-[1200px] mx-auto px-6">
+      <!-- NAVBAR -->
+      <header class="flex items-center justify-between py-6">
+        <!-- LOGO -->
+        <div class="flex items-center gap-2">
+          <img
+            src="assets/logo.png"
+            alt="logo"
+            class="h-[27px] w-[73px] object-contain"
+          />
+        </div>
+
+        <!-- MENU -->
+        <nav class="hidden md:flex gap-8 text-gray-300 text-sm">
+          <a href="#" class="hover:text-white">Home</a>
+          <a href="#" class="hover:text-white">Portfolio</a>
+          <a href="#" class="hover:text-white">Skills</a>
+          <a href="#" class="hover:text-white">About Me</a>
+        </nav>
+
+        <!-- RIGHT -->
+        <div class="flex items-center gap-4">
+          <!-- TOGGLE -->
+          <div
+            class="w-12 h-6 bg-yellow-400 rounded-full flex items-center px-1"
+          >
+            <div class="w-4 h-4 bg-white rounded-full"></div>
+          </div>
+
+          <!-- CONTACT -->
+          <button class="bg-purple-600 px-4 py-2 rounded-md text-sm">
+            Contact Me
+          </button>
+        </div>
+      </header>
+
+      <!-- HERO -->
+      <section class="grid md:grid-cols-2 gap-10 items-center mt-10">
+        <!-- LEFT -->
+        <div class="relative">
+          <h1 class="text-[70px] md:text-[90px] font-extrabold leading-[0.9]">
+            PRODUCT <br />
+            DESIGNER
+          </h1>
+
+          <!-- STAR ICON -->
+          <img
+            src="assets/Portal.png"
+            alt="star"
+            class="absolute top-12 right-[-40px] w-[160px] h-[160px]"
+          />
+
+          <h2 class="text-[40px] md:text-[50px] font-bold mt-4">
+            <span class="text-pink-500">CRISTIAN</span>
+            <span class="text-yellow-400">MUÑOZ</span>
+          </h2>
+
+          <!-- SOCIAL ICONS -->
+          <div class="flex gap-4 mt-8">
+            <div
+              class="w-10 h-10 border border-gray-600 flex items-center justify-center rounded-md"
+            >
+              <img src="assets/instagram.png" class="w-5" />
+            </div>
+
+            <div
+              class="w-10 h-10 border border-gray-600 flex items-center justify-center rounded-md"
+            >
+              <img src="assets/figma.png" class="w-5" />
+            </div>
+
+            <div
+              class="w-10 h-10 border border-gray-600 flex items-center justify-center rounded-md"
+            >
+              <img src="assets/linkedin.png" class="w-5" />
+            </div>
+
+            <div
+              class="w-10 h-10 border border-gray-600 flex items-center justify-center rounded-md"
+            >
+              <img src="assets/twitter.png" class="w-5" />
+            </div>
+
+            <div
+              class="w-10 h-10 border border-gray-600 flex items-center justify-center rounded-md"
+            >
+              <img src="assets/telegram.png" class="w-5" />
+            </div>
+          </div>
+
+          <!-- DOWNLOAD BUTTON -->
+          <button
+            class="mt-8 bg-gray-800 px-6 py-3 text-sm rounded-md hover:bg-gray-700"
+          >
+            Download Curriculum Vitae →
+          </button>
+        </div>
+
+        <!-- RIGHT IMAGE -->
+        <div class="flex justify-center md:justify-end">
+          <img src="assets/car.png" class="w-[420px] rounded-md" />
+        </div>
+      </section>
+    </div>
+  </body>
+</html>

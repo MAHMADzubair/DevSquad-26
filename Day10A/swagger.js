@@ -1,11 +1,6 @@
 const swaggerJsdoc = require("swagger-jsdoc");
 const path = require("path");
 
-const serverUrl =
-  process.env.VERCEL_URL
-    ? `https://${process.env.VERCEL_URL}`
-    : "http://localhost:3000";
-
 const options = {
   definition: {
     openapi: "3.0.0",
@@ -16,7 +11,12 @@ const options = {
     },
     servers: [
       {
-        url: serverUrl,
+        url: "/",
+        description: "Vercel Deployment (Current Environment)",
+      },
+      {
+        url: "http://localhost:3000",
+        description: "Local Development Server",
       },
     ],
   },
