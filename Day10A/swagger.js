@@ -1,4 +1,5 @@
 const swaggerJsdoc = require("swagger-jsdoc");
+const path = require("path");
 
 const serverUrl =
   process.env.VERCEL_URL
@@ -19,7 +20,7 @@ const options = {
       },
     ],
   },
-  apis: ["./routes/*.js"], // keep routes documentation
+  apis: [path.join(__dirname, "./routes/*.js")], // keep routes documentation
 };
 
 module.exports = swaggerJsdoc(options);
