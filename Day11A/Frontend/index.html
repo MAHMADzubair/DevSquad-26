@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TaskFlow Pro</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Toast Notification Container -->
+        <div id="toast-container" class="toast-container"></div>
+
+        <!-- Auth Section -->
+        <div id="auth-section" class="section active fade-in">
+            <div class="auth-card">
+                <div class="brand">
+                    <i class="fa-solid fa-layer-group"></i>
+                    <h1>TaskFlow Pro</h1>
+                </div>
+                
+                <div class="tabs">
+                    <button class="tab active" onclick="switchTab('login')">Login</button>
+                    <button class="tab" onclick="switchTab('register')">Register</button>
+                </div>
+
+                <!-- Login Form -->
+                <div id="login-form" class="form-container active">
+                    <div class="input-group">
+                        <i class="fa-regular fa-envelope"></i>
+                        <input id="loginEmail" type="email" placeholder="Email Address" />
+                    </div>
+                    <div class="input-group">
+                        <i class="fa-solid fa-lock"></i>
+                        <input id="loginPassword" type="password" placeholder="Password" />
+                    </div>
+                    <button class="primary-btn" onclick="login()">
+                        <span>Sign In</span>
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                </div>
+
+                <!-- Register Form -->
+                <div id="register-form" class="form-container">
+                    <div class="input-group">
+                        <i class="fa-regular fa-user"></i>
+                        <input id="name" type="text" placeholder="Full Name" />
+                    </div>
+                    <div class="input-group">
+                        <i class="fa-regular fa-envelope"></i>
+                        <input id="email" type="email" placeholder="Email Address" />
+                    </div>
+                    <div class="input-group">
+                        <i class="fa-solid fa-lock"></i>
+                        <input id="password" type="password" placeholder="Password" />
+                    </div>
+                    <button class="primary-btn" onclick="register()">
+                        <span>Create Account</span>
+                        <i class="fa-solid fa-user-plus"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Dashboard Section -->
+        <div id="dashboard-section" class="section fade-in">
+            <header class="dashboard-header">
+                <div class="brand">
+                    <i class="fa-solid fa-layer-group"></i>
+                    <h2>TaskFlow</h2>
+                </div>
+                <button class="icon-btn logout-btn" onclick="logout()" title="Logout">
+                    <i class="fa-solid fa-sign-out-alt"></i>
+                </button>
+            </header>
+
+            <main class="dashboard-content">
+                <div class="add-task-container">
+                    <div class="input-group large">
+                        <input id="taskTitle" type="text" placeholder="What needs to be done?" onkeypress="handleTaskKeyPress(event)" />
+                        <button class="add-btn" onclick="createTask()">
+                            <i class="fa-solid fa-plus"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="tasks-container">
+                    <div class="tasks-header">
+                        <h3>My Tasks</h3>
+                        <span id="task-count" class="badge">0</span>
+                    </div>
+                    <ul id="taskList" class="task-list">
+                        <!-- Tasks will be rendered here -->
+                    </ul>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- Main JS -->
+    <script src="app.js"></script>
+</body>
+</html>
