@@ -2,6 +2,7 @@ require("dotenv").config();
 
 const express = require("express");
 const cors = require("cors");
+const path = require("path");
 const connectDB = require("./config/db");
 
 const authRoutes = require("./routes/authRoutes");
@@ -27,8 +28,15 @@ app.use("/api/tasks", taskRoutes);
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 /* Default Route */
-app.get("/", (req, res) => {
+app.get("/api", (req, res) => {
   res.send("Task Manager API Running 🚀");
+});
+
+/* Serve Frontend Static Files */
+app.use(express.static(path.join(__dirname, "Frontend")));
+
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "Frontend", "index.html"));
 });
 
 /* Server Port */
