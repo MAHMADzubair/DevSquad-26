@@ -26,7 +26,8 @@
         font-style: italic;
         line-height: 1;
         letter-spacing: -1px;
-        font-size: clamp(36px, 10vw, 58px);
+        font-size: 85px;
+        white-space: nowrap;
       }
 
       /* ── SOCIAL ICON BOX ────────────────────────── */
@@ -52,18 +53,42 @@
         height: 22px;
       }
 
-      /* Light mode overrides */
       html.light .social-box {
         border-color: #d1d5db;
+        background-color: #fff;
       }
       html.light .social-box:hover {
-        border-color: #9333ea;
+        border-color: #111;
       }
       html.light .social-box svg {
         fill: #111;
       }
       html.light .social-box svg.stroke-icon {
+        fill: none !important;
         stroke: #111;
+      }
+      html.light .social-box svg.stroke-icon circle[fill] {
+        fill: #111 !important;
+      }
+
+      /* ── DOWNLOAD BUTTON ────────────────────────── */
+      .download-btn {
+        background-color: #1a1a1a;
+        color: #fff;
+        border: 1px solid #333;
+        transition: all 0.2s;
+      }
+      .download-btn:hover {
+        background-color: #252525;
+      }
+      html.light .download-btn {
+        background-color: #fff;
+        color: #111;
+        border-color: #d1d5db;
+      }
+      html.light .download-btn:hover {
+        background-color: #f9fafb;
+        border-color: #111;
       }
 
       /* ── MOBILE MENU ────────────────────────────── */
@@ -92,6 +117,9 @@
       html.light nav a:hover {
         color: #111;
       }
+      html.light #hamburgerBtn {
+        color: #111;
+      }
     </style>
   </head>
 
@@ -115,11 +143,12 @@
           <!-- Theme Toggle -->
           <div
             id="themeToggle"
-            class="w-[54px] h-[28px] bg-yellow-400 rounded-full flex items-center px-[3px] cursor-pointer transition-colors duration-300"
+            class="relative w-[52px] h-[28px] bg-yellow-400 rounded-full cursor-pointer transition-colors duration-300"
           >
             <div
               id="toggleCircle"
-              class="w-[22px] h-[22px] bg-white rounded-full shadow flex items-center justify-center transition-transform duration-300 translate-x-[26px]"
+              class="absolute top-[3px] left-[3px] w-[22px] h-[22px] bg-white rounded-full shadow flex items-center justify-center transition-transform duration-300"
+              style="transform: translateX(24px)"
             >
               <svg
                 id="moonIcon"
@@ -262,11 +291,11 @@
           <div class="relative">
             <!-- Title + Star wrapper -->
             <div class="relative inline-block w-full">
-              <h1 class="anton-font">PRODUCT<br />DESIGNER</h1>
+              <h1 class="anton-font">PRODUCT DESIGNER</h1>
 
               <!-- Star: top-right of the title block -->
               <svg
-                class="star-icon absolute top-0 right-0 md:right-[10%] lg:right-[-10px] w-[50px] h-[50px] md:w-[70px] md:h-[70px] lg:w-[80px] lg:h-[80px] fill-white"
+                class="star-icon absolute top-0 md:right-[10%] lg:right-[-10px] w-[50px] h-[50px] md:w-[70px] md:h-[70px] lg:w-[80px] lg:h-[80px] fill-white"
                 viewBox="0 0 160 160"
               >
                 <path
@@ -279,7 +308,7 @@
 
             <!-- Name -->
             <h2
-              class="name-text mt-3 md:mt-5 text-transparent bg-clip-text"
+              class="name-text mt-3 md:mt-5 text-transparent bg-clip-text whitespace-nowrap"
               style="
                 background-image: linear-gradient(
                   90deg,
@@ -292,15 +321,17 @@
             </h2>
 
             <!-- Social Icons -->
-            <div class="flex flex-wrap gap-3 md:gap-4 mt-8 md:mt-10">
+            <div
+              class="flex flex-wrap justify-between md:gap-4 mt-8 md:mt-10 w-full lg:max-w-[520px]"
+            >
               <!-- Instagram -->
               <div class="social-box">
                 <svg
                   class="stroke-icon"
                   viewBox="0 0 24 24"
                   fill="none"
-                  stroke="white"
-                  stroke-width="1.5"
+                  stroke="currentColor"
+                  stroke-width="1.8"
                 >
                   <rect x="2" y="2" width="20" height="20" rx="5" />
                   <circle cx="12" cy="12" r="5" />
@@ -308,7 +339,7 @@
                     cx="17.5"
                     cy="6.5"
                     r="1.5"
-                    fill="white"
+                    fill="currentColor"
                     stroke="none"
                   />
                 </svg>
@@ -357,7 +388,7 @@
 
             <!-- Download Button -->
             <button
-              class="mt-8 md:mt-10 w-full lg:max-w-[520px] bg-[#1a1a1a] hover:bg-[#252525] border border-[#333] px-6 py-4 text-sm rounded-xl transition-colors flex items-center justify-center gap-2"
+              class="download-btn mt-8 md:mt-10 w-full lg:max-w-[520px] px-6 py-4 text-sm rounded-xl flex items-center justify-center gap-2"
             >
               Download Curriculum Vitae
               <svg
@@ -377,7 +408,7 @@
           <div class="hidden lg:flex justify-end items-start mt-2">
             <img
               src="assets/car.png"
-              class="w-[440px] h-[460px] object-cover rounded-xl shadow-2xl"
+              class="w-[440px] h-[540px] object-cover rounded-xl shadow-2xl"
             />
           </div>
         </div>
@@ -400,7 +431,7 @@
           document.getElementById("themeToggle").style.backgroundColor =
             "#facc15";
           document.getElementById("toggleCircle").style.transform =
-            "translateX(26px)";
+            "translateX(24px)";
           document.getElementById("moonIcon").classList.remove("hidden");
           document.getElementById("sunIcon").classList.add("hidden");
           // Mobile toggle
@@ -420,6 +451,7 @@
               svg.querySelector("circle[fill]").setAttribute("fill", "white");
           });
           document.querySelector(".logo-img").style.filter = "";
+          document.getElementById("hamburgerBtn").style.color = "#fff";
         } else {
           html.classList.add("light");
           document.body.style.backgroundColor = "#f5f5f5";
@@ -449,6 +481,7 @@
           });
           document.querySelector(".logo-img").style.filter =
             "invert(1) brightness(0)";
+          document.getElementById("hamburgerBtn").style.color = "#111";
         }
       }
 
