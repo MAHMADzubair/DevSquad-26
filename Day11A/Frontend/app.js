@@ -49,7 +49,7 @@ function switchTab(tab) {
   }
 }
 
-/* ===== Section Switching ===== */
+/* ===== Section Switching ===== */ 
 function showSection(sectionId) {
   document.querySelectorAll(".section").forEach((s) => {
     s.classList.remove("active");
