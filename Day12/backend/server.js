@@ -28,6 +28,10 @@ app.use("/api/tasks", taskRoutes);
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 /* Default Route */
+app.get("/", (req, res) => {
+  res.send("Welcome to the Task Manager API! Visit /api-docs for documentation.");
+});
+
 app.get("/api", (req, res) => {
   res.send("Task Manager API Running 🚀");
 });

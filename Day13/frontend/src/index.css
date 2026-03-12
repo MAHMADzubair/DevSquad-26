@@ -1,0 +1,264 @@
+@import "tailwindcss";
+
+@theme {
+  /* ── Logo-extracted palette ── */
+  --color-brand-cyan:   #00d4ff;   /* electric cyan  — outer hex glow  */
+  --color-brand-violet: #7b2fff;   /* deep violet    — mid hex fill    */
+  --color-brand-magenta:#c040fb;   /* magenta purple — inner hex core  */
+  --color-dark:         #0a0a0f;   /* near-black bg matching logo bg   */
+  --color-dark-2:       #10101a;
+  --color-dark-3:       #18182a;
+  --color-dark-4:       #22223a;
+  /* keep alias so old refs don't break */
+  --color-brand-purple: #7b2fff;
+  --color-brand-pink:   #c040fb;
+}
+
+/* ── Global Reset ─────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+::selection {
+  background: rgba(123, 47, 255, 0.35);
+  color: #fff;
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
+  background: #0a0a0f;
+  color: #f1f1f3;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+#root {
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+  text-align: left;
+}
+
+/* ── Scrollbar ────────────────────────────────── */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: #0a0a0f; }
+::-webkit-scrollbar-thumb {
+  background: rgba(123, 47, 255, 0.25);
+  border-radius: 99px;
+  border: 2px solid #0a0a0f;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(192, 64, 251, 0.5);
+}
+
+/* ── CSS Variables ────────────────────────────── */
+:root {
+  /* Logo tri-color gradient: cyan → violet → magenta */
+  --grad-netix:      linear-gradient(135deg, #00d4ff 0%, #7b2fff 50%, #c040fb 100%);
+  --grad-netix-soft: linear-gradient(135deg, rgba(0,212,255,0.15) 0%, rgba(192,64,251,0.15) 100%);
+  --glow-cyan:    0 0 30px rgba(0, 212, 255, 0.45);
+  --glow-violet:  0 0 30px rgba(123, 47, 255, 0.45);
+  --glow-magenta: 0 0 30px rgba(192, 64, 251, 0.45);
+}
+
+/* ── Animated Background Orbs ─────────────────── */
+.glow-mesh {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.glow-mesh div {
+  position: absolute;
+  filter: blur(100px);
+  border-radius: 50%;
+  opacity: 0.18;
+  animation: orb-float 18s infinite ease-in-out;
+}
+
+.glow-mesh div:nth-child(1) { animation-delay: 0s; }
+.glow-mesh div:nth-child(2) { animation-delay: -6s; }
+.glow-mesh div:nth-child(3) { animation-delay: -12s; }
+
+@keyframes orb-float {
+  0%,100% { transform: translate(0,0) scale(1); }
+  33%      { transform: translate(40px,-50px) scale(1.1); }
+  66%      { transform: translate(-30px,30px) scale(0.95); }
+}
+
+/* ── Glass Card ───────────────────────────────── */
+.glass-card {
+  background: rgba(255,255,255,0.04);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 20px;
+  box-shadow: 0 8px 40px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.06);
+}
+
+/* ── Gradient Text ────────────────────────────── */
+.gradient-text {
+  background: var(--grad-netix);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ── Fire Button ──────────────────────────────── */
+.btn-fire {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: linear-gradient(135deg, #00d4ff 0%, #7b2fff 60%, #c040fb 100%);
+  color: #fff;
+  font-weight: 700;
+  font-size: 0.95rem;
+  letter-spacing: 0.4px;
+  border: none;
+  cursor: pointer;
+  border-radius: 12px;
+  padding: 12px 24px;
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 24px rgba(123, 47, 255, 0.45);
+  position: relative;
+  overflow: hidden;
+}
+.btn-fire::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(255,255,255,0);
+  transition: background 0.2s;
+}
+.btn-fire:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 8px 36px rgba(192, 64, 251, 0.6);
+}
+.btn-fire:hover::after { background: rgba(255,255,255,0.08); }
+.btn-fire:active { transform: translateY(0) scale(0.98); }
+.btn-fire:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+
+/* ── Ghost Button ─────────────────────────────── */
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: transparent;
+  color: rgba(255,255,255,0.7);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 10px;
+  padding: 10px 18px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-size: 0.9rem;
+}
+.btn-ghost:hover {
+  border-color: #7b2fff;
+  color: #00d4ff;
+  background: rgba(123,47,255,0.10);
+}
+
+/* ── Danger Button ────────────────────────────── */
+.btn-danger {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255,90,90,0.12);
+  color: #FF5A5A;
+  border: 1px solid rgba(255,90,90,0.25);
+  border-radius: 10px;
+  padding: 8px 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-size: 0.85rem;
+}
+.btn-danger:hover {
+  background: rgba(255,90,90,0.22);
+  box-shadow: 0 0 14px rgba(255,90,90,0.3);
+}
+
+/* ── Premium Input ────────────────────────────── */
+.input-field {
+  width: 100%;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 12px;
+  color: #f1f1f3;
+  font-size: 0.95rem;
+  padding: 13px 16px;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  font-family: inherit;
+}
+.input-field::placeholder { color: rgba(255,255,255,0.3); }
+.input-field:focus {
+  border-color: #7b2fff;
+  box-shadow: 0 0 0 3px rgba(123,47,255,0.20);
+}
+.input-field:focus::placeholder {
+  color: transparent;
+}
+.input-field option { background: #18182a; color: #f1f1f3; }
+
+/* ── Input with left icon ─────────────────────── */
+.input-icon {
+  padding-left: 48px !important;
+}
+
+/* ── Stat Badge ───────────────────────────────── */
+.stat-badge {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 99px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+/* ── Status Pills ─────────────────────────────── */
+.pill-todo        { background: rgba(255,212,90,0.15); color: #FFD45A; border: 1px solid rgba(255,212,90,0.3); }
+.pill-in-progress { background: rgba(255,139,90,0.15); color: #FF8B5A; border: 1px solid rgba(255,139,90,0.3); }
+.pill-completed   { background: rgba(90,255,140,0.12); color: #5aff8c; border: 1px solid rgba(90,255,140,0.25); }
+
+/* ── Page wrapper ─────────────────────────────── */
+.page-wrapper {
+  padding: 32px 40px;
+  min-height: calc(100vh - 65px);
+}
+
+/* ── Section title ────────────────────────────── */
+.section-title {
+  font-size: 1.75rem;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  margin-bottom: 8px;
+}
+
+.section-sub {
+  color: rgba(255,255,255,0.45);
+  font-size: 0.9rem;
+  margin-bottom: 28px;
+}
+
+/* ── Divider ──────────────────────────────────── */
+.divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255,139,90,0.3), transparent);
+  margin: 24px 0;
+}
+
+/* ── Hover card lift ──────────────────────────── */
+.card-hover {
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.card-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 48px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,139,90,0.15);
+}
