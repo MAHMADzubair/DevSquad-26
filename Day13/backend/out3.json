@@ -1,0 +1,16 @@
+{
+  "status": 204,
+  "headers": {
+    "access-control-allow-headers": "authorization, content-type",
+    "access-control-allow-methods": "GET,HEAD,PUT,PATCH,POST,DELETE",
+    "access-control-allow-origin": "https://frontend-iota-flax-77qqm7aoj8.vercel.app",
+    "cache-control": "public, max-age=0, must-revalidate",
+    "date": "Thu, 12 Mar 2026 20:56:35 GMT",
+    "server": "Vercel",
+    "strict-transport-security": "max-age=63072000; includeSubDomains; preload",
+    "vary": "Origin, Access-Control-Request-Headers",
+    "x-powered-by": "Express",
+    "x-vercel-cache": "MISS",
+    "x-vercel-id": "sin1::iad1::6qdqm-1773348995049-acf62f89d74f"
+  }
+}
