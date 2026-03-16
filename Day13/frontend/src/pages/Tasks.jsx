@@ -153,7 +153,7 @@ export default function Tasks() {
                 />
               </div>
 
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
                   <label className="block text-xs font-bold text-white/30 mb-2 uppercase tracking-widest px-1">
                     Project
@@ -256,11 +256,11 @@ export default function Tasks() {
                         </div>
                       </div>
 
-                      <div className="flex gap-2 relative z-10 opactiy-0 group-hover:opacity-100 transition-opacity">
-                        <button className="p-3 rounded-xl bg-white/5 hover:bg-brand-orange/10 hover:text-brand-orange border border-white/5 transition-all text-white/30">
+                      <div className="flex gap-2 sm:self-center relative z-10 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity">
+                        <button className="p-2 sm:p-3 rounded-xl bg-white/5 hover:bg-brand-orange/10 hover:text-brand-orange border border-white/5 transition-all text-white/30">
                           <Edit size={18} />
                         </button>
-                        <button className="p-3 rounded-xl bg-white/5 hover:bg-brand-red/10 hover:text-brand-red border border-white/5 transition-all text-white/30">
+                        <button className="p-2 sm:p-3 rounded-xl bg-white/5 hover:bg-brand-red/10 hover:text-brand-red border border-white/5 transition-all text-white/30">
                           <Trash2 size={18} />
                         </button>
                       </div>

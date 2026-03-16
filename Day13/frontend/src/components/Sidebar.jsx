@@ -5,11 +5,12 @@ import {
   Users,
   CheckSquare,
   LogOut,
+  X,
 } from "lucide-react";
 import gsap from "gsap";
 import { useEffect, useRef } from "react";
 
-export default function Sidebar() {
+export default function Sidebar({ isOpen, onClose }) {
   const location = useLocation();
   const sidebarRef = useRef(null);
 
@@ -35,10 +36,23 @@ export default function Sidebar() {
   ];
 
   return (
-    <div ref={sidebarRef} className="w-64 h-full border-r border-white/5 bg-dark/80 backdrop-blur-3xl flex flex-col pt-8">
+    <div 
+      ref={sidebarRef} 
+      className={`fixed md:relative top-[65px] md:top-0 left-0 w-64 h-[calc(100vh-65px)] md:h-full border-r border-white/5 bg-[#0a0a0f] md:bg-[#0a0a0f]/80 backdrop-blur-3xl z-50 flex flex-col pt-8 transition-transform duration-300 shadow-2xl md:shadow-none ${
+        isOpen ? "translate-x-0" : "-translate-x-full md:translate-x-0"
+      }`}
+    >
       <div className="px-6 flex-1">
-        <div className="text-xs font-bold text-white/30 uppercase tracking-widest mb-6 side-anim">
-          Menu
+        <div className="flex justify-between items-center mb-6 side-anim">
+          <div className="text-xs font-bold text-white/30 uppercase tracking-widest">
+            Menu
+          </div>
+          <button 
+            className="md:hidden text-white/50 hover:text-white p-1"
+            onClick={onClose}
+          >
+            <X size={18} />
+          </button>
         </div>
 
         <ul className="space-y-2">

@@ -165,53 +165,53 @@ export default function Members() {
               ) : (
                 <div className="divide-y divide-white/5">
                   {members.map((member) => (
-                    <div
-                      key={member._id}
-                      className="p-6 flex items-center justify-between hover:bg-white/5 transition-colors group"
-                    >
-                      <div className="flex items-center gap-4">
-                        {/* Avatar Circle */}
-                        <div className="w-12 h-12 rounded-full bg-linear-to-tr from-brand-red to-brand-amber p-[2px] shadow-lg">
-                          <div className="w-full h-full bg-[#1A1A20] rounded-full flex items-center justify-center font-bold text-brand-yellow">
-                            {member.name.charAt(0).toUpperCase()}
+                      <div
+                        key={member._id}
+                        className="p-4 sm:p-6 flex flex-col sm:flex-row sm:items-center justify-between hover:bg-white/5 transition-colors group gap-4"
+                      >
+                        <div className="flex items-start sm:items-center gap-4 w-full sm:w-auto overflow-hidden">
+                          {/* Avatar Circle */}
+                          <div className="w-10 h-10 sm:w-12 sm:h-12 shrink-0 rounded-full bg-linear-to-tr from-brand-red to-brand-amber p-[2px] shadow-lg">
+                            <div className="w-full h-full bg-[#1A1A20] rounded-full flex items-center justify-center font-bold text-brand-yellow">
+                              {member.name.charAt(0).toUpperCase()}
+                            </div>
+                          </div>
+
+                          <div className="min-w-0 flex-1">
+                            <h3 className="font-bold text-white group-hover:text-brand-yellow transition-colors flex flex-wrap items-center gap-2">
+                              <span className="truncate">{member.name}</span>
+                              {member.role === "admin" && (
+                                <span className="text-[10px] uppercase font-bold tracking-widest bg-brand-red/20 text-brand-red px-2 py-0.5 rounded">
+                                  ADMIN
+                                </span>
+                              )}
+                            </h3>
+                            <p className="text-sm text-white/50 truncate">
+                              {member.email}
+                            </p>
+                            <div className="text-xs text-white/30 mt-1 font-mono flex flex-wrap items-center gap-1 sm:gap-2">
+                              <span className="uppercase tracking-widest shrink-0">
+                                Role: {member.role}
+                              </span>
+                              <span className="hidden sm:inline text-white/20">•</span>
+                              <span className="truncate w-full sm:w-auto">
+                                ID:{" "}
+                                <span className="text-brand-orange selection:bg-brand-orange/30">
+                                  {member._id}
+                                </span>
+                              </span>
+                            </div>
                           </div>
                         </div>
 
-                        <div>
-                          <h3 className="font-bold text-white group-hover:text-brand-yellow transition-colors flex items-center gap-2">
-                            {member.name}
-                            {member.role === "admin" && (
-                              <span className="text-[10px] uppercase font-bold tracking-widest bg-brand-red/20 text-brand-red px-2 py-0.5 rounded">
-                                ADMIN
-                              </span>
-                            )}
-                          </h3>
-                          <p className="text-sm text-white/50">
-                            {member.email}
-                          </p>
-                          <p className="text-xs text-white/30 mt-1 font-mono">
-                            <span className="uppercase tracking-widest">
-                              Role: {member.role}
-                            </span>
-                            <span className="mx-2">•</span>
-                            <span>
-                              ID:{" "}
-                              <span className="text-brand-orange selection:bg-brand-orange/30">
-                                {member._id}
-                              </span>
-                            </span>
-                          </p>
-                        </div>
+                        <button
+                          onClick={() => deleteMember(member._id)}
+                          className="self-end sm:self-center p-2 sm:p-3 text-white/50 hover:text-brand-red hover:bg-brand-red/10 rounded-xl transition-all sm:opacity-0 sm:group-hover:opacity-100 sm:focus:opacity-100"
+                          title="Revoke Access"
+                        >
+                          <Trash2 size={20} />
+                        </button>
                       </div>
-
-                      <button
-                        onClick={() => deleteMember(member._id)}
-                        className="p-3 text-white/30 hover:text-brand-red hover:bg-brand-red/10 rounded-xl transition-all opacity-0 group-hover:opacity-100 focus:opacity-100"
-                        title="Revoke Access"
-                      >
-                        <Trash2 size={20} />
-                      </button>
-                    </div>
                   ))}
                 </div>
               )}

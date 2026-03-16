@@ -1,10 +1,10 @@
 import { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
-import { Bell, Search, User } from "lucide-react";
+import { Bell, Search, User, Menu } from "lucide-react";
 import gsap from "gsap";
 import logo from "../assets/logo.jpg";
 
-export default function Navbar() {
+export default function Navbar({ onMenuClick }) {
   const [scrolled, setScrolled] = useState(false);
 
   const navRef = useRef(null);
@@ -39,19 +39,29 @@ export default function Navbar() {
           : "bg-transparent py-5"
       }`}
     >
-      <div className="w-full px-8 flex justify-between items-center">
-        {/* Logo */}
-        <Link
-          to="/dashboard"
-          className="flex items-center gap-2 group cursor-pointer nav-anim"
-        >
-          <div className="w-10 h-10 rounded-xl overflow-hidden shadow-[0_0_20px_rgba(255,90,90,0.4)] group-hover:shadow-[0_0_30px_rgba(255,139,90,0.6)] transition-all">
-            <img src={logo} alt="Logo" className="w-full h-full object-cover" />
-          </div>
-          <span className="text-xl font-bold tracking-tight text-white group-hover:text-brand-yellow transition-colors">
-            Netix<span className="text-brand-orange">Sol</span>
-          </span>
-        </Link>
+      <div className="w-full px-4 md:px-8 flex justify-between items-center">
+        {/* Left side: Hamburger + Logo */}
+        <div className="flex items-center gap-3">
+          <button 
+            className="md:hidden p-2 -ml-2 text-white/70 hover:text-white rounded-lg hover:bg-white/5 transition-colors"
+            onClick={onMenuClick}
+            aria-label="Toggle Menu"
+          >
+            <Menu size={24} />
+          </button>
+          
+          <Link
+            to="/dashboard"
+            className="flex items-center gap-2 group cursor-pointer nav-anim"
+          >
+            <div className="w-10 h-10 rounded-xl overflow-hidden shadow-[0_0_20px_rgba(255,90,90,0.4)] group-hover:shadow-[0_0_30px_rgba(255,139,90,0.6)] transition-all hidden sm:block">
+              <img src={logo} alt="Logo" className="w-full h-full object-cover" />
+            </div>
+            <span className="text-xl font-bold tracking-tight text-white group-hover:text-brand-yellow transition-colors">
+              Netix<span className="text-brand-orange">Sol</span>
+            </span>
+          </Link>
+        </div>
 
         {/* Search */}
         <div className="hidden md:flex items-center px-4 py-2 bg-white/5 border border-white/10 rounded-full w-96 transition-all focus-within:border-brand-orange focus-within:bg-white/10 focus-within:shadow-[0_0_15px_rgba(255,139,90,0.2)] nav-anim">

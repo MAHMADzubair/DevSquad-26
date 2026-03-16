@@ -1,7 +1,10 @@
+import { useState } from "react";
 import Navbar from "../components/Navbar";
 import Sidebar from "../components/Sidebar";
 
 export default function MainLayout({ children }) {
+  const [sidebarOpen, setSidebarOpen] = useState(false);
+
   return (
     <div className="flex h-screen overflow-hidden bg-dark text-white font-sans selection:bg-brand-red/30">
       {/* Animated Global Background inside Layout */}
@@ -28,15 +31,23 @@ export default function MainLayout({ children }) {
         ></div>
       </div>
 
-      <Navbar />
+      <Navbar onMenuClick={() => setSidebarOpen(!sidebarOpen)} />
 
       <div className="flex w-full mt-[65px] h-[calc(100vh-65px)] relative z-10">
-        <Sidebar className="shrink-0" />
+        <Sidebar isOpen={sidebarOpen} onClose={() => setSidebarOpen(false)} />
 
-        <main className="flex-1 overflow-y-auto custom-scrollbar relative">
+        <main className="flex-1 overflow-y-auto custom-scrollbar relative w-full">
           <div className="relative z-10">{children}</div>
         </main>
       </div>
+      
+      {/* Mobile Overlay */}
+      {sidebarOpen && (
+        <div 
+          className="fixed inset-0 bg-black/50 z-40 md:hidden backdrop-blur-sm"
+          onClick={() => setSidebarOpen(false)}
+        />
+      )}
     </div>
   );
 }

@@ -1,0 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Prosto+One&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --color-brand-bg: #FEFEFE;
+  --color-brand-primary: #282828;
+  --color-brand-on-primary: #FFFFFF;
+  --color-brand-secondary: #C3B212;
+  --color-brand-on-secondary: #000000;
+  --color-brand-surface: #F4F4F4;
+  --color-brand-outline: #A0A0A0;
+}
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  background-color: var(--color-brand-bg);
+  color: var(--color-brand-primary);
+}
+
+h1, h2, h3, h4, h5, h6, .heading-font {
+  font-family: 'Prosto One', cursive;
+}
