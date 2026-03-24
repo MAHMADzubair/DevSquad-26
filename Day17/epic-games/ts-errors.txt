@@ -1,0 +1,6 @@
+.next/dev/types/validator.ts(42,39): error TS2307: Cannot find module '../../../src/app/games/[id]/page.js' or its corresponding type declarations.
+.next/dev/types/validator.ts(51,39): error TS2307: Cannot find module '../../../src/app/games/page.js' or its corresponding type declarations.
+src/app/layout.tsx(6,20): error TS2306: File 'E:/DEV SQUAD 26/Day17/epic-games/src/components/footer.tsx' is not a module.
+src/app/page.tsx(1,22): error TS2307: Cannot find module '@/components/store-nav' or its corresponding type declarations.
+src/app/page.tsx(2,24): error TS2306: File 'E:/DEV SQUAD 26/Day17/epic-games/src/components/hero-banner.tsx' is not a module.
+src/app/page.tsx(4,27): error TS2306: File 'E:/DEV SQUAD 26/Day17/epic-games/src/components/highlight-grid.tsx' is not a module.
