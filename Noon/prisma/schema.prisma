@@ -1,0 +1,124 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String   @id @default(cuid())
+  name      String
+  email     String   @unique
+  password  String?
+  role      String   @default("USER") // USER or ADMIN
+  avatar    String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  addresses    Address[]
+  orders       Order[]
+  cartItems    CartItem[]
+  wishlistItems WishlistItem[]
+}
+
+model Address {
+  id        String  @id @default(cuid())
+  userId    String
+  user      User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  label     String  // Home, Work, Other
+  fullName  String
+  phone     String
+  street    String
+  city      String
+  country   String  @default("UAE")
+  isDefault Boolean @default(false)
+}
+
+model Category {
+  id       String     @id @default(cuid())
+  name     String
+  slug     String     @unique
+  icon     String?
+  color    String?
+  parentId String?
+  parent   Category?  @relation("SubCategory", fields: [parentId], references: [id])
+  children Category[] @relation("SubCategory")
+  products Product[]
+}
+
+model Product {
+  id            String  @id @default(cuid())
+  name          String
+  slug          String  @unique
+  description   String
+  price         Float
+  originalPrice Float?
+  images        String  // JSON array of image URLs
+  categoryId    String
+  category      Category @relation(fields: [categoryId], references: [id])
+  stock         Int      @default(100)
+  rating        Float    @default(4.0)
+  reviewCount   Int      @default(0)
+  brand         String?
+  badge         String?  // "Best Seller", "New", "Hot Deal"
+  isNoonExpress Boolean  @default(false)
+  createdAt     DateTime @default(now())
+
+  cartItems     CartItem[]
+  wishlistItems WishlistItem[]
+  collections   Collection[] @relation("CollectionProducts")
+}
+
+model Collection {
+  id          String    @id @default(cuid())
+  title       String
+  description String?
+  slug        String    @unique
+  imageUrl    String?
+  showOnHome  Boolean   @default(true)
+  order       Int       @default(0)
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  products    Product[] @relation("CollectionProducts")
+}
+
+model Order {
+  id        String   @id @default(cuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  items     String   // JSON array of order items
+  subtotal  Float
+  shipping  Float    @default(0)
+  total     Float
+  status    String   @default("PENDING") // PENDING, PROCESSING, SHIPPED, DELIVERED, CANCELLED
+  address   String   // JSON address snapshot
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model CartItem {
+  id        String  @id @default(cuid())
+  userId    String
+  user      User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  productId String
+  product   Product @relation(fields: [productId], references: [id], onDelete: Cascade)
+  quantity  Int     @default(1)
+
+  @@unique([userId, productId])
+}
+
+model WishlistItem {
+  id        String  @id @default(cuid())
+  userId    String
+  user      User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  productId String
+  product   Product @relation(fields: [productId], references: [id], onDelete: Cascade)
+  createdAt DateTime @default(now())
+
+  @@unique([userId, productId])
+}

@@ -1,0 +1,71 @@
+
+> noon@1.0.0 build
+> next build
+
+  ▲ Next.js 14.2.35
+  - Environments: .env.local, .env
+
+   Creating an optimized production build ...
+ ✓ Compiled successfully
+   Linting and checking validity of types ...
+   Collecting page data ...
+   Generating static pages (0/24) ...
+Get products error: B [Error]: Dynamic server usage: Route /api/products couldn't be rendered statically because it used `request.url`. See more info here: https://nextjs.org/docs/messages/dynamic-server-error
+    at V (E:\DEV SQUAD 26\Noon\node_modules\next\dist\compiled\next-server\app-route.runtime.prod.js:6:21778)
+    at Object.get (E:\DEV SQUAD 26\Noon\node_modules\next\dist\compiled\next-server\app-route.runtime.prod.js:6:29465)
+    at c (E:\DEV SQUAD 26\Noon\.next\server\app\api\products\route.js:1:589)
+    at E:\DEV SQUAD 26\Noon\node_modules\next\dist\compiled\next-server\app-route.runtime.prod.js:6:38417
+    at E:\DEV SQUAD 26\Noon\node_modules\next\dist\server\lib\trace\tracer.js:140:36
+    at NoopContextManager.with (E:\DEV SQUAD 26\Noon\node_modules\next\dist\compiled\@opentelemetry\api\index.js:1:7062)
+    at ContextAPI.with (E:\DEV SQUAD 26\Noon\node_modules\next\dist\compiled\@opentelemetry\api\index.js:1:518)
+    at NoopTracer.startActiveSpan (E:\DEV SQUAD 26\Noon\node_modules\next\dist\compiled\@opentelemetry\api\index.js:1:18093)
+    at ProxyTracer.startActiveSpan (E:\DEV SQUAD 26\Noon\node_modules\next\dist\compiled\@opentelemetry\api\index.js:1:18854)
+    at E:\DEV SQUAD 26\Noon\node_modules\next\dist\server\lib\trace\tracer.js:122:103 {
+  description: "Route /api/products couldn't be rendered statically because it used `request.url`. See more info here: https://nextjs.org/docs/messages/dynamic-server-error",
+  digest: 'DYNAMIC_SERVER_USAGE'
+}
+   Generating static pages (6/24) 
+   Generating static pages (12/24) 
+   Generating static pages (18/24) 
+ ✓ Generating static pages (24/24)
+   Finalizing page optimization ...
+   Collecting build traces ...
+
+Route (app)                              Size     First Load JS
+┌ ƒ /                                    1.75 kB         105 kB
+├ ƒ /_not-found                          873 B          88.2 kB
+├ ƒ /admin                               2.26 kB        89.6 kB
+├ ƒ /admin/orders                        1.87 kB        89.2 kB
+├ ƒ /admin/products                      2.55 kB        95.4 kB
+├ ƒ /api/admin/orders                    0 B                0 B
+├ ƒ /api/admin/products                  0 B                0 B
+├ ƒ /api/admin/stats                     0 B                0 B
+├ ƒ /api/auth/[...nextauth]              0 B                0 B
+├ ƒ /api/cart                            0 B                0 B
+├ ○ /api/categories                      0 B                0 B
+├ ƒ /api/orders                          0 B                0 B
+├ ƒ /api/products                        0 B                0 B
+├ ƒ /api/products/[slug]                 0 B                0 B
+├ ƒ /api/profile                         0 B                0 B
+├ ƒ /api/register                        0 B                0 B
+├ ƒ /api/wishlist                        0 B                0 B
+├ ƒ /cart                                4.02 kB         106 kB
+├ ƒ /category/[slug]                     1.75 kB         105 kB
+├ ƒ /checkout                            4.53 kB         101 kB
+├ ƒ /dashboard                           138 B          87.5 kB
+├ ƒ /dashboard/orders                    2.01 kB         104 kB
+├ ƒ /dashboard/wishlist                  2.26 kB         106 kB
+├ ƒ /login                               2.1 kB          102 kB
+├ ƒ /product/[slug]                      2.17 kB         104 kB
+└ ƒ /register                            2.23 kB         102 kB
++ First Load JS shared by all            87.3 kB
+  ├ chunks/117-1e0683bc7f4a88b0.js       31.7 kB
+  ├ chunks/fd9d1056-cf48984c1108c87a.js  53.6 kB
+  └ other shared chunks (total)          1.95 kB
+
+
+ƒ Middleware                             141 kB
+
+○  (Static)   prerendered as static content
+ƒ  (Dynamic)  server-rendered on demand
+
