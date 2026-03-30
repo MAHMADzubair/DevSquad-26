@@ -1,0 +1,25 @@
+﻿src/controllers/admin.controller.ts(85,49): error TS2345: Argument of type 'string | string[]' is not assignable to parameter of type 'string'.
+  Type 'string[]' is not assignable to type 'string'.
+src/controllers/admin.controller.ts(188,34): error TS2345: Argument of type 'string | string[]' is not assignable to parameter of type 'string'.
+  Type 'string[]' is not assignable to type 'string'.
+src/controllers/admin.controller.ts(193,49): error TS2345: Argument of type 'string | string[]' is not assignable to parameter of type 'string'.
+  Type 'string[]' is not assignable to type 'string'.
+src/controllers/admin.controller.ts(194,34): error TS2345: Argument of type 'string | string[]' is not assignable to parameter of type 'string'.
+  Type 'string[]' is not assignable to type 'string'.
+src/controllers/admin.controller.ts(211,45): error TS2345: Argument of type 'string | string[]' is not assignable to parameter of type 'string'.
+  Type 'string[]' is not assignable to type 'string'.
+src/controllers/admin.controller.ts(216,32): error TS2345: Argument of type 'string | string[]' is not assignable to parameter of type 'string'.
+  Type 'string[]' is not assignable to type 'string'.
+src/controllers/movie.controller.ts(36,49): error TS2345: Argument of type 'string | string[]' is not assignable to parameter of type 'string'.
+  Type 'string[]' is not assignable to type 'string'.
+src/controllers/movie.controller.ts(38,31): error TS2345: Argument of type 'string | string[]' is not assignable to parameter of type 'string'.
+  Type 'string[]' is not assignable to type 'string'.
+src/routes/v1/user.route.ts(12,35): error TS2345: Argument of type '{ query: z.ZodObject<{ name: z.ZodOptional<z.ZodString>; role: z.ZodOptional<z.ZodString>; sortBy: z.ZodOptional<z.ZodString>; limit: z.ZodOptional<z.ZodCoercedNumber<unknown>>; page: z.ZodOptional<...>; }, z.core.$strip>; }' is not assignable to parameter of type 'SchemaMap'.
+  The types of 'query._output' are incompatible between these types.
+    Type '{ name?: string | undefined; role?: string | undefined; sortBy?: string | undefined; limit?: number | undefined; page?: number | undefined; }' is not assignable to type 'ParsedQs'.
+      Property 'limit' is incompatible with index signature.
+        Type 'number' is not assignable to type 'string | ParsedQs | (string | ParsedQs)[] | undefined'.
+src/seed_movies.ts(137,9): error TS2769: No overload matches this call.
+  The last overload gave the following error.
+    Type 'ObjectId | null' is not assignable to type 'ObjectIdQueryTypeCasting | undefined'.
+      Type 'null' is not assignable to type 'ObjectIdQueryTypeCasting | undefined'.

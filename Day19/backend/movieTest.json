@@ -1,0 +1,244 @@
+[
+  {
+    "_id": "69c62c086a9224ffe5e20f80",
+    "title": "Stranger Things",
+    "description": "When a young boy vanishes, a small town uncovers a mystery involving secret experiments, terrifying supernatural forces and one strange little girl.",
+    "genre": [
+      "Sci-Fi",
+      "Horror",
+      "Mystery"
+    ],
+    "releaseYear": 2016,
+    "duration": "0m",
+    "durationSeconds": 11,
+    "language": [
+      "English"
+    ],
+    "posterPublicId": "ott/posters/gxl1xagojgigcfehwutg",
+    "posterUrl": "https://res.cloudinary.com/dgzw5j1zb/image/upload/v1774597263/ott/posters/gxl1xagojgigcfehwutg.png",
+    "videoPublicId": "ott/videos/f0telcimdcheb69b67cx",
+    "videoUrl": "https://res.cloudinary.com/dgzw5j1zb/video/upload/v1774597434/ott/videos/f0telcimdcheb69b67cx.mp4",
+    "hlsUrl": "https://res.cloudinary.com/dgzw5j1zb/video/upload/sp_hd/v1774597434/ott/videos/f0telcimdcheb69b67cx.m3u8",
+    "uploadStatus": "ready",
+    "views": 1250330,
+    "isPublished": true,
+    "isPremium": true,
+    "director": {
+      "name": "njn"
+    },
+    "music": {
+      "name": "hans juemr"
+    },
+    "imdbRating": 6,
+    "streamvibeRating": 3,
+    "category": "show",
+    "tags": [],
+    "createdBy": "69c62c076a9224ffe5e20f7d",
+    "cast": [],
+    "__v": 1,
+    "createdAt": "2026-03-27T07:04:40.147Z",
+    "updatedAt": "2026-03-27T11:28:14.607Z",
+    "genres": [
+      "69c669b3b494c593183f9eb9",
+      "69c65d405e7af45ae59c7b80"
+    ]
+  },
+  {
+    "_id": "69c62c086a9224ffe5e20f81",
+    "title": "The Dark Knight",
+    "description": "When the menace known as the Joker wreaks havoc and chaos on the people of Gotham, Batman must accept one of the greatest psychological and physical tests of his ability to fight injustice.",
+    "genre": [
+      "Action",
+      "Crime",
+      "Drama"
+    ],
+    "releaseYear": 2008,
+    "duration": "0m",
+    "durationSeconds": 22,
+    "language": [
+      "English"
+    ],
+    "posterPublicId": "ott/posters/qpsrb9xe7rbwq2jtmvfp",
+    "posterUrl": "https://res.cloudinary.com/dgzw5j1zb/image/upload/v1774600795/ott/posters/qpsrb9xe7rbwq2jtmvfp.jpg",
+    "videoPublicId": "ott/videos/actzujrj8sl0xzocgdff",
+    "videoUrl": "https://res.cloudinary.com/dgzw5j1zb/video/upload/v1774600812/ott/videos/actzujrj8sl0xzocgdff.mp4",
+    "hlsUrl": "https://res.cloudinary.com/dgzw5j1zb/video/upload/sp_hd/v1774600812/ott/videos/actzujrj8sl0xzocgdff.m3u8",
+    "uploadStatus": "ready",
+    "views": 890426,
+    "isPublished": true,
+    "isPremium": true,
+    "director": {
+      "image": null
+    },
+    "music": {
+      "image": null
+    },
+    "imdbRating": null,
+    "streamvibeRating": null,
+    "category": "movie",
+    "tags": [],
+    "createdBy": "69c62c076a9224ffe5e20f7d",
+    "cast": [],
+    "__v": 0,
+    "createdAt": "2026-03-27T07:04:40.147Z",
+    "updatedAt": "2026-03-27T10:32:24.513Z"
+  },
+  {
+    "_id": "69c62c086a9224ffe5e20f82",
+    "title": "Inception",
+    "description": "A thief who steals corporate secrets through the use of dream-sharing technology is given the inverse task of planting an idea into the mind of a C.E.O.",
+    "genre": [
+      "Action",
+      "Sci-Fi",
+      "Adventure"
+    ],
+    "releaseYear": 2010,
+    "duration": null,
+    "durationSeconds": null,
+    "language": [
+      "English"
+    ],
+    "posterPublicId": null,
+    "posterUrl": "https://image.tmdb.org/t/p/original/edv5CZvRjS99vO6YCcIqiSRCcZ8.jpg",
+    "videoPublicId": null,
+    "videoUrl": null,
+    "hlsUrl": null,
+    "uploadStatus": "pending",
+    "views": 456789,
+    "isPublished": true,
+    "isPremium": false,
+    "director": {
+      "image": null
+    },
+    "music": {
+      "image": null
+    },
+    "imdbRating": null,
+    "streamvibeRating": null,
+    "category": "movie",
+    "tags": [],
+    "createdBy": "69c62c076a9224ffe5e20f7d",
+    "cast": [],
+    "__v": 0,
+    "createdAt": "2026-03-27T07:04:40.147Z",
+    "updatedAt": "2026-03-27T07:04:40.147Z"
+  },
+  {
+    "_id": "69c64b60a8e972954ee282a2",
+    "title": "Inception",
+    "description": "what is inception",
+    "genre": [
+      "Sci-Fi",
+      "Horror",
+      "Mystery"
+    ],
+    "releaseYear": 19323,
+    "duration": "0m",
+    "durationSeconds": 22,
+    "language": [
+      "English"
+    ],
+    "posterPublicId": "ott/posters/o37gxqfaaxg4tshbdfjw",
+    "posterUrl": "https://res.cloudinary.com/dgzw5j1zb/image/upload/v1774603081/ott/posters/o37gxqfaaxg4tshbdfjw.png",
+    "videoPublicId": "ott/videos/mhgffucnkxxowaakp7mt",
+    "videoUrl": "https://res.cloudinary.com/dgzw5j1zb/video/upload/v1774603101/ott/videos/mhgffucnkxxowaakp7mt.mp4",
+    "hlsUrl": "https://res.cloudinary.com/dgzw5j1zb/video/upload/sp_hd/v1774603101/ott/videos/mhgffucnkxxowaakp7mt.m3u8",
+    "uploadStatus": "ready",
+    "views": 0,
+    "isPublished": true,
+    "isPremium": true,
+    "cast": [
+      {
+        "name": "dfkljmfmm",
+        "image": null,
+        "_id": "69c64b60a8e972954ee282a3"
+      },
+      {
+        "name": "",
+        "image": null,
+        "_id": "69c64b60a8e972954ee282a4"
+      },
+      {
+        "name": "",
+        "image": null,
+        "_id": "69c64b60a8e972954ee282a5"
+      },
+      {
+        "name": "dfdfdf",
+        "image": null,
+        "_id": "69c64b60a8e972954ee282a6"
+      }
+    ],
+    "director": {
+      "name": "",
+      "image": null
+    },
+    "music": {
+      "name": "",
+      "image": null
+    },
+    "imdbRating": null,
+    "streamvibeRating": null,
+    "category": "movie",
+    "tags": [],
+    "createdBy": "69c62c076a9224ffe5e20f7d",
+    "createdAt": "2026-03-27T09:18:24.192Z",
+    "updatedAt": "2026-03-27T09:23:01.222Z",
+    "__v": 0
+  },
+  {
+    "_id": "69c65454cd9bf21b0d0e5c39",
+    "title": "tintne",
+    "description": "lookdoing",
+    "genre": [
+      "action",
+      "item",
+      "no"
+    ],
+    "releaseYear": 2021,
+    "duration": "0m",
+    "durationSeconds": 10,
+    "language": [
+      "English"
+    ],
+    "posterPublicId": "ott/posters/cw66hen5nenzs0xzh5f2",
+    "posterUrl": "https://res.cloudinary.com/dgzw5j1zb/image/upload/v1774605384/ott/posters/cw66hen5nenzs0xzh5f2.png",
+    "videoPublicId": "ott/videos/de0aaiu45spig1huu1x8",
+    "videoUrl": "https://res.cloudinary.com/dgzw5j1zb/video/upload/v1774605394/ott/videos/de0aaiu45spig1huu1x8.mp4",
+    "hlsUrl": "https://res.cloudinary.com/dgzw5j1zb/video/upload/sp_hd/v1774605394/ott/videos/de0aaiu45spig1huu1x8.m3u8",
+    "uploadStatus": "ready",
+    "views": 6,
+    "isPublished": true,
+    "isPremium": true,
+    "cast": [
+      {
+        "name": "tak",
+        "image": null,
+        "_id": "69c6732ac1b4313a834bec25"
+      },
+      {
+        "name": "talhakhan",
+        "image": null,
+        "_id": "69c6732ac1b4313a834bec26"
+      }
+    ],
+    "imdbRating": 10,
+    "streamvibeRating": 5,
+    "category": "movie",
+    "tags": [],
+    "createdBy": "69c62c076a9224ffe5e20f7d",
+    "createdAt": "2026-03-27T09:56:36.114Z",
+    "updatedAt": "2026-03-27T12:29:48.628Z",
+    "__v": 5,
+    "genres": [
+      "69c65d405e7af45ae59c7b80",
+      "69c669b3b494c593183f9eb9"
+    ],
+    "director": {
+      "name": "chirnotlan"
+    },
+    "music": {
+      "name": "hansnzimer"
+    }
+  }
+]

@@ -1,0 +1,10 @@
+﻿src/components/icons/SmartPhone.tsx(4,6): error TS2322: Type '{ children: Element[]; suppressHydrationWarning?: boolean | undefined; className?: string | undefined; color?: string | undefined; height: string | number; id?: string | undefined; ... 481 more ...; key?: Key | ... 1 more ... | undefined; }' is not assignable to type 'SVGProps<SVGSVGElement>'.
+  Types of property 'ref' are incompatible.
+    Type 'Ref<SVGElement> | undefined' is not assignable to type 'Ref<SVGSVGElement> | undefined'.
+      Type 'RefObject<SVGElement | null>' is not assignable to type 'Ref<SVGSVGElement> | undefined'.
+        Type 'RefObject<SVGElement | null>' is not assignable to type 'RefObject<SVGSVGElement | null>'.
+          Type 'SVGElement | null' is not assignable to type 'SVGSVGElement | null'.
+            Type 'SVGElement' is missing the following properties from type 'SVGSVGElement': currentScale, currentTranslate, height, width, and 53 more.
+src/pages/MoviesPage.tsx(4,10): error TS6133: 'Search' is declared but its value is never read.
+src/pages/MoviesPage.tsx(65,9): error TS6133: 'showsNew' is declared but its value is never read.
+src/pages/PlansPage.tsx(28,28): error TS6133: 'user' is declared but its value is never read.
