@@ -15,7 +15,7 @@ import { NotificationType } from '../notification/schemas/notification.schema';
 
 @WebSocketGateway({
   cors: {
-    origin: 'http://localhost:3001',
+    origin: true,
     credentials: true,
   },
 })

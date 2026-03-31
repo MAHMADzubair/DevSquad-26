@@ -7,14 +7,15 @@ async function bootstrap() {
   
   // Enable CORS for HTTP
   app.enableCors({
-    origin: 'http://localhost:3001',
+    origin: true,
     credentials: true,
   });
   
   // Setup WebSocket adapter
   app.useWebSocketAdapter(new IoAdapter(app));
   
-  await app.listen(process.env.PORT ?? 3000);
-  console.log('Server running on http://localhost:3000');
+  const port = process.env.PORT || 3000;
+  await app.listen(port, '0.0.0.0');
+  console.log(`Server running on port ${port}`);
 }
 bootstrap();

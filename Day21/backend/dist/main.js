@@ -6,12 +6,13 @@ const app_module_1 = require("./app.module");
 async function bootstrap() {
     const app = await core_1.NestFactory.create(app_module_1.AppModule);
     app.enableCors({
-        origin: 'http://localhost:3001',
+        origin: true,
         credentials: true,
     });
     app.useWebSocketAdapter(new platform_socket_io_1.IoAdapter(app));
-    await app.listen(process.env.PORT ?? 3000);
-    console.log('Server running on http://localhost:3000');
+    const port = process.env.PORT || 3000;
+    await app.listen(port, '0.0.0.0');
+    console.log(`Server running on port ${port}`);
 }
 bootstrap();
 //# sourceMappingURL=main.js.map

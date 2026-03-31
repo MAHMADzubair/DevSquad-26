@@ -87,7 +87,6 @@ body {
 }
 
 .glass:hover {
-  transform: translateY(-2px);
   box-shadow: 0 20px 50px -10px rgba(255, 120, 160, 0.25), inset 0 1px 0 rgba(255, 255, 255, 1);
   background: rgba(255, 255, 255, 0.65);
 }
@@ -97,25 +96,11 @@ body {
   box-shadow: 0 0 60px -10px hsla(340, 80%, 75%, 0.5);
 }
 
-/* Animations */
-@keyframes springIn {
-  0% { transform: scale(0.95) translateY(30px); opacity: 0; filter: blur(5px); }
-  60% { transform: scale(1.01) translateY(-3px); filter: blur(0px); }
-  100% { transform: scale(1) translateY(0); opacity: 1; filter: blur(0px); }
-}
-
-@keyframes float {
-  0% { transform: translateY(0px) rotate(0deg); }
-  50% { transform: translateY(-12px) rotate(0.5deg); }
-  100% { transform: translateY(0px) rotate(0deg); }
-}
-
-.animate-spring {
-  animation: springIn 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-}
-
-.animate-float {
-  animation: float 8s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+/* Animations Disabled as per user request */
+.animate-spring, .animate-float, .animate-pulse, .animate-ping {
+  animation: none !important;
+  transform: none !important;
+  filter: none !important;
 }
 
 /* Custom Scrollbar - Baby Pink */

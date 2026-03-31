@@ -152,7 +152,7 @@ __decorate([
 exports.CommentsGateway = CommentsGateway = __decorate([
     (0, websockets_1.WebSocketGateway)({
         cors: {
-            origin: 'http://localhost:3001',
+            origin: true,
             credentials: true,
         },
     }),
