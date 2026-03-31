@@ -1,0 +1,134 @@
+@import "tailwindcss";
+
+:root {
+  /* True Baby Pink Aesthetic Palette - Forced Soft Theme */
+  --primary: 340 80% 75%;      /* Baby Pink */
+  --primary-foreground: 0 0% 100%; /* White text on primary buttons */
+  
+  --secondary: 340 40% 92%;    /* Lighter pink for input backgrounds */
+  --secondary-foreground: 340 40% 25%;
+  
+  --accent: 340 60% 85%;
+  --accent-foreground: 340 50% 15%;
+  
+  --background: 340 40% 98%;   /* Very soft pink-white background */
+  --foreground: 340 30% 25%;   /* Deep pinkish-grey for text */
+  
+  --card: 0 0% 100%;           /* White cards */
+  --card-foreground: 340 30% 25%;
+  
+  --border: 340 40% 88%;       /* Soft pink borders */
+  --ring: 340 80% 75%;         /* Focus rings match primary baby pink */
+}
+
+@theme inline {
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+  --color-secondary: hsl(var(--secondary));
+  --color-secondary-foreground: hsl(var(--secondary-foreground));
+  --color-accent: hsl(var(--accent));
+  --color-accent-foreground: hsl(var(--accent-foreground));
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+  --color-card: hsl(var(--card));
+  --color-card-foreground: hsl(var(--card-foreground));
+  --color-border: hsl(var(--border));
+  --color-ring: hsl(var(--ring));
+}
+
+/* Force light baby pink theme, override user system dark mode preferences 
+   to ensure the pink aesthetic is ALWAYS visible */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: 340 30% 96%;
+    --foreground: 340 40% 20%;
+    --card: 340 40% 98%;
+    --card-foreground: 340 40% 20%;
+    --secondary: 340 40% 90%;
+    --secondary-foreground: 340 40% 20%;
+    --border: 340 30% 85%;
+  }
+}
+
+* {
+  border-color: var(--color-border);
+}
+
+body {
+  background-color: var(--color-background);
+  color: var(--color-foreground);
+  font-family: var(--font-geist-sans), system-ui, -apple-system, sans-serif;
+  letter-spacing: -0.015em;
+  overflow-x: hidden;
+}
+
+/* Pro-Level Mesh Gradient Background */
+@keyframes meshGradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.bg-mesh {
+  background: linear-gradient(-45deg, #ffeef8, #ffd6e8, #fff0f5, #ffeaf5, #ffd1e4);
+  background-size: 400% 400%;
+  animation: meshGradient 20s ease-in-out infinite;
+  background-attachment: fixed;
+}
+
+/* Advanced Cloud Glassmorphism - tailored for light baby pink with Pro-Depth */
+.glass {
+  background: rgba(255, 255, 255, 0.45);
+  backdrop-filter: blur(40px) saturate(200%);
+  -webkit-backdrop-filter: blur(40px) saturate(200%);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  box-shadow: 0 12px 40px -10px rgba(255, 120, 160, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.7);
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glass:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 20px 50px -10px rgba(255, 120, 160, 0.25), inset 0 1px 0 rgba(255, 255, 255, 1);
+  background: rgba(255, 255, 255, 0.65);
+}
+
+/* Pink Glow Effects */
+.pink-glow {
+  box-shadow: 0 0 60px -10px hsla(340, 80%, 75%, 0.5);
+}
+
+/* Animations */
+@keyframes springIn {
+  0% { transform: scale(0.95) translateY(30px); opacity: 0; filter: blur(5px); }
+  60% { transform: scale(1.01) translateY(-3px); filter: blur(0px); }
+  100% { transform: scale(1) translateY(0); opacity: 1; filter: blur(0px); }
+}
+
+@keyframes float {
+  0% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-12px) rotate(0.5deg); }
+  100% { transform: translateY(0px) rotate(0deg); }
+}
+
+.animate-spring {
+  animation: springIn 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-float {
+  animation: float 8s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+/* Custom Scrollbar - Baby Pink */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--primary));
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(340, 80%, 65%);
+}
