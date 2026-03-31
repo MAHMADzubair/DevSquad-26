@@ -51,25 +51,33 @@ let CommentsGateway = class CommentsGateway {
         }
     }
     async handleNewComment(data, client) {
+        console.log(`📩 [Gateway] Received new_comment from ${client.id}:`, data);
+        this.server.emit('new_comment_posted', data);
+        console.log(`📢 [Gateway] Broadcasted new_comment_posted`);
         this.server.emit('notification', {
             type: notification_schema_1.NotificationType.COMMENT,
-            message: 'Someone posted a new comment',
+            message: `${data.senderName || 'Someone'} posted a new comment`,
             data: data,
         });
     }
-    async handleNewReply(data) {
+    async handleNewReply(data, client) {
+        console.log(`📩 [Gateway] Received new_reply from ${client.id}:`, data);
+        this.server.emit('new_comment_posted', data);
         const recipientSocketId = this.userSockets.get(data.recipientId);
         if (recipientSocketId) {
+            console.log(`📢 [Gateway] Sending notification to recipient: ${data.recipientId}`);
             this.server.to(recipientSocketId).emit('notification', {
                 type: notification_schema_1.NotificationType.REPLY,
-                message: 'Someone replied to your comment',
+                message: `${data.senderName || 'Someone'} replied to your comment`,
                 data: data,
             });
         }
     }
-    async handleNewLike(data) {
+    async handleNewLike(data, client) {
+        console.log(`📩 [Gateway] Received new_like from ${client.id}:`, data);
         const recipientSocketId = this.userSockets.get(data.recipientId);
         if (recipientSocketId) {
+            console.log(`📢 [Gateway] Sending like notification to ${data.recipientId}`);
             this.server.to(recipientSocketId).emit('notification', {
                 type: notification_schema_1.NotificationType.LIKE,
                 message: 'Someone liked your comment',
@@ -106,15 +114,17 @@ __decorate([
 __decorate([
     (0, websockets_1.SubscribeMessage)('new_reply'),
     __param(0, (0, websockets_1.MessageBody)()),
+    __param(1, (0, websockets_1.ConnectedSocket)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Object]),
+    __metadata("design:paramtypes", [Object, socket_io_1.Socket]),
     __metadata("design:returntype", Promise)
 ], CommentsGateway.prototype, "handleNewReply", null);
 __decorate([
     (0, websockets_1.SubscribeMessage)('new_like'),
     __param(0, (0, websockets_1.MessageBody)()),
+    __param(1, (0, websockets_1.ConnectedSocket)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Object]),
+    __metadata("design:paramtypes", [Object, socket_io_1.Socket]),
     __metadata("design:returntype", Promise)
 ], CommentsGateway.prototype, "handleNewLike", null);
 __decorate([

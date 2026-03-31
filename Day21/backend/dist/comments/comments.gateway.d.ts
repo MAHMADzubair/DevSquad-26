@@ -12,8 +12,8 @@ export declare class CommentsGateway implements OnGatewayConnection, OnGatewayDi
     handleConnection(client: Socket): void;
     handleDisconnect(client: Socket): void;
     handleNewComment(data: any, client: Socket): Promise<void>;
-    handleNewReply(data: any): Promise<void>;
-    handleNewLike(data: any): Promise<void>;
+    handleNewReply(data: any, client: Socket): Promise<void>;
+    handleNewLike(data: any, client: Socket): Promise<void>;
     handleTyping(data: {
         username: string;
         commentId?: string;

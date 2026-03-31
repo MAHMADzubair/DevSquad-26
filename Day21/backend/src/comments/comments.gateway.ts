@@ -65,31 +65,42 @@ export class CommentsGateway
     @MessageBody() data: any,
     @ConnectedSocket() client: Socket,
   ) {
-    // Notify all users about the new comment (as requested)
+    console.log(`📩 [Gateway] Received new_comment from ${client.id}:`, data);
+    // ✅ Sab clients ko direct refresh signal bhejo
+    this.server.emit('new_comment_posted', data);
+    console.log(`📢 [Gateway] Broadcasted new_comment_posted`);
+    // Notification bhi bhejo
     this.server.emit('notification', {
       type: NotificationType.COMMENT,
-      message: 'Someone posted a new comment',
+      message: `${data.senderName || 'Someone'} posted a new comment`,
       data: data,
     });
   }
 
   @SubscribeMessage('new_reply')
-  async handleNewReply(@MessageBody() data: any) {
-    // data should contain parentComment author and the reply itself
+  async handleNewReply(@MessageBody() data: any, @ConnectedSocket() client: Socket) {
+    console.log(`📩 [Gateway] Received new_reply from ${client.id}:`, data);
+    // ✅ Sab clients ko direct refresh signal bhejo (replies bhi global feed update kar sakti hain)
+    this.server.emit('new_comment_posted', data);
+    
+    // Specific user ko notification bhejo
     const recipientSocketId = this.userSockets.get(data.recipientId);
     if (recipientSocketId) {
+      console.log(`📢 [Gateway] Sending notification to recipient: ${data.recipientId}`);
       this.server.to(recipientSocketId).emit('notification', {
         type: NotificationType.REPLY,
-        message: 'Someone replied to your comment',
+        message: `${data.senderName || 'Someone'} replied to your comment`,
         data: data,
       });
     }
   }
 
   @SubscribeMessage('new_like')
-  async handleNewLike(@MessageBody() data: any) {
+  async handleNewLike(@MessageBody() data: any, @ConnectedSocket() client: Socket) {
+    console.log(`📩 [Gateway] Received new_like from ${client.id}:`, data);
     const recipientSocketId = this.userSockets.get(data.recipientId);
     if (recipientSocketId) {
+      console.log(`📢 [Gateway] Sending like notification to ${data.recipientId}`);
       this.server.to(recipientSocketId).emit('notification', {
         type: NotificationType.LIKE,
         message: 'Someone liked your comment',

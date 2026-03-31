@@ -61,85 +61,83 @@ export default function Comments() {
 
   const fetchComments = async () => {
     try {
-      const response = await axios.get(`${API_URL}/comments/main-post-id`);
+      // ✅ Anti-cache: Adding timestamp query parameter
+      const response = await axios.get(`${API_URL}/comments/main-post-id?t=${Date.now()}`);
       setComments(response.data);
     } catch (err) {
       console.error('Failed to fetch comments', err);
     }
   };
 
+  // ✅ FIX: Initial data fetch - sirf ek baar
   useEffect(() => {
     fetchComments();
-
-    const handleNewComment = (notification: any) => {
-      fetchComments();
-      addInternalNotification(notification);
-    };
-
-    const handleNewReply = (notification: any) => {
-      fetchComments();
-      addInternalNotification(notification);
-    };
-
-    const handleNewLike = (notification: any) => {
-      addInternalNotification(notification);
-    };
-
     if (user) {
       fetchNotifications();
-      // Fetch live gamification points
       axios.get(`${API_URL}/user/profile`, { headers: { Authorization: `Bearer ${token}` } })
         .then(res => setUserPoints(res.data.points || 0))
         .catch(console.error);
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [user]);
 
-    on('notification', (notif: any) => {
-      if (notif.type === 'comment') handleNewComment(notif);
-      else if (notif.type === 'reply') handleNewReply(notif);
-      else if (notif.type === 'like') handleNewLike(notif);
-      
-      // Refresh notifications list when a new WS notification arrives
+  // ✅ FIX: Socket listeners - isConnected par depend karo
+  // Jab bhi socket connect/disconnect ho, listeners fresh attach hon
+  useEffect(() => {
+    if (!isConnected) return; 
+
+    const handleNotification = (notif: any) => {
+      console.log('📨 [Socket] Real-time notification received:', notif);
+      if (notif.type === 'comment' || notif.type === 'reply') {
+        fetchComments();
+      }
+      addInternalNotification(notif);
       fetchNotifications();
-    });
+    };
 
-    on('online_users', (users) => setOnlineUsers(users));
-    
-    on('user_typing', (data) => {
+    const handleOnlineUsers = (users: {userId: string, username: string}[]) => {
+      console.log('👥 [Socket] Online users update:', users.length);
+      setOnlineUsers(users);
+    };
+
+    const handleUserTyping = (data: {username: string}) => {
       setTypingUsers(prev => {
         if (!prev.includes(data.username)) return [...prev, data.username];
         return prev;
       });
-    });
+    };
 
-    on('user_stopped_typing', (data) => {
+    const handleUserStoppedTyping = (data: {username: string}) => {
       setTypingUsers(prev => prev.filter(u => u !== data.username));
-    });
+    };
 
-    on('comment_edited', () => fetchComments());
-    on('comment_deleted', () => fetchComments());
+    const handleCommentEdited = () => fetchComments();
+    const handleCommentDeleted = () => fetchComments();
+    
+    const handleCommentPosted = (data: any) => {
+      console.log('🚀 [Socket] NEW COMMENT DETECTED - Refreshing feed now...', data);
+      fetchComments();
+    };
 
-    // Auto-scroll logic if URL has hash (for shared links)
-    const hash = typeof window !== 'undefined' ? window.location.hash : '';
-    if (hash && comments.length > 0) {
-      setTimeout(() => {
-        const element = document.querySelector(hash);
-        if (element) {
-          element.scrollIntoView({ behavior: 'smooth', block: 'center' });
-          element.classList.add('ring-4', 'ring-primary/40');
-          setTimeout(() => element.classList.remove('ring-4', 'ring-primary/40'), 3000);
-        }
-      }, 500);
-    }
+    on('notification', handleNotification);
+    on('online_users', handleOnlineUsers);
+    on('user_typing', handleUserTyping);
+    on('user_stopped_typing', handleUserStoppedTyping);
+    on('comment_edited', handleCommentEdited);
+    on('comment_deleted', handleCommentDeleted);
+    on('new_comment_posted', handleCommentPosted);
 
     return () => {
-      off('notification', () => {});
-      off('online_users', () => {});
-      off('user_typing', () => {});
-      off('user_stopped_typing', () => {});
-      off('comment_edited', () => {});
-      off('comment_deleted', () => {});
+      off('notification', handleNotification);
+      off('online_users', handleOnlineUsers);
+      off('user_typing', handleUserTyping);
+      off('user_stopped_typing', handleUserStoppedTyping);
+      off('comment_edited', handleCommentEdited);
+      off('comment_deleted', handleCommentDeleted);
+      off('new_comment_posted', handleCommentPosted);
     };
-  }, [on, off]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isConnected]); // listeners trigger on connect/disconnect state change
 
   const addInternalNotification = (notif: any) => {
     const id = Math.random().toString(36).substr(2, 9);
@@ -189,9 +187,9 @@ export default function Comments() {
          emit('stop_typing', { username: user.username });
       }
       
-      setTimeout(() => {
-        scrollRef.current?.scrollIntoView({ behavior: 'smooth' });
-      }, 100);
+      // setTimeout(() => {
+      //   scrollRef.current?.scrollIntoView({ behavior: 'smooth' });
+      // }, 100);
     } catch (err) {
       console.error('Failed to post comment', err);
     } finally {
@@ -412,8 +410,8 @@ export default function Comments() {
     }, [showReplies]);
 
     return (
-      <div id={`comment-${safeCommentId}`} style={{ animationFillMode: 'both', animationDelay: `${(index % 15) * 0.1}s` }} className={`animate-spring glass p-5 rounded-[32px] flex flex-col gap-3 ${isReply ? 'ml-12 mt-3 shadow-sm border-l-4 border-l-primary/30' : 'hover:-translate-y-1 hover:shadow-2xl'} transition-all duration-700`}>
-        <div className="flex items-center justify-between px-2">
+      <div id={`comment-${safeCommentId}`} style={{ animationFillMode: 'both', animationDelay: `${(index % 15) * 0.1}s` }} className={`animate-spring glass p-4 sm:p-5 rounded-[24px] sm:rounded-[32px] flex flex-col gap-3 ${isReply ? 'ml-4 sm:ml-12 mt-3 shadow-sm border-l-4 border-l-primary/30' : 'hover:-translate-y-1 hover:shadow-2xl'} transition-all duration-700`}>
+        <div className="flex items-center justify-between px-1 sm:px-2">
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 rounded-2xl bg-primary/10 glass flex items-center justify-center overflow-hidden border border-whiteShadow ring-2 ring-white">
                {comment.author.profilePicture ? <img src={comment.author.profilePicture} alt="" className="w-full h-full object-cover" /> : <span className="font-bold text-primary">{comment.author.username.charAt(0)}</span>}
@@ -450,7 +448,7 @@ export default function Comments() {
             )
           )}
         </div>
-        <div className={`glass rounded-[32px] p-6 shadow-sm border border-white/40 ring-1 ring-primary/5 transition-all group-hover:scale-[1.01] ${isReply ? 'bg-white/40' : 'bg-white/60'} ${isDeleting ? 'opacity-50 scale-95' : ''}`}>
+        <div className={`glass rounded-[24px] sm:rounded-[32px] p-4 sm:p-6 shadow-sm border border-white/40 ring-1 ring-primary/5 transition-all group-hover:scale-[1.01] ${isReply ? 'bg-white/40' : 'bg-white/60'} ${isDeleting ? 'opacity-50 scale-95' : ''}`}>
           {isEditing ? (
              <div className="flex flex-col gap-3">
                <textarea
@@ -468,7 +466,7 @@ export default function Comments() {
              </div>
           ) : (
             <div className="flex flex-col">
-             <p className="text-foreground/90 text-lg leading-relaxed font-medium whitespace-pre-wrap">
+             <p className="text-foreground/90 text-base sm:text-lg leading-relaxed font-medium whitespace-pre-wrap">
                {comment.content}
              </p>
              {comment.imageUrl && (
@@ -511,13 +509,13 @@ export default function Comments() {
                  <textarea
                    value={replyContent}
                    onChange={(e) => setReplyContent(e.target.value)}
-                   className="w-full bg-white/50 border border-primary/20 rounded-2xl px-4 py-3 text-sm focus:ring-[4px] focus:ring-primary/10 transition-all outline-none resize-none font-medium text-foreground"
+                   className="w-full bg-white/50 border border-primary/20 rounded-[18px] sm:rounded-2xl px-4 py-3 text-sm focus:ring-[4px] focus:ring-primary/10 transition-all outline-none resize-none font-medium text-foreground"
                    rows={2}
                    placeholder={`Reply to @${comment.author.username}...`}
                    autoFocus
                  />
                  <div className="flex justify-end gap-2">
-                   <button onClick={() => setIsReplying(false)} className="px-3 py-1.5 text-[10px] font-bold uppercase tracking-widest opacity-40 hover:opacity-100 transition-all">Cancel</button>
+                   <button onClick={() => setIsReplying(false)} className="px-3 py-1.5 text-[9px] sm:text-[10px] font-bold uppercase tracking-widest opacity-40 hover:opacity-100 transition-all">Cancel</button>
                    <button onClick={handleInlineReply} className="px-4 py-1.5 text-xs font-bold bg-primary text-white rounded-[10px] hover:bg-primary/90 transition-all shadow-md active:scale-95 flex items-center gap-1">
                       <Send className="w-3 h-3" /> Reply
                    </button>
@@ -568,17 +566,17 @@ export default function Comments() {
   const displayedComments = getFilteredComments();
 
   return (
-    <div className="min-h-screen bg-[var(--color-background)] py-12 px-4 sm:px-6 lg:px-8 bg-[radial-gradient(ellipse_at_top_right,_var(--color-primary)_0%,_transparent_60%)] bg-[radial-gradient(ellipse_at_bottom_left,_var(--color-primary)_0%,_transparent_60%)] animate-float">
+    <div className="min-h-screen bg-[var(--color-background)] py-6 sm:py-12 px-3 sm:px-6 lg:px-8 bg-[radial-gradient(ellipse_at_top_right,_var(--color-primary)_0%,_transparent_60%)] bg-[radial-gradient(ellipse_at_bottom_left,_var(--color-primary)_0%,_transparent_60%)] animate-float">
       {/* Notifications */}
-      <div className="fixed top-8 left-1/2 -translate-x-1/2 z-50 flex flex-col gap-3 w-full max-w-sm px-4">
+      <div className="fixed top-4 sm:top-8 left-1/2 -translate-x-1/2 z-50 flex flex-col gap-3 w-full max-w-sm px-4">
         {notifications.map((n) => (
           <Notification key={n.id} message={n.message} type={n.type} />
         ))}
       </div>
 
-      <div className="max-w-4xl mx-auto flex flex-col gap-8">
+      <div className="max-w-4xl mx-auto flex flex-col gap-4 sm:gap-8">
         {/* Modern Header */}
-        <header className="flex flex-col items-center justify-center gap-2 animate-spring relative">
+        <header className="flex flex-col items-center justify-center gap-1 sm:gap-2 animate-spring relative pt-8 sm:pt-0">
           <button 
             onClick={logout}
             className="absolute right-0 top-0 p-3 bg-white/20 glass rounded-2xl hover:bg-red-50 transition-colors group"
@@ -587,7 +585,7 @@ export default function Comments() {
             <LogOut className="w-5 h-5 opacity-40 group-hover:opacity-100 group-hover:text-red-500 transition-all" />
           </button>
           
-          <div className="absolute left-0 top-0 flex flex-col gap-2">
+          <div className="absolute left-0 top-0 hidden sm:flex flex-col gap-2">
              <div className="flex items-center -space-x-3">
                {onlineUsers.slice(0, 5).map(ou => (
                   <div key={ou.userId} className="w-10 h-10 rounded-full bg-primary/20 backdrop-blur-md flex items-center justify-center text-xs font-bold text-foreground border-[3px] border-white relative group shadow-sm hover:-translate-y-1 transition-transform cursor-pointer" title={ou.username}>
@@ -604,43 +602,43 @@ export default function Comments() {
              {onlineUsers.length > 0 && <span className="text-[10px] font-bold opacity-40 uppercase tracking-widest pl-1">{onlineUsers.length} Online Now</span>}
           </div>
 
-          <div className="p-3 bg-white/40 glass pink-glow rounded-3xl mb-4 text-primary">
-            <div className={`w-4 h-4 rounded-full ${isConnected ? 'bg-green-400 shadow-[0_0_15px_hsl(var(--primary))] animate-pulse' : 'bg-red-400 opacity-60'}`} />
+          <div className="p-1 sm:p-3 bg-white/40 glass pink-glow rounded-xl sm:rounded-3xl mb-0.5 sm:mb-4 text-primary">
+            <div className={`w-1.5 h-1.5 sm:w-4 sm:h-4 rounded-full ${isConnected ? 'bg-green-400 shadow-[0_0_15px_hsl(var(--primary))] animate-pulse' : 'bg-red-400 opacity-60'}`} />
           </div>
-          <h1 className="text-7xl font-extrabold tracking-tighter text-foreground drop-shadow-sm">
+          <h1 className="text-3xl sm:text-7xl font-extrabold tracking-tighter text-foreground drop-shadow-sm leading-none">
             echo
           </h1>
           <div className="flex flex-col items-center gap-4 mt-4">
              <button 
               onClick={() => setIsProfileOpen(true)}
-              className="flex items-center gap-4 px-6 py-3 bg-white/40 glass rounded-[32px] border border-whiteShadow hover:scale-[1.02] transition-all cursor-pointer"
+              className="flex items-center gap-2 sm:gap-4 px-3 sm:px-6 py-1.5 sm:py-3 bg-white/40 glass rounded-full sm:rounded-[32px] border border-whiteShadow hover:scale-[1.02] transition-all cursor-pointer"
              >
-                <div className="w-12 h-12 rounded-2xl bg-primary/20 flex items-center justify-center overflow-hidden border-2 border-white relative">
-                  {user?.profilePicture ? <img src={user.profilePicture} alt="" className="w-full h-full object-cover" /> : <UserIcon className="w-6 h-6 text-primary" />}
+                <div className="w-8 h-8 sm:w-12 sm:h-12 rounded-full sm:rounded-2xl bg-primary/20 flex items-center justify-center overflow-hidden border-2 border-white relative">
+                  {user?.profilePicture ? <img src={user.profilePicture} alt="" className="w-full h-full object-cover" /> : <UserIcon className="w-4 h-4 sm:w-6 h-6 text-primary" />}
                 </div>
                 <div className="flex flex-col items-start">
-                  <div className="flex items-center gap-2">
-                    <span className="text-lg font-bold text-foreground leading-tight">{user?.username}</span>
-                    <span className={`text-[9px] font-bold uppercase tracking-widest px-2 py-0.5 rounded-full shadow-md flex items-center gap-1 ${getBadge(userPoints).color}`}>
-                       {getBadge(userPoints).icon} {getBadge(userPoints).label} <span className="opacity-70 ml-1">({userPoints} XP)</span>
+                  <div className="flex items-center gap-1.5">
+                    <span className="text-sm sm:text-lg font-bold text-foreground leading-tight">{user?.username}</span>
+                    <span className={`text-[7px] sm:text-[9px] font-bold uppercase tracking-widest px-1.5 sm:px-2 py-0.5 rounded-full shadow-md flex items-center gap-1 ${getBadge(userPoints).color}`}>
+                       {getBadge(userPoints).icon} <span className="hidden sm:inline">{getBadge(userPoints).label}</span> <span className="opacity-70 ml-1 hidden lg:inline">({userPoints} XP)</span>
                      </span>
                   </div>
-                  <div className="flex gap-3 mt-0.5">
-                    <span className="text-[10px] font-bold opacity-40 uppercase tracking-widest">{user?.followers?.length || 0} Followers</span>
-                    <span className="text-[10px] font-bold opacity-40 uppercase tracking-widest">{user?.following?.length || 0} Following</span>
+                  <div className="hidden sm:flex gap-2 sm:gap-3 mt-0.5">
+                    <span className="text-[9px] sm:text-[10px] font-bold opacity-40 uppercase tracking-widest">{user?.followers?.length || 0} Followers</span>
+                    <span className="text-[9px] sm:text-[10px] font-bold opacity-40 uppercase tracking-widest">{user?.following?.length || 0} Following</span>
                   </div>
                 </div>
              </button>
-             <p className="text-[10px] font-bold opacity-30 tracking-[0.3em] uppercase">
-              {isConnected ? 'LIVE & ENCRYPTED' : 'OFFLINE'}
+             <p className="text-[8px] font-bold opacity-30 tracking-[0.2em] uppercase mt-1">
+               {isConnected ? 'LIVE' : 'OFFLINE'}
             </p>
           </div>
         </header>
 
         {/* Profile Modal */}
         {isProfileOpen && (
-          <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/20 backdrop-blur-sm animate-spring">
-            <div className="max-w-md w-full glass rounded-[40px] p-10 border border-whiteShadow pink-glow relative">
+          <div className="fixed inset-0 z-[100] flex items-center justify-center p-3 sm:p-4 bg-black/20 backdrop-blur-sm animate-spring">
+            <div className="max-w-md w-full glass rounded-[32px] sm:rounded-[40px] p-6 sm:p-10 border border-whiteShadow pink-glow relative">
               <button 
                 onClick={() => setIsProfileOpen(false)}
                 className="absolute right-6 top-6 opacity-30 hover:opacity-100 transition-all font-bold text-lg"
@@ -671,7 +669,7 @@ export default function Comments() {
                 </div>
                 <button
                   type="submit"
-                  className="w-full bg-primary py-5 rounded-[28px] text-white font-extrabold shadow-2xl shadow-primary/40 hover:scale-[1.02] active:scale-[0.95] transition-all"
+                  className="w-full bg-primary py-4 sm:py-5 rounded-[22px] sm:rounded-[28px] text-white font-extrabold shadow-2xl shadow-primary/40 hover:scale-[1.02] active:scale-[0.95] transition-all text-sm sm:text-base"
                 >
                   Save Changes
                 </button>
@@ -731,21 +729,20 @@ export default function Comments() {
             </div>
           </section>
 
-          {/* Input Side Section */}
-          <aside className="lg:sticky lg:top-12 space-y-6">
-            <div className="glass rounded-[40px] p-8 pink-glow border border-whiteShadow shadow-2xl animate-spring">
-              <h3 className="text-xl font-bold mb-6 px-1 flex items-center gap-2">
+          {/* Input Section - Top on mobile for better UX */}
+          <aside className="lg:sticky lg:top-12 space-y-4 sm:space-y-6 order-first lg:order-last">
+            <div className="glass rounded-[24px] sm:rounded-[40px] p-4 sm:p-8 pink-glow border border-whiteShadow shadow-2xl animate-spring">
+              <h3 className="text-base sm:text-xl font-bold mb-3 sm:mb-6 px-1 flex items-center gap-2">
                 Share Thoughts
               </h3>
-              <form onSubmit={handleSubmit} className="space-y-5">
-                <div className="space-y-1.5 px-1 relative">
-                  <label className="text-[10px] font-bold uppercase tracking-widest opacity-40">Message</label>
+              <form onSubmit={handleSubmit} className="space-y-3 sm:space-y-5">
+                <div className="space-y-1 sm:space-y-1.5 px-0 relative">
                   <textarea
                     value={content}
                     onChange={handleInput}
                     placeholder="Enter your stream entry..."
-                    rows={4}
-                    className="w-full bg-white/30 border border-whiteShadow rounded-3xl px-5 py-4 focus:ring-[12px] focus:ring-primary/10 focus:border-primary outline-none transition-all resize-none placeholder:opacity-20 font-medium"
+                    rows={2}
+                    className="w-full bg-white/30 border border-whiteShadow rounded-xl sm:rounded-3xl px-3 sm:px-5 py-2 sm:py-4 focus:ring-[6px] sm:focus:ring-[12px] focus:ring-primary/10 focus:border-primary outline-none transition-all resize-none placeholder:opacity-20 font-medium text-sm sm:text-base"
                     required
                   />
                   {typingUsers.length > 0 && (
@@ -770,12 +767,12 @@ export default function Comments() {
                   <button
                     type="submit"
                     disabled={isLoading || (!content.trim() && !imagePreview)}
-                    className="flex-1 bg-primary hover:bg-primary/90 disabled:opacity-50 disabled:hover:scale-100 text-primary-foreground font-extrabold py-5 rounded-[28px] shadow-2xl shadow-primary/40 transform active:scale-[0.95] hover:scale-[1.02] transition-all flex items-center justify-center gap-3 group"
+                    className="flex-1 bg-primary hover:bg-primary/90 disabled:opacity-50 disabled:hover:scale-100 text-primary-foreground font-extrabold py-3.5 sm:py-5 rounded-xl sm:rounded-[28px] shadow-2xl shadow-primary/40 transform active:scale-[0.95] hover:scale-[1.02] transition-all flex items-center justify-center gap-2 group text-xs sm:text-base uppercase tracking-tight"
                   >
                     {isLoading ? 'Relaying...' : (
                       <>
-                        <span className="tracking-tight italic">Echo Entry</span>
-                        <Send className="w-5 h-5 opacity-50 transition-transform group-hover:translate-x-1" />
+                        <span className="italic">Echo Entry</span>
+                        <Send className="w-3.5 h-3.5 sm:w-5 sm:h-5 opacity-50" />
                       </>
                     )}
                   </button>
@@ -783,7 +780,7 @@ export default function Comments() {
               </form>
             </div>
 
-            <div className="glass rounded-[40px] p-6 pink-glow border border-whiteShadow shadow-2xl animate-spring relative overflow-hidden flex flex-col h-[400px]">
+            <div className="hidden lg:flex glass rounded-[40px] p-6 pink-glow border border-whiteShadow shadow-2xl animate-spring relative overflow-hidden flex-col h-[400px]">
                <div className="flex items-center justify-between mb-4 px-2">
                  <h3 className="text-lg font-bold flex items-center gap-2 opacity-80">
                    <Bell className={`w-5 h-5 ${serverNotifications.filter(n => !n.read).length > 0 ? 'text-primary animate-ring' : 'text-foreground/40'}`} /> 
