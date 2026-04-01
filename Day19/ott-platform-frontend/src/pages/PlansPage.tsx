@@ -179,7 +179,7 @@ const PlansPage: React.FC = () => {
             <div className="text-center mb-16">
               <h1 className="text-text-p text-[38px] md:text-[48px] font-bold tracking-tight">Choose the plan that's right for you</h1>
               <p className="text-text-s text-[16px] md:text-[18px] mt-4 max-w-[700px] mx-auto">
-                Join CineWave and select from our flexible pricing options. Everything you love, at a price that fits.
+                Join Netixsol and select from our flexible pricing options. Everything you love, at a price that fits.
               </p>
             </div>
 
@@ -260,3 +260,4 @@ const PlansPage: React.FC = () => {
 };
 
 export default PlansPage;
+

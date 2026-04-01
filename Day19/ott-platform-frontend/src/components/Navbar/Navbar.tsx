@@ -113,7 +113,7 @@ const Navbar: React.FC = () => {
               > Login </Link>
               <Link 
                 to="/register" 
-                className="bg-primary text-text-p px-4 md:px-6 py-2 md:py-3 rounded-[8px] font-semibold hover:bg-red-700 transition-colors whitespace-nowrap"
+                className="bg-primary text-text-p px-4 md:px-6 py-2 md:py-3 rounded-[8px] font-semibold hover:bg-red-700 transition-colors whitespace-nowrap hidden sm:block"
               > Sign Up </Link>
             </div>
           )}
@@ -122,7 +122,7 @@ const Navbar: React.FC = () => {
 
       {/* Mobile Menu Dropdown */}
       {isMobileMenuOpen && (
-        <div className="xl:hidden absolute top-[100px] md:top-[120px] left-0 w-full bg-bg-custom border-b border-border-custom border-t py-4 px-4 flex flex-col gap-4 shadow-2xl animate-fade-in z-50">
+        <div className="lg:hidden absolute top-[100px] md:top-[120px] left-0 w-full bg-bg-custom border-b border-border-custom border-t py-4 px-4 flex flex-col gap-4 shadow-2xl animate-fade-in z-50">
           <Link
             to="/"
             className={`px-4 py-3 rounded-[8px] text-[16px] font-medium transition-colors ${isActive("/") ? "bg-surface text-primary" : "text-text-p hover:bg-surface"}`}
@@ -160,6 +160,9 @@ const Navbar: React.FC = () => {
             <div className="flex flex-col gap-3 mt-2">
               <Link to="/login" className="w-full py-3 text-center border border-border-custom text-text-p rounded-[8px] font-semibold hover:bg-surface">
                 Login
+              </Link>
+              <Link to="/register" className="w-full py-3 text-center bg-primary text-text-p rounded-[8px] font-semibold hover:bg-red-700 transition-colors">
+                Sign Up
               </Link>
             </div>
           ) : (

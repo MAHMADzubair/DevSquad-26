@@ -23,7 +23,7 @@ const MustWatchCard: React.FC<MustWatchCardProps> = ({ title, image, duration, v
       </div>
 
       {/* Footer Info Row */}
-      <div className="flex flex-col gap-3 mt-auto">
+      <div className="flex flex-col gap-3 mt-4">
         <h3 className="text-text-p text-[16px] md:text-[18px] font-bold truncate group-hover:text-primary transition-colors">{title}</h3>
         
         <div className="flex items-center justify-between gap-2 mt-auto">

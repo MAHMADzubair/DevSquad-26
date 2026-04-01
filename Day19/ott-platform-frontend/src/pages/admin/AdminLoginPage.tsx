@@ -40,7 +40,7 @@ const AdminLoginPage: React.FC = () => {
             <Shield size={32} className="text-primary" />
           </div>
           <h1 className="text-text-p text-[28px] font-bold">Admin Portal</h1>
-          <p className="text-text-s text-[14px] mt-2">CineWave Control Center</p>
+          <p className="text-text-s text-[14px] mt-2">Netixsol Control Center</p>
         </div>
 
         <div className="bg-surface border border-border-darker rounded-[12px] p-8">
@@ -80,3 +80,4 @@ const AdminLoginPage: React.FC = () => {
 };
 
 export default AdminLoginPage;
+

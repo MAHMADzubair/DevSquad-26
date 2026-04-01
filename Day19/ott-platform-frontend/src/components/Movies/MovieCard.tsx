@@ -9,7 +9,7 @@ interface MovieCardProps {
 
 const MovieCard: React.FC<MovieCardProps> = ({ title, tag, images }) => {
   return (
-    <div className="bg-surface border border-border-custom rounded-[12px] p-[30px] flex flex-col cursor-pointer hover:border-primary transition-colors group min-w-[275px] lg:min-w-[352px] h-[342px] lg:h-[378px]">
+    <div className="bg-surface border border-border-custom rounded-[12px] p-4 md:p-6 lg:p-[30px] flex flex-col cursor-pointer hover:border-primary transition-colors group w-full h-full">
       {/* Image Grid Container */}
       <div className="relative flex-1 mb-[5px] overflow-hidden rounded-[10px]">
         {/* 2x2 Image Grid */}

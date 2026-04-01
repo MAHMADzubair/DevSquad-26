@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import { Send, Hash, Wifi, WifiOff } from "lucide-react";
+import { Send, Hash, Wifi, WifiOff, Menu } from "lucide-react";
 import { useGetMessagesQuery } from "../store/chatApi";
 import { getSocket } from "../services/socket";
 import "./ChatWindow.css";
@@ -33,7 +33,7 @@ function getAvatarColor(name) {
   return AVATAR_COLORS[Math.abs(hash) % AVATAR_COLORS.length];
 }
 
-export default function ChatWindow({ channel, username }) {
+export default function ChatWindow({ channel, username, onToggleSidebar }) {
   const [inputText, setInputText] = useState("");
   const [connected, setConnected] = useState(false);
   const messagesEndRef = useRef(null);
@@ -100,6 +100,9 @@ export default function ChatWindow({ channel, username }) {
       {/* Header */}
       <div className="chatwindow__header">
         <div className="chatwindow__header-left">
+          <button className="chatwindow__menu-btn" onClick={onToggleSidebar}>
+            <Menu size={20} />
+          </button>
           <Hash size={20} className="chatwindow__hash" />
           <div>
             <h2 className="chatwindow__channel-name">{channel.name}</h2>

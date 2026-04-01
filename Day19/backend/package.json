@@ -1,12 +1,12 @@
 {
-  "name": "cinewave-backend",
+  "name": "netixsol-backend",
   "version": "1.0.0",
-  "description": "CineWave OTT Platform – RESTful API built with Node.js, Express, MongoDB",
+  "description": "Netixsol OTT Platform – RESTful API built with Node.js, Express, MongoDB",
   "packageManager": "pnpm@10.14.0",
   "bin": "bin/createNodejsApp.js",
   "main": "dist/index.js",
   "repository": "https://github.com/hagopj13/node-express-boilerplate.git",
-  "author": "CineWave Dev Team",
+  "author": "Netixsol Dev Team",
   "license": "MIT",
   "engines": {
     "node": ">=12.0.0"
@@ -128,3 +128,4 @@
     ]
   }
 }
+

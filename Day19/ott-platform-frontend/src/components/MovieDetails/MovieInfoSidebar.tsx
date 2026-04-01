@@ -7,7 +7,7 @@ interface SidebarProps {
     languages: string[];
     ratings: {
       imdb: number;
-      CineWave: number;
+      Netixsol: number;
     };
     genres: { id?: string; _id?: string; name: string }[];
     director: {
@@ -110,7 +110,7 @@ const MovieInfoSidebar: React.FC<SidebarProps> = ({ movie }) => {
         </div>
         <div className="flex flex-row gap-[10px] xl:gap-[20px] w-full">
            <StarRatingBadge title="IMDb" rating={movie.ratings.imdb} />
-           <StarRatingBadge title="CineWave" rating={movie.ratings.CineWave} />
+           <StarRatingBadge title="Netixsol" rating={movie.ratings.Netixsol} />
         </div>
       </div>
 
@@ -148,3 +148,4 @@ const MovieInfoSidebar: React.FC<SidebarProps> = ({ movie }) => {
 };
 
 export default MovieInfoSidebar;
+

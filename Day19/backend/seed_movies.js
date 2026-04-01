@@ -115,7 +115,7 @@ const movies = [
 
 async function seed() {
   try {
-    await mongoose.connect('mongodb+srv://mahmadzubair:mahmadzubair@cluster0.kmjtokz.mongodb.net/cinewave?retryWrites=true&w=majority');
+    await mongoose.connect('mongodb+srv://mahmadzubair:mahmadzubair@cluster0.kmjtokz.mongodb.net/netixsol?retryWrites=true&w=majority');
     console.log('Connected to DB');
 
     const admin = await User.findOne({ role: 'admin' });

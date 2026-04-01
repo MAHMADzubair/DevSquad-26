@@ -2,14 +2,14 @@ import React, { useState } from 'react';
 import { Plus, Minus } from 'lucide-react';
 
 const faqs = [
-  { q: "What is CineWave?", a: "CineWave is a streaming service that allows you to watch movies and shows on demand.", id: "01" },
-  { q: "How much does CineWave cost?", a: "CineWave offers various subscription plans to fit your budget. See our pricing section.", id: "02" },
-  { q: "What content is available on CineWave?", a: "We offer a wide variety of movies, TV shows, documentaries, and more.", id: "03" },
-  { q: "How can I watch CineWave?", a: "You can watch on any internet-connected device, including TVs, phones, tablets, and computers.", id: "04" },
-  { q: "How do I sign up for CineWave?", a: "Simply click the 'Start Free Trial' button and follow the secure checkout process.", id: "05" },
-  { q: "What is the CineWave free trial?", a: "New users receive a 7-day free trial with full access to all premium features.", id: "06" },
-  { q: "How do I contact CineWave customer support?", a: "You can reach us through our Support page, via email, or live chat 24/7.", id: "07" },
-  { q: "What are the CineWave payment methods?", a: "We accept all major credit cards, PayPal, and regional payment methods.", id: "08" },
+  { q: "What is Netixsol?", a: "Netixsol is a streaming service that allows you to watch movies and shows on demand.", id: "01" },
+  { q: "How much does Netixsol cost?", a: "Netixsol offers various subscription plans to fit your budget. See our pricing section.", id: "02" },
+  { q: "What content is available on Netixsol?", a: "We offer a wide variety of movies, TV shows, documentaries, and more.", id: "03" },
+  { q: "How can I watch Netixsol?", a: "You can watch on any internet-connected device, including TVs, phones, tablets, and computers.", id: "04" },
+  { q: "How do I sign up for Netixsol?", a: "Simply click the 'Start Free Trial' button and follow the secure checkout process.", id: "05" },
+  { q: "What is the Netixsol free trial?", a: "New users receive a 7-day free trial with full access to all premium features.", id: "06" },
+  { q: "How do I contact Netixsol customer support?", a: "You can reach us through our Support page, via email, or live chat 24/7.", id: "07" },
+  { q: "What are the Netixsol payment methods?", a: "We accept all major credit cards, PayPal, and regional payment methods.", id: "08" },
 ];
 
 const FAQSection: React.FC = () => {
@@ -29,7 +29,7 @@ const FAQSection: React.FC = () => {
         <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-10 md:mb-[80px]">
           <div className="flex flex-col max-w-[900px]">
             <h2 className="text-[28px] md:text-[38px] font-bold text-text-p mb-3">Frequently Asked Questions</h2>
-            <p className="text-[14px] md:text-[18px] text-text-s font-normal">Got questions? We've got answers! Check out our FAQ section to find answers to the most common questions about CineWave.</p>
+            <p className="text-[14px] md:text-[18px] text-text-s font-normal">Got questions? We've got answers! Check out our FAQ section to find answers to the most common questions about Netixsol.</p>
           </div>
           <button className="px-6 py-4 bg-primary text-text-p font-semibold text-[18px] rounded-[8px] hover:bg-red-700 transition-colors mt-6 md:mt-0 whitespace-nowrap">
             Ask a Question

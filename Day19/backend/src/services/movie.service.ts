@@ -16,7 +16,7 @@ interface MovieCreateData {
   director?: { name: string; origin?: string; image?: string };
   music?: { name: string; origin?: string; image?: string };
   imdbRating?: number;
-  cinewaveRating?: number;
+  NetixsolRating?: number;
   createdBy: string;
   posterBuffer?: Buffer;
   videoBuffer?: Buffer;
@@ -45,7 +45,7 @@ export const createMovie = async (data: MovieCreateData) => {
     director: data.director,
     music: data.music,
     imdbRating: data.imdbRating,
-    cinewaveRating: data.cinewaveRating,
+    NetixsolRating: data.NetixsolRating,
     createdBy: data.createdBy,
     uploadStatus: 'pending',
   };
@@ -194,7 +194,7 @@ export const updateMovie = async (id: string, updateData: Partial<MovieCreateDat
   }
 
   // Update scalar fields
-  const scalarFields = ['title', 'description', 'genres', 'releaseYear', 'category', 'tags', 'isPremium', 'language', 'isPublished', 'cast', 'director', 'music', 'imdbRating', 'cinewaveRating'];
+  const scalarFields = ['title', 'description', 'genres', 'releaseYear', 'category', 'tags', 'isPremium', 'language', 'isPublished', 'cast', 'director', 'music', 'imdbRating', 'NetixsolRating'];
   scalarFields.forEach((field) => {
     if ((updateData as any)[field] !== undefined) {
       (movie as any)[field] = (updateData as any)[field];
@@ -221,3 +221,4 @@ export const deleteMovie = async (id: string) => {
 export const incrementViews = async (id: string) => {
   await Movie.findByIdAndUpdate(id, { $inc: { views: 1 } });
 };
+

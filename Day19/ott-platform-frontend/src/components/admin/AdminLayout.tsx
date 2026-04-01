@@ -25,7 +25,7 @@ const AdminLayout: React.FC = () => {
     <>
       <div className="flex items-center gap-2 px-6 py-5 border-b border-border-darker">
         <Play fill="currentColor" className="text-primary w-7 h-7" />
-        <span className="text-text-p font-bold text-[18px]">CineWave</span>
+        <span className="text-text-p font-bold text-[18px]">Netixsol</span>
         <span className="text-primary text-[11px] font-semibold bg-primary/10 px-2 py-0.5 rounded-[4px] ml-1">ADMIN</span>
       </div>
       <nav className="flex flex-col gap-1 p-3 flex-1">
@@ -108,3 +108,4 @@ const AdminLayout: React.FC = () => {
 };
 
 export default AdminLayout;
+

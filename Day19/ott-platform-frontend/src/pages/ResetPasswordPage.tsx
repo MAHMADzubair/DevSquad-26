@@ -38,7 +38,7 @@ const ResetPasswordPage: React.FC = () => {
         <div className="text-center mb-8">
           <Link to="/" className="inline-flex items-center gap-2 text-text-p font-bold text-2xl">
             <Play fill="currentColor" className="text-primary w-8 h-8" />
-            CineWave
+            Netixsol
           </Link>
           <h1 className="text-text-p text-[28px] font-bold mt-6">Reset password</h1>
         </div>
@@ -77,3 +77,4 @@ const ResetPasswordPage: React.FC = () => {
 };
 
 export default ResetPasswordPage;
+

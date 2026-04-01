@@ -1,18 +1,21 @@
 import React from "react";
-import { Hash, Users, Volume2 } from "lucide-react";
+import { Hash, Users, Volume2, X } from "lucide-react";
 import { useGetChannelsQuery } from "../store/chatApi";
 import "./Sidebar.css";
 
-export default function Sidebar({ activeChannelId, onSelectChannel, username }) {
+export default function Sidebar({ activeChannelId, onSelectChannel, username, isOpen, onClose }) {
   const { data: channels, isLoading, isError } = useGetChannelsQuery();
 
   return (
-    <aside className="sidebar">
+    <aside className={`sidebar ${isOpen ? "sidebar--open" : ""}`}>
       <div className="sidebar__header">
         <div className="sidebar__server-name">
           <div className="sidebar__server-icon">💬</div>
           <span>Chat Lounge</span>
         </div>
+        <button className="sidebar__close-btn" onClick={onClose}>
+          <X size={20} />
+        </button>
       </div>
 
       <div className="sidebar__section">

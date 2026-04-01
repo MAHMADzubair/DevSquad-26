@@ -1,3 +1,4 @@
+require("dotenv").config();
 const express = require("express");
 const http = require("http");
 const { Server } = require("socket.io");
@@ -6,14 +7,16 @@ const cors = require("cors");
 const app = express();
 const server = http.createServer(app);
 
+const origins = process.env.CORS_ORIGINS ? process.env.CORS_ORIGINS.split(",") : ["http://localhost:5173"];
+
 const io = new Server(server, {
   cors: {
-    origin: ["http://localhost:5173", "https://chatbot-beta-five-75.vercel.app"],
+    origin: origins,
     methods: ["GET", "POST"],
   },
 });
 
-app.use(cors({ origin: ["http://localhost:5173", "https://chatbot-beta-five-75.vercel.app"] }));
+app.use(cors({ origin: origins }));
 app.use(express.json());
 
 // --- In-memory data store ---
@@ -94,7 +97,7 @@ io.on("connection", (socket) => {
   });
 });
 
-const PORT = 3001;
-server.listen(PORT, () => {
+const PORT = process.env.PORT || 3001;
+server.listen(PORT, "0.0.0.0", () => {
   console.log(`🚀 Server running on http://localhost:${PORT}`);
 });

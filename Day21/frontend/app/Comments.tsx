@@ -410,7 +410,7 @@ export default function Comments() {
     }, [showReplies]);
 
     return (
-      <div id={`comment-${safeCommentId}`} style={{ animationFillMode: 'both', animationDelay: `${(index % 15) * 0.1}s` }} className={`animate-spring glass p-4 sm:p-5 rounded-[24px] sm:rounded-[32px] flex flex-col gap-3 ${isReply ? 'ml-4 sm:ml-12 mt-3 shadow-sm border-l-4 border-l-primary/30' : 'hover:-translate-y-1 hover:shadow-2xl'} transition-all duration-700`}>
+      <div id={`comment-${safeCommentId}`} style={{ animationFillMode: 'both', animationDelay: `${(index % 15) * 0.1}s` }} className={`animate-spring glass p-3 sm:p-5 rounded-[20px] sm:rounded-[32px] flex flex-col gap-2 sm:gap-3 w-full overflow-hidden ${isReply ? 'ml-2 sm:ml-12 mt-2 shadow-sm border-l-2 sm:border-l-4 border-l-primary/30' : 'hover:-translate-y-1 hover:shadow-2xl'} transition-all duration-700`}>
         <div className="flex items-center justify-between px-1 sm:px-2">
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 rounded-2xl bg-primary/10 glass flex items-center justify-center overflow-hidden border border-whiteShadow ring-2 ring-white">
@@ -491,7 +491,7 @@ export default function Comments() {
              </button>
              <button 
               onClick={handleShare}
-              className="flex items-center gap-1.5 text-xs font-bold opacity-40 hover:opacity-100 transition-all px-3 py-1.5 rounded-full hover:bg-white/40"
+              className="hidden sm:flex items-center gap-1.5 text-xs font-bold opacity-40 hover:opacity-100 transition-all px-3 py-1.5 rounded-full hover:bg-white/40"
              >
               <Share2 className="w-3.5 h-3.5" />
               Share

@@ -56,7 +56,7 @@ const movieSchema = new mongoose.Schema(
     music:    { name: String, origin: String, image: { type: String, default: null } },
     // Ratings stored for display
     imdbRating: { type: Number, default: null },
-    cinewaveRating: { type: Number, default: null },
+    NetixsolRating: { type: Number, default: null },
     // Category
     category: {
       type: String,
@@ -78,3 +78,4 @@ movieSchema.plugin(paginate);
 
 const Movie = mongoose.model('Movie', movieSchema);
 export default Movie;
+

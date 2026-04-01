@@ -3,7 +3,7 @@ import { getSocket } from "../services/socket";
 
 export const chatApi = createApi({
   reducerPath: "chatApi",
-  baseQuery: fetchBaseQuery({ baseUrl: "http://localhost:3001/api" }),
+  baseQuery: fetchBaseQuery({ baseUrl: import.meta.env.VITE_API_BASE_URL || "http://localhost:3001/api" }),
   endpoints: (builder) => ({
     getChannels: builder.query({
       query: () => "/channels",

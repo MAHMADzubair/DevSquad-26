@@ -138,7 +138,7 @@ const MovieOpenPage: React.FC = () => {
              <MovieInfoSidebar movie={{
                releaseYear: String(movie.releaseYear),
                languages: movie.language || ["English"],
-               ratings: { imdb: movie.imdbRating || 0, CineWave: movie.CineWaveRating || 0 },
+               ratings: { imdb: movie.imdbRating || 0, Netixsol: movie.NetixsolRating || 0 },
                genres: movie.genres || [],
                director: { 
                  name: typeof movie.director === 'object' ? movie.director?.name : (movie.director || "Unknown"), 
@@ -161,3 +161,4 @@ const MovieOpenPage: React.FC = () => {
 };
 
 export default MovieOpenPage;
+

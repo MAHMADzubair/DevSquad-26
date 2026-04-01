@@ -21,7 +21,7 @@ const NewReleaseCard: React.FC<NewReleaseCardProps> = ({ title, image, releaseDa
       </div>
 
       {/* Release Info pill */}
-      <div className="flex flex-col gap-3 mt-auto">
+      <div className="flex flex-col gap-3 mt-4">
          <h3 className="text-text-p text-[16px] md:text-[18px] font-bold truncate group-hover:text-primary transition-colors">{title}</h3>
          
          <div className="bg-bg-custom border border-border-darker rounded-full px-4 py-2 flex items-center justify-center">

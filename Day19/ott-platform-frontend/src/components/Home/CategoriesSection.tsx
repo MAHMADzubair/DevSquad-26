@@ -134,11 +134,10 @@ const CategoriesSection: React.FC<CategoriesSectionProps> = ({
                 <SwiperSlide key={category.id || idx} className="!h-auto">
                   <div
                     onClick={() => handleCategoryClick(category.id || category.title)}
-                    className="bg-[#1A1A1A] border border-[#262626] rounded-[12px] p-[20px] md:p-[30px] flex flex-col cursor-pointer hover:border-primary transition-all duration-300 group h-full select-none"
-                    style={{ minHeight: "342px", width: "100%", maxWidth: "296px" }}
+                    className="bg-[#1A1A1A] border border-[#262626] rounded-[12px] p-4 lg:p-[30px] flex flex-col cursor-pointer hover:border-primary transition-all duration-300 group w-full h-full select-none"
                   >
                     {/* Image Grid - Container for the 4 thumbnails */}
-                    <div className="relative isolate flex flex-col gap-[6px] w-full aspect-[236/238] mb-6 bg-[#141414] rounded-[10px] overflow-hidden shrink-0">
+                    <div className="relative isolate flex flex-col gap-[6px] w-full aspect-[236/238] bg-[#141414] rounded-[10px] overflow-hidden shrink-0">
                       <div className="w-full h-full overflow-hidden">
                         <img src={displayImages[0]} alt="movie" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 opacity-80" />
                       </div>
@@ -151,7 +150,7 @@ const CategoriesSection: React.FC<CategoriesSectionProps> = ({
                     </div>
 
                     {/* Footer - Category Title & Arrow icon */}
-                    <div className="flex items-center justify-between z-[2] mt-auto">
+                    <div className="flex items-center justify-between z-[2] mt-4">
                       <span className="text-[18px] font-semibold text-text-p truncate pr-2 leading-none">
                         {category.name || category.title}
                       </span>

@@ -19,11 +19,10 @@ const TrendingCard: React.FC<TrendingCardProps> = ({
 }) => {
   return (
     <div 
-      className="bg-[#1A1A1A] border border-[#262626] rounded-[12px] p-4 md:p-[20px] flex flex-col cursor-pointer hover:border-primary transition-all duration-300 group w-full h-full"
-      style={{ minHeight: "342px", maxWidth: "296px" }}
+      className="bg-[#1A1A1A] border border-[#262626] rounded-[12px] p-3 md:p-5 flex flex-col cursor-pointer hover:border-primary transition-all duration-300 group w-full h-full"
     >
       {/* Image Container */}
-      <div className="relative w-full aspect-[236/238] rounded-[10px] overflow-hidden mb-5 bg-[#141414] shrink-0">
+      <div className="relative w-full aspect-[236/238] rounded-[10px] overflow-hidden bg-[#141414] shrink-0">
         <img 
           src={image} 
           alt={title || "Movie poster"} 
@@ -38,7 +37,7 @@ const TrendingCard: React.FC<TrendingCardProps> = ({
       </div>
 
       {/* Info Row - Twin Pills (No Title Layout) */}
-      <div className="flex items-center justify-between gap-2 mt-auto relative z-10 w-full">
+      <div className="flex items-center justify-between gap-2 mt-4 relative z-10 w-full">
         {/* Duration Pill */}
         <div className="bg-[#141414] border border-[#262626] rounded-[30px] px-3 md:px-4 py-1.5 md:py-2 flex items-center gap-1.5 lg:gap-2 shadow-inner group-hover:border-[#333333] transition-colors overflow-hidden max-w-[50%]">
           <Clock size={16} className="text-[#999999] flex-shrink-0" />

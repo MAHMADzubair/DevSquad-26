@@ -21,7 +21,7 @@ const PricingSection: React.FC = () => {
         <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-10 md:mb-[80px]">
           <div className="flex flex-col max-w-[900px]">
             <h2 className="text-[28px] md:text-[38px] font-bold text-text-p mb-3">Choose the plan that's right for you</h2>
-            <p className="text-[14px] md:text-[18px] text-text-s font-normal">Join CineWave and select from our flexible subscription options tailored to suit your viewing preferences.</p>
+            <p className="text-[14px] md:text-[18px] text-text-s font-normal">Join Netixsol and select from our flexible subscription options tailored to suit your viewing preferences.</p>
           </div>
           
           <div className="flex items-center bg-bg-custom border border-border-custom rounded-[12px] p-2 mt-6 md:mt-0">
@@ -70,3 +70,4 @@ const PricingSection: React.FC = () => {
 };
 
 export default PricingSection;
+

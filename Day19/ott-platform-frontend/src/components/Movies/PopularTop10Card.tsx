@@ -19,11 +19,10 @@ const PopularTop10Card: React.FC<PopularTop10CardProps> = ({ title, images = [] 
   
   return (
     <div 
-      className="bg-[#1A1A1A] border border-[#262626] rounded-[12px] p-[30px] flex flex-col cursor-pointer hover:border-primary transition-all duration-300 group w-full h-full"
-      style={{ minHeight: "342px", maxWidth: "296px" }}
+      className="bg-[#1A1A1A] border border-[#262626] rounded-[12px] p-4 lg:p-[30px] flex flex-col cursor-pointer hover:border-primary transition-all duration-300 group w-full h-full"
     >
       {/* Image Grid Container */}
-      <div className="relative isolate flex flex-col gap-[6px] w-full aspect-[236/238] mb-6 bg-[#141414] rounded-[10px] overflow-hidden shrink-0">
+      <div className="relative isolate flex flex-col gap-[6px] w-full aspect-[236/238] bg-[#141414] rounded-[10px] overflow-hidden shrink-0">
         <div className="flex flex-row gap-[6px] w-full h-1/2">
           <div className="flex-1 overflow-hidden">
              <img src={displayImages[0]} alt="movie" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 opacity-80" />
@@ -47,14 +46,16 @@ const PopularTop10Card: React.FC<PopularTop10CardProps> = ({ title, images = [] 
       </div>
 
       {/* Footer Container */}
-      <div className="flex items-center justify-between gap-3 mt-auto relative z-[2]">
-        <div className="flex flex-col gap-2 items-start max-w-[calc(100%-30px)]">
-           <div className="bg-primary px-3 py-1 rounded-[5px] flex items-center justify-center">
-             <span className="text-text-p text-[12px] font-bold leading-none uppercase tracking-tight">Top 10 In</span>
-           </div>
-           <h3 className="text-text-p text-[18px] font-semibold leading-tight line-clamp-1">{title}</h3>
+      <div className="flex items-center justify-between gap-2 mt-3 relative z-[2] w-full">
+        <div className="flex items-center gap-2 max-w-[calc(100%-24px)] w-full overflow-hidden">
+           <span className="bg-primary px-2 py-1 rounded-[4px] text-text-p text-[10px] md:text-[11px] font-bold leading-none uppercase tracking-wider whitespace-nowrap shrink-0">
+             Top 10
+           </span>
+           <h3 className="text-text-p text-[14px] md:text-[16px] font-semibold leading-tight truncate">
+             {title}
+           </h3>
         </div>
-        <ArrowRight size={24} className="text-text-p opacity-80 group-hover:opacity-100 transition-all shrink-0 group-hover:translate-x-1 duration-300" />
+        <ArrowRight size={18} className="text-text-p opacity-80 group-hover:opacity-100 transition-all shrink-0 group-hover:translate-x-1 duration-300" />
       </div>
     </div>
   );

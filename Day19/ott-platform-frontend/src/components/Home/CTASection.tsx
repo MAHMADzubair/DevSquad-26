@@ -76,7 +76,7 @@ const CTASection: React.FC = () => {
                 Start your free trial today!
               </h2>
               <p className="text-[16px] md:text-[18px] text-text-s font-normal leading-[150%] max-w-[1148px]">
-                This is a clear and concise call to action that encourages users to sign up for a free trial of CineWave.
+                This is a clear and concise call to action that encourages users to sign up for a free trial of Netixsol.
               </p>
             </div>
             
@@ -93,3 +93,4 @@ const CTASection: React.FC = () => {
 };
 
 export default CTASection;
+

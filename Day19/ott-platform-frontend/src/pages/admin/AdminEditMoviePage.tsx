@@ -23,7 +23,7 @@ interface MovieFormValues {
   tags: string;
   language: string;
   imdbRating: number;
-  CineWaveRating: number;
+  NetixsolRating: number;
 }
 
 import { uploadToCloudinary } from '../../lib/cloudinary';
@@ -76,7 +76,7 @@ const AdminEditMoviePage: React.FC = () => {
         tags: Array.isArray(movie.tags) ? movie.tags.join(', ') : '',
         language: Array.isArray(movie.language) ? movie.language.join(', ') : '',
         imdbRating: movie.imdbRating ?? 0,
-        CineWaveRating: movie.CineWaveRating ?? 0,
+        NetixsolRating: movie.NetixsolRating ?? 0,
       });
     }
   }, [movie, reset]);
@@ -109,7 +109,7 @@ const AdminEditMoviePage: React.FC = () => {
         tags: (data.tags || '').split(',').map((s: string) => s.trim()).filter(Boolean),
         language: (data.language || '').split(',').map((s: string) => s.trim()).filter(Boolean),
         imdbRating: Number(data.imdbRating) || 0,
-        CineWaveRating: Number(data.CineWaveRating) || 0,
+        NetixsolRating: Number(data.NetixsolRating) || 0,
         ...(posterData ? { posterUrl: posterData.secure_url, posterPublicId: posterData.public_id } : {}),
         ...(videoData ? { videoUrl: videoData.secure_url, videoPublicId: videoData.public_id, hlsUrl: videoData.hlsUrl, duration: videoData.duration } : {}),
       });
@@ -321,16 +321,16 @@ const AdminEditMoviePage: React.FC = () => {
             {errors.imdbRating && <p className="text-primary text-[12px] font-medium">{errors.imdbRating.message}</p>}
           </div>
           <div className="flex flex-col gap-1.5">
-            <label className="text-text-p text-[13px] font-medium">CineWave Rating <span className="text-text-s">(0–5)</span></label>
+            <label className="text-text-p text-[13px] font-medium">Netixsol Rating <span className="text-text-s">(0–5)</span></label>
             <input 
-              {...register('CineWaveRating', {
+              {...register('NetixsolRating', {
                 min: { value: 0, message: 'Min rating is 0' },
-                max: { value: 5, message: 'Max CineWave rating is 5' },
+                max: { value: 5, message: 'Max Netixsol rating is 5' },
               })} 
               type="number" step="0.1" placeholder="4.8" 
-              className={`bg-bg-custom border rounded-[8px] px-4 py-3 text-text-p text-[14px] outline-none focus:border-primary transition-all ${errors.CineWaveRating ? 'border-primary' : 'border-border-darker'}`} 
+              className={`bg-bg-custom border rounded-[8px] px-4 py-3 text-text-p text-[14px] outline-none focus:border-primary transition-all ${errors.NetixsolRating ? 'border-primary' : 'border-border-darker'}`} 
             />
-            {errors.CineWaveRating && <p className="text-primary text-[12px] font-medium">{errors.CineWaveRating.message}</p>}
+            {errors.NetixsolRating && <p className="text-primary text-[12px] font-medium">{errors.NetixsolRating.message}</p>}
           </div>
           <div className="flex flex-col gap-1.5">
             <label className="text-text-p text-[13px] font-medium">Languages (comma separated)</label>
@@ -381,3 +381,4 @@ const AdminEditMoviePage: React.FC = () => {
 };
 
 export default AdminEditMoviePage;
+

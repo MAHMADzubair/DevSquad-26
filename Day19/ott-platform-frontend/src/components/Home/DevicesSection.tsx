@@ -13,37 +13,37 @@ const devices = [
     name: "Smartphones",
     icon: <Smartphone className="text-primary" size={28} />,
     description:
-      "CineWave is optimized for both Android and iOS smartphones. Download our app from the Google Play Store or the Apple App Store",
+      "Netixsol is optimized for both Android and iOS smartphones. Download our app from the Google Play Store or the Apple App Store",
   },
   {
     name: "Tablet",
     icon: <Tablet className="text-primary" size={28} />,
     description:
-      "CineWave is optimized for both Android and iOS smartphones. Download our app from the Google Play Store or the Apple App Store",
+      "Netixsol is optimized for both Android and iOS smartphones. Download our app from the Google Play Store or the Apple App Store",
   },
   {
     name: "Smart TV",
     icon: <Tv className="text-primary" size={28} />,
     description:
-      "CineWave is optimized for both Android and iOS smartphones. Download our app from the Google Play Store or the Apple App Store",
+      "Netixsol is optimized for both Android and iOS smartphones. Download our app from the Google Play Store or the Apple App Store",
   },
   {
     name: "Laptops",
     icon: <Laptop className="text-primary" size={28} />,
     description:
-      "CineWave is optimized for both Android and iOS smartphones. Download our app from the Google Play Store or the Apple App Store",
+      "Netixsol is optimized for both Android and iOS smartphones. Download our app from the Google Play Store or the Apple App Store",
   },
   {
     name: "Gaming Consoles",
     icon: <Gamepad2 className="text-primary" size={28} />,
     description:
-      "CineWave is optimized for both Android and iOS smartphones. Download our app from the Google Play Store or the Apple App Store",
+      "Netixsol is optimized for both Android and iOS smartphones. Download our app from the Google Play Store or the Apple App Store",
   },
   {
     name: "VR Headsets",
     icon: <Headset className="text-primary" size={28} />,
     description:
-      "CineWave is optimized for both Android and iOS smartphones. Download our app from the Google Play Store or the Apple App Store",
+      "Netixsol is optimized for both Android and iOS smartphones. Download our app from the Google Play Store or the Apple App Store",
   },
 ];
 
@@ -57,7 +57,7 @@ const DevicesSection: React.FC = () => {
             We Provide you streaming experience across various devices.
           </h2>
           <p className="text-[14px] md:text-[18px] text-text-s font-normal max-w-[1000px]">
-            With CineWave, you can enjoy your favorite movies and TV shows
+            With Netixsol, you can enjoy your favorite movies and TV shows
             anytime, anywhere. Our platform is designed to be compatible with a
             wide range of devices, ensuring that you never miss a moment of
             entertainment.
@@ -91,3 +91,4 @@ const DevicesSection: React.FC = () => {
 };
 
 export default DevicesSection;
+
