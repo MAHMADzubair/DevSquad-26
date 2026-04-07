@@ -1,21 +1,21 @@
 {
-  "name": "day-3",
+  "name": "day3-tailwind",
   "version": "1.0.0",
+  "description": "",
   "main": "index.js",
-  "type": "module",
   "scripts": {
-    "build": "postcss src/styles.css -o dist/styles.css",
-    "watch": "postcss styles.css -o dist/styles.css --watch",
+    "build": "tailwindcss -i ./input.css -o ./output.css",
+    "watch": "tailwindcss -i ./input.css -o ./output.css --watch",
+    "serve": "live-server .",
+    "start": "npm run build && npm run serve",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": "",
+  "type": "commonjs",
   "dependencies": {
-    "@tailwindcss/postcss": "^4.2.1",
-    "postcss": "^8.5.6",
-    "postcss-cli": "^11.0.1",
+    "@tailwindcss/cli": "^4.2.1",
     "tailwindcss": "^4.2.1"
   }
 }
