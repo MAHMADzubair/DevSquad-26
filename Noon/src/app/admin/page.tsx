@@ -48,13 +48,58 @@ export default function AdminDashboard() {
           </div>
         ))}
       </div>
-      
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-4">
-         <div className="bg-zinc-950 border border-white/10 rounded-xl p-6 h-96 flex flex-col justify-center items-center text-gray-500">
-            [Chart Area Placeholder: Revenue over time]
+
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mt-4">
+         {/* Recent Orders Table */}
+         <div className="lg:col-span-2 bg-zinc-950 border border-white/10 rounded-xl overflow-hidden shadow-xl">
+            <div className="px-6 py-4 border-b border-white/10 flex justify-between items-center bg-white/5">
+               <h3 className="font-bold text-white uppercase text-xs tracking-widest">Recent Orders</h3>
+               <button onClick={() => window.location.href='/admin/orders'} className="text-[10px] text-noon-yellow font-black uppercase hover:underline">View All</button>
+            </div>
+            <div className="overflow-x-auto">
+               <table className="w-full text-left text-xs text-gray-400">
+                  <thead className="bg-white/5 font-bold uppercase text-[10px]">
+                     <tr>
+                        <th className="px-6 py-4">Customer</th>
+                        <th className="px-6 py-4">Status</th>
+                        <th className="px-6 py-4 text-right">Amount</th>
+                     </tr>
+                  </thead>
+                  <tbody className="divide-y divide-white/5">
+                     {stats?.recentOrders?.map((order: any) => (
+                        <tr key={order.id} className="hover:bg-white/5 transition">
+                           <td className="px-6 py-4">
+                              <div className="font-bold text-white">{order.user.name}</div>
+                              <div className="text-[10px] opacity-50">{order.user.email}</div>
+                           </td>
+                           <td className="px-6 py-4">
+                              <span className={`px-2 py-0.5 rounded-full text-[9px] font-black uppercase ${order.status === 'DELIVERED' ? 'bg-green-500/20 text-green-400' : 'bg-yellow-500/20 text-yellow-500'}`}>
+                                 {order.status}
+                              </span>
+                           </td>
+                           <td className="px-6 py-4 text-right font-black text-white">
+                              AED {order.total.toLocaleString()}
+                           </td>
+                        </tr>
+                     ))}
+                     {(!stats?.recentOrders || stats.recentOrders.length === 0) && (
+                        <tr>
+                           <td colSpan={3} className="px-6 py-8 text-center text-gray-500 italic">No recent orders yet.</td>
+                        </tr>
+                     )}
+                  </tbody>
+               </table>
+            </div>
          </div>
-         <div className="bg-zinc-950 border border-white/10 rounded-xl p-6 h-96 flex flex-col justify-center items-center text-gray-500">
-            [Chart Area Placeholder: Sales by Category]
+
+         {/* Stats mini charts placeholders */}
+         <div className="flex flex-col gap-6">
+            <div className="bg-zinc-950 border border-white/10 rounded-xl p-6 h-48 flex flex-col justify-center items-center text-gray-500">
+               [Revenue Chart]
+            </div>
+            <div className="bg-zinc-950 border border-white/10 rounded-xl p-6 h-48 flex flex-col justify-center items-center text-gray-500">
+               [Category Sales]
+            </div>
          </div>
       </div>
     </div>

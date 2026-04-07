@@ -31,10 +31,10 @@ const MovieOpenPage: React.FC = () => {
   const { data: playData, isLoading: isPlayLoading, error: playError } = useQuery({
     queryKey: ['playMovie', id],
     queryFn: async () => {
-      const { data } = await api.post(`/movies/${id}/play`);
+      const { data } = await api.get(`/movies/${id}/play`);
       return data;
     },
-    enabled: !!id && isPlaying && !movie?.isPremium, // Simplified for now
+    enabled: !!id && isPlaying, 
   });
 
   const { data: reviews = [], refetch: refetchReviews } = useQuery({

@@ -22,7 +22,8 @@ export default function AddToCartButton({ product }: { product: any }) {
       price: product.price,
       image: images[0] || fallbackImage,
       slug: product.slug,
-      quantity: quantity,
+      stock: product.stock,
+      quantity: Math.min(quantity, product.stock),
     });
     toggleCart();
   };
@@ -30,9 +31,10 @@ export default function AddToCartButton({ product }: { product: any }) {
   if (itemInCart) {
     return (
       <button 
-        className="w-full h-14 bg-green-600 text-white font-bold rounded flex items-center justify-center transition shadow-md"
+        disabled
+        className="w-full h-14 bg-gray-100 text-green-600 font-bold rounded flex items-center justify-center transition border border-green-200"
       >
-        Added to Cart ({itemInCart.quantity})
+        In Cart ({itemInCart.quantity})
       </button>
     );
   }
@@ -48,8 +50,9 @@ export default function AddToCartButton({ product }: { product: any }) {
         </button>
         <span className="font-bold text-sm w-8 text-center">{quantity}</span>
         <button 
-          onClick={() => setQuantity(quantity + 1)}
-          className="w-8 h-8 flex items-center justify-center text-gray-500 hover:bg-gray-100 rounded"
+          onClick={() => setQuantity(Math.min(product.stock, quantity + 1))}
+          className="w-8 h-8 flex items-center justify-center text-gray-500 hover:bg-gray-100 rounded disabled:opacity-30"
+          disabled={quantity >= product.stock}
         >
           <Plus size={16} />
         </button>

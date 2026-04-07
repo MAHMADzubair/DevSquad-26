@@ -6,12 +6,12 @@ generator client {
 }
 
 datasource db {
-  provider = "sqlite"
+  provider = "mongodb"
   url      = env("DATABASE_URL")
 }
 
 model User {
-  id        String   @id @default(cuid())
+  id        String   @id @default(cuid()) @map("_id")
   name      String
   email     String   @unique
   password  String?
@@ -27,7 +27,7 @@ model User {
 }
 
 model Address {
-  id        String  @id @default(cuid())
+  id        String  @id @default(cuid()) @map("_id")
   userId    String
   user      User    @relation(fields: [userId], references: [id], onDelete: Cascade)
   label     String  // Home, Work, Other
@@ -40,19 +40,19 @@ model Address {
 }
 
 model Category {
-  id       String     @id @default(cuid())
+  id       String     @id @default(cuid()) @map("_id")
   name     String
   slug     String     @unique
   icon     String?
   color    String?
   parentId String?
-  parent   Category?  @relation("SubCategory", fields: [parentId], references: [id])
+  parent   Category?  @relation("SubCategory", fields: [parentId], references: [id], onUpdate: NoAction, onDelete: NoAction)
   children Category[] @relation("SubCategory")
   products Product[]
 }
 
 model Product {
-  id            String  @id @default(cuid())
+  id            String  @id @default(cuid()) @map("_id")
   name          String
   slug          String  @unique
   description   String
@@ -71,11 +71,13 @@ model Product {
 
   cartItems     CartItem[]
   wishlistItems WishlistItem[]
-  collections   Collection[] @relation("CollectionProducts")
+  
+  collectionIds String[]
+  collections   Collection[] @relation("CollectionProducts", fields: [collectionIds], references: [id])
 }
 
 model Collection {
-  id          String    @id @default(cuid())
+  id          String    @id @default(cuid()) @map("_id")
   title       String
   description String?
   slug        String    @unique
@@ -84,11 +86,13 @@ model Collection {
   order       Int       @default(0)
   createdAt   DateTime  @default(now())
   updatedAt   DateTime  @updatedAt
-  products    Product[] @relation("CollectionProducts")
+  
+  productIds String[]
+  products   Product[] @relation("CollectionProducts", fields: [productIds], references: [id])
 }
 
 model Order {
-  id        String   @id @default(cuid())
+  id        String   @id @default(cuid()) @map("_id")
   userId    String
   user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
   items     String   // JSON array of order items
@@ -102,7 +106,7 @@ model Order {
 }
 
 model CartItem {
-  id        String  @id @default(cuid())
+  id        String  @id @default(cuid()) @map("_id")
   userId    String
   user      User    @relation(fields: [userId], references: [id], onDelete: Cascade)
   productId String
@@ -113,7 +117,7 @@ model CartItem {
 }
 
 model WishlistItem {
-  id        String  @id @default(cuid())
+  id        String  @id @default(cuid()) @map("_id")
   userId    String
   user      User    @relation(fields: [userId], references: [id], onDelete: Cascade)
   productId String
@@ -122,3 +126,4 @@ model WishlistItem {
 
   @@unique([userId, productId])
 }
+

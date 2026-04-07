@@ -1,5 +1,7 @@
 import httpStatus from 'http-status';
+import mongoose from 'mongoose';
 import Movie from '../models/movie.model';
+import Category from '../models/category.model';
 import ApiError from '../utils/ApiError';
 import * as cloudinaryService from './cloudinary.service';
 
@@ -102,12 +104,44 @@ export const queryMovies = async (
   const limit = options.limit || 12;
   const skip = (page - 1) * limit;
 
-  const query: any = { isPublished: true, ...filter };
+  const { genres: filterGenres, genre: filterGenre, ...otherFilters } = filter;
+  const query: any = { isPublished: true, ...otherFilters };
 
   // Handle genre filter (which is now dynamic categories)
-  if (filter.genre) {
-    query.genres = filter.genre;
-    delete query.genre;
+  if (filterGenres) {
+    const genreValues = Array.isArray(filterGenres) ? filterGenres : [filterGenres];
+    const resolvedGenreIds = [];
+
+    for (const g of genreValues) {
+      if (mongoose.isValidObjectId(g)) {
+        resolvedGenreIds.push(g);
+      } else {
+        // Try to find category by slug or name
+        const category = await Category.findOne({ $or: [{ slug: g }, { name: g }] });
+        if (category) {
+          resolvedGenreIds.push(category._id);
+        }
+      }
+    }
+
+    if (resolvedGenreIds.length > 0) {
+      query.genres = { $in: resolvedGenreIds };
+    } else {
+      // If we looked for a genre and didn't find any ID, return no movies
+      query.genres = { $in: [new mongoose.Types.ObjectId()] }; 
+    }
+  }
+
+  // Handle singular genre if passed in filter (backward compatibility or alternate source)
+  if (filterGenre) {
+    if (mongoose.isValidObjectId(filterGenre)) {
+      query.genres = filterGenre;
+    } else {
+       const category = await Category.findOne({ $or: [{ slug: filterGenre }, { name: filterGenre }] });
+       if (category) {
+          query.genres = category._id;
+       }
+    }
   }
 
   const sort: any = {};

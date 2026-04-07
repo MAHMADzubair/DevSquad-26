@@ -8,12 +8,12 @@ export default function StoreLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="min-h-screen flex flex-col pt-[100px] md:pt-[100px]">
-      <div className="fixed top-0 w-full z-50">
+    <div className="min-h-screen flex flex-col pt-[115px] md:pt-[100px]">
+      <div className="fixed top-0 w-full z-[100] shadow-sm">
         <Header />
         <CategoryBar />
       </div>
-      <main className="flex-1 max-w-[1400px] mx-auto w-full px-0 md:px-4">
+      <main className="flex-1 max-w-[1400px] mx-auto w-full px-0 sm:px-4">
         {children}
       </main>
       <Footer />

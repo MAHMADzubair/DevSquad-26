@@ -1,7 +1,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Loader2, Plus, Trash2, Edit, Tag, FolderTree, Palette, Type } from "lucide-react";
+import Image from "next/image";
+import { Loader2, Plus, Trash2, Edit, Tag, FolderTree, Type } from "lucide-react";
 
 export default function AdminCategoriesPage() {
   const [categories, setCategories] = useState<any[]>([]);
@@ -47,7 +48,10 @@ export default function AdminCategoriesPage() {
 
   const handleAddProduct = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!newProduct.name || !newProduct.price || !selectedCategoryId) return;
+    if (!newProduct.name || !newProduct.price || !selectedCategoryId) {
+      alert("Please fill in all required fields (Name, Price, and Category)");
+      return;
+    }
     setAddingProduct(true);
     try {
       const payload = {
@@ -56,7 +60,7 @@ export default function AdminCategoriesPage() {
         description: newProduct.description,
         categoryId: selectedCategoryId,
         stock: parseInt(newProduct.stock),
-        images: newProduct.images ? [newProduct.images] : [],
+        images: newProduct.images ? newProduct.images.split(",").map(u => u.trim()).filter(Boolean) : [],
       };
       
       const res = await fetch("/api/admin/products", {
@@ -76,6 +80,35 @@ export default function AdminCategoriesPage() {
       alert("Error creating product");
     } finally {
       setAddingProduct(false);
+    }
+  };
+
+  const [uploadingProductImage, setUploadingProductImage] = useState(false);
+
+  const handleProductImageUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (!e.target.files?.length) return;
+    setUploadingProductImage(true);
+    const formData = new FormData();
+    for (const file of Array.from(e.target.files)) {
+      formData.append("files", file);
+    }
+
+    try {
+      const res = await fetch("/api/admin/upload", {
+        method: "POST",
+        body: formData,
+      });
+      if (res.ok) {
+        const { urls } = await res.json();
+        const currentImages = newProduct.images ? newProduct.images.split(",").map(u => u.trim()).filter(Boolean) : [];
+        setNewProduct({ ...newProduct, images: [...currentImages, ...urls].join(", ") });
+      } else {
+        alert("Upload failed");
+      }
+    } catch {
+      alert("Error uploading");
+    } finally {
+      setUploadingProductImage(false);
     }
   };
 
@@ -306,12 +339,35 @@ export default function AdminCategoriesPage() {
         <div className="fixed inset-0 bg-black/80 z-[100] flex items-center justify-center p-4">
            <div className="bg-zinc-950 border border-white/10 rounded-xl p-6 w-full max-w-2xl relative shadow-2xl">
               <button onClick={() => setShowAddProduct(false)} className="absolute top-4 right-4 text-gray-400 hover:text-white transition">✕</button>
-              <h2 className="text-xl font-black text-white mb-6 uppercase tracking-wider border-l-4 border-noon-yellow pl-3">Add Product to {categories.find(c => c.id === selectedCategoryId)?.name}</h2>
+              <h2 className="text-xl font-black text-white mb-6 uppercase tracking-wider border-l-4 border-noon-yellow pl-3">Add Product to {categories.find(c => c.id === selectedCategoryId)?.name || "Category"}</h2>
               <form onSubmit={handleAddProduct} className="grid grid-cols-1 md:grid-cols-2 gap-4">
                  <input type="text" placeholder="Product Name" required className="bg-zinc-900 border border-white/10 text-white rounded p-3 focus:outline-none focus:border-noon-yellow transition" value={newProduct.name} onChange={e => setNewProduct({...newProduct, name: e.target.value})} />
                  <input type="number" step="0.01" placeholder="Price (AED)" required className="bg-zinc-900 border border-white/10 text-white rounded p-3 focus:outline-none focus:border-noon-yellow transition" value={newProduct.price} onChange={e => setNewProduct({...newProduct, price: e.target.value})} />
                  <input type="number" placeholder="Stock" required className="bg-zinc-900 border border-white/10 text-white rounded p-3 focus:outline-none focus:border-noon-yellow transition" value={newProduct.stock} onChange={e => setNewProduct({...newProduct, stock: e.target.value})} />
-                 <input type="text" placeholder="Image URL (optional)" className="bg-zinc-900 border border-white/10 text-white rounded p-3 focus:outline-none focus:border-noon-yellow transition" value={newProduct.images} onChange={e => setNewProduct({...newProduct, images: e.target.value})} />
+                 <div className="md:col-span-2 flex flex-col gap-2">
+                    <label className="text-xs font-bold text-gray-500 uppercase">Product Images</label>
+                    <div className="flex gap-2 items-center">
+                       <label className="w-12 h-12 bg-white/5 border-2 border-dashed border-white/10 rounded flex items-center justify-center cursor-pointer hover:border-noon-yellow text-gray-500 hover:text-noon-yellow transition shrink-0">
+                          <input type="file" multiple accept="image/*" className="hidden" onChange={handleProductImageUpload} />
+                          {uploadingProductImage ? <Loader2 className="animate-spin" size={16} /> : <Plus size={16} />}
+                       </label>
+                       <input type="text" placeholder="Image URLs (comma separated)" className="flex-1 bg-zinc-900 border border-white/10 text-white rounded p-3 text-sm focus:outline-none focus:border-noon-yellow transition" value={newProduct.images} onChange={e => setNewProduct({...newProduct, images: e.target.value})} />
+                    </div>
+                    {newProduct.images && (
+                      <div className="flex flex-wrap gap-2 mt-1">
+                        {newProduct.images.split(",").map((url, i) => (
+                          <div key={i} className="w-10 h-10 border border-white/10 rounded relative bg-white/5 overflow-hidden">
+                             <Image src={url.trim()} alt="" fill className="object-contain" />
+                             <button type="button" onClick={() => {
+                               const urls = newProduct.images.split(",").map(u => u.trim());
+                               urls.splice(i, 1);
+                               setNewProduct({...newProduct, images: urls.join(", ")});
+                             }} className="absolute top-0 right-0 bg-red-500 text-white w-3 h-3 flex items-center justify-center text-[8px] rounded-bl">✕</button>
+                          </div>
+                        ))}
+                      </div>
+                    )}
+                  </div>
                  <textarea placeholder="Description" required className="bg-zinc-900 border border-white/10 text-white rounded p-3 md:col-span-2 min-h-24 focus:outline-none focus:border-noon-yellow transition" value={newProduct.description} onChange={e => setNewProduct({...newProduct, description: e.target.value})} />
                  <div className="md:col-span-2 mt-4 flex justify-end gap-3 font-bold">
                    <button type="button" onClick={() => setShowAddProduct(false)} className="text-gray-400 hover:text-white px-4 py-2 uppercase text-sm tracking-tighter">Cancel</button>

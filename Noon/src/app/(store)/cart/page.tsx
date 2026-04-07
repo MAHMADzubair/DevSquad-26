@@ -51,9 +51,9 @@ export default function CartPage() {
                         <select 
                           value={item.quantity}
                           onChange={(e) => updateQuantity(item.productId, parseInt(e.target.value))}
-                          className="border rounded p-1 text-sm font-medium w-16 focus:ring-1 focus:outline-none"
+                          className="border rounded p-1 text-sm font-medium w-24 focus:ring-1 focus:outline-none"
                         >
-                          {[1,2,3,4,5,6,7,8,9,10].map(n => (
+                          {Array.from({ length: Math.min(item.stock, 10) }, (_, i) => i + 1).map(n => (
                             <option key={n} value={n}>Qty: {n}</option>
                           ))}
                         </select>

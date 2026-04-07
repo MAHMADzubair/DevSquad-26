@@ -12,16 +12,21 @@ export async function GET() {
   const session = await checkAdmin();
   if (!session) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
 
-  const [totalUsers, totalOrders, totalProducts, orders] = await Promise.all([
+  const [totalUsers, totalOrders, totalProducts, orders, recentOrders] = await Promise.all([
     prisma.user.count(),
     prisma.order.count(),
     prisma.product.count(),
     prisma.order.findMany({ select: { total: true, status: true } }),
+    prisma.order.findMany({
+      take: 5,
+      orderBy: { createdAt: "desc" },
+      include: { user: { select: { name: true, email: true } } }
+    })
   ]);
 
   const totalRevenue = orders
     .filter((o) => o.status !== "CANCELLED")
     .reduce((sum, o) => sum + o.total, 0);
 
-  return NextResponse.json({ totalUsers, totalOrders, totalProducts, totalRevenue });
+  return NextResponse.json({ totalUsers, totalOrders, totalProducts, totalRevenue, recentOrders });
 }

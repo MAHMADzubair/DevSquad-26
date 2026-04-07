@@ -22,6 +22,8 @@ export default function ProductCard({ product }: { product: any }) {
       price: product.price,
       image: images[0] || fallbackImage,
       slug: product.slug,
+      stock: product.stock,
+      quantity: 1,
     });
   };
 
@@ -39,7 +41,7 @@ export default function ProductCard({ product }: { product: any }) {
     : 0;
 
   return (
-    <div className="bg-white p-3 rounded-lg border border-gray-100 product-card relative flex flex-col h-[380px] group transition-all hover:shadow-md cursor-pointer">
+    <div className="bg-white p-2 md:p-3 rounded-lg border border-gray-100 product-card relative flex flex-col min-h-[340px] md:h-[400px] group transition-all hover:shadow-md cursor-pointer">
       {/* Background Link for navigation */}
       <Link href={`/product/${product.slug}`} className="absolute inset-0 z-[1]" aria-label={product.name} />
       
@@ -57,7 +59,7 @@ export default function ProductCard({ product }: { product: any }) {
           src={images[0] || fallbackImage} 
           alt={product.name} 
           fill
-          className="object-contain p-2"
+          className="object-contain p-2 transition-transform duration-500 group-hover:scale-110"
         />
         {/* Badges */}
         <div className="absolute bottom-2 left-2 flex flex-col gap-1 items-start">

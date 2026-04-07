@@ -7,7 +7,7 @@ export async function GET() {
   if (!session?.user?.id) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
 
   const items = await prisma.cartItem.findMany({
-    where: { userId: session.user.id },
+    where: { userId: session!.user!.id as string },
     include: { product: true },
   });
   return NextResponse.json(items);
@@ -20,7 +20,7 @@ export async function POST(req: NextRequest) {
   const { productId, quantity = 1 } = await req.json();
 
   const existing = await prisma.cartItem.findUnique({
-    where: { userId_productId: { userId: session.user.id, productId } },
+    where: { userId_productId: { userId: session!.user!.id as string, productId } },
   });
 
   if (existing) {
@@ -33,7 +33,7 @@ export async function POST(req: NextRequest) {
   }
 
   const item = await prisma.cartItem.create({
-    data: { userId: session.user.id, productId, quantity },
+    data: { userId: session!.user!.id as string, productId, quantity },
     include: { product: true },
   });
   return NextResponse.json(item, { status: 201 });
@@ -53,7 +53,7 @@ export async function PATCH(req: NextRequest) {
   }
 
   const updated = await prisma.cartItem.update({
-    where: { userId_productId: { userId: session.user.id, productId } },
+    where: { userId_productId: { userId: session!.user!.id as string, productId } },
     data: { quantity },
   });
   return NextResponse.json(updated);
@@ -65,7 +65,7 @@ export async function DELETE(req: NextRequest) {
 
   const { productId } = await req.json();
   await prisma.cartItem.deleteMany({
-    where: { userId: session.user.id, productId },
+    where: { userId: session!.user!.id as string, productId },
   });
   return NextResponse.json({ message: "Deleted" });
 }

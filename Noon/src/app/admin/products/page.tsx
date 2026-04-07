@@ -72,7 +72,10 @@ export default function AdminProductsPage() {
 
   const handleSaveProduct = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!newProduct.name || !newProduct.price || !newProduct.categoryId) return;
+    if (!newProduct.name || !newProduct.price || !newProduct.categoryId) {
+      alert("Please fill in all required fields (Name, Price, and Category)");
+      return;
+    }
     setAddingProduct(true);
     try {
       const payload: any = {
@@ -81,7 +84,7 @@ export default function AdminProductsPage() {
         description: newProduct.description,
         categoryId: newProduct.categoryId,
         stock: parseInt(newProduct.stock),
-        images: newProduct.images ? [newProduct.images] : [],
+        images: newProduct.images ? newProduct.images.split(",").map(u => u.trim()).filter(Boolean) : [],
       };
       
       if (newProduct.id) payload.id = newProduct.id;
@@ -103,6 +106,35 @@ export default function AdminProductsPage() {
       alert("Error saving product");
     } finally {
       setAddingProduct(false);
+    }
+  };
+
+  const [uploading, setUploading] = useState(false);
+
+  const handleFileUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (!e.target.files?.length) return;
+    setUploading(true);
+    const formData = new FormData();
+    for (const file of Array.from(e.target.files)) {
+      formData.append("files", file);
+    }
+
+    try {
+      const res = await fetch("/api/admin/upload", {
+        method: "POST",
+        body: formData,
+      });
+      if (res.ok) {
+        const { urls } = await res.json();
+        const currentImages = newProduct.images ? newProduct.images.split(",").map(u => u.trim()).filter(Boolean) : [];
+        setNewProduct({ ...newProduct, images: [...currentImages, ...urls].join(", ") });
+      } else {
+        alert("Upload failed");
+      }
+    } catch {
+      alert("Error uploading");
+    } finally {
+      setUploading(false);
     }
   };
 
@@ -141,9 +173,45 @@ export default function AdminProductsPage() {
                 {/* Media */}
                 <div className="bg-zinc-950 border border-white/10 rounded-xl p-6 shadow-sm">
                   <h3 className="font-black text-lg mb-5 text-gray-200">Media</h3>
-                  <div>
-                    <label className="text-[11px] text-gray-400 mb-1 block uppercase font-black tracking-wider">Image Link URL</label>
-                    <input type="url" placeholder="https://example.com/image.jpg" className="w-full bg-zinc-900 border border-white/10 text-white rounded p-3 focus:outline-none focus:border-noon-yellow transition placeholder-gray-600 font-mono text-sm" value={newProduct.images} onChange={e => setNewProduct({...newProduct, images: e.target.value})} />
+                  <div className="flex flex-col gap-6">
+                    <div>
+                      <label className="text-[11px] text-gray-400 mb-2 block uppercase font-black tracking-wider">Upload New Images</label>
+                      <div className="flex items-center gap-4">
+                         <label className="flex-1 border-2 border-dashed border-white/10 rounded-xl p-8 flex flex-col items-center justify-center gap-3 cursor-pointer hover:border-noon-yellow transition group">
+                            <input type="file" multiple accept="image/*" className="hidden" onChange={handleFileUpload} />
+                            <div className="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center group-hover:bg-noon-yellow group-hover:text-zinc-950 transition">
+                               {uploading ? <Loader2 className="animate-spin" size={24} /> : <Plus size={24} />}
+                            </div>
+                            <span className="text-sm font-bold text-gray-400">Click to upload files</span>
+                         </label>
+                      </div>
+                    </div>
+
+                    <div className="h-px bg-white/5 w-full"></div>
+
+                    <div>
+                      <label className="text-[11px] text-gray-400 mb-1 block uppercase font-black tracking-wider">Image Links (comma separated)</label>
+                      <input type="text" placeholder="https://url1.jpg, https://url2.jpg" className="w-full bg-zinc-900 border border-white/10 text-white rounded p-3 focus:outline-none focus:border-noon-yellow transition placeholder-gray-600 font-mono text-sm" value={newProduct.images} onChange={e => setNewProduct({...newProduct, images: e.target.value})} />
+                      
+                      {newProduct.images && (
+                        <div className="flex flex-wrap gap-2 mt-4">
+                          {newProduct.images.split(",").map((url, i) => (
+                            <div key={i} className="w-16 h-16 rounded border border-white/10 relative p-1 bg-white/5 overflow-hidden">
+                              <Image src={url.trim()} alt="" fill className="object-contain" />
+                              <button 
+                                type="button"
+                                onClick={() => {
+                                  const urls = newProduct.images.split(",").map(u => u.trim());
+                                  urls.splice(i, 1);
+                                  setNewProduct({...newProduct, images: urls.join(", ")});
+                                }}
+                                className="absolute top-0 right-0 bg-red-500 text-white w-4 h-4 flex items-center justify-center text-[10px] rounded-bl"
+                              >✕</button>
+                            </div>
+                          ))}
+                        </div>
+                      )}
+                    </div>
                   </div>
                 </div>
                 
@@ -274,7 +342,7 @@ export default function AdminProductsPage() {
                                         description: product.description,
                                         categoryId: product.categoryId,
                                         stock: String(product.stock),
-                                        images: parsedImages[0] || "",
+                                        images: parsedImages.join(", "),
                                      });
                                      setShowAddForm(true);
                                      window.scrollTo({ top: 0, behavior: "smooth" });

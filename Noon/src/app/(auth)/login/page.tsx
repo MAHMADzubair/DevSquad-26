@@ -26,12 +26,13 @@ export default function LoginPage() {
       redirect: false,
     });
 
+    console.log("Login result:", res);
+
     if (res?.error) {
       setError("Invalid email or password");
       setLoading(false);
     } else {
-      router.push("/");
-      router.refresh();
+      window.location.href = "/";
     }
   };
 

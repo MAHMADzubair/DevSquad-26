@@ -4,20 +4,20 @@ export declare class AuthController {
     constructor(authService: AuthService);
     register(userData: any): Promise<{
         user: {
-            id: import("mongoose").Types.ObjectId;
-            username: string;
-            email: string;
-            profilePicture: string;
+            id: any;
+            username: any;
+            email: any;
+            profilePicture: any;
         };
-        access_token: string;
+        access_token: any;
     }>;
     login(userData: any): Promise<{
         user: {
-            id: import("mongoose").Types.ObjectId;
-            username: string;
-            email: string;
-            profilePicture: string;
+            id: any;
+            username: any;
+            email: any;
+            profilePicture: any;
         };
-        access_token: string;
+        access_token: any;
     }>;
 }

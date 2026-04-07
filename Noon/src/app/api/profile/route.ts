@@ -8,7 +8,7 @@ export async function GET() {
   if (!session?.user?.id) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
 
   const user = await prisma.user.findUnique({
-    where: { id: session.user.id },
+    where: { id: session!.user!.id as string },
     select: { id: true, name: true, email: true, avatar: true, role: true, createdAt: true },
   });
 
@@ -26,7 +26,7 @@ export async function PATCH(req: NextRequest) {
   if (avatar) updateData.avatar = avatar;
 
   if (newPassword) {
-    const user = await prisma.user.findUnique({ where: { id: session.user.id } });
+    const user = await prisma.user.findUnique({ where: { id: session!.user!.id as string } });
     if (!user?.password) return NextResponse.json({ error: "No password set" }, { status: 400 });
     const valid = await bcrypt.compare(currentPassword, user.password);
     if (!valid) return NextResponse.json({ error: "Current password is incorrect" }, { status: 400 });
@@ -34,7 +34,7 @@ export async function PATCH(req: NextRequest) {
   }
 
   const updated = await prisma.user.update({
-    where: { id: session.user.id },
+    where: { id: session!.user!.id as string },
     data: updateData,
     select: { id: true, name: true, email: true, avatar: true },
   });

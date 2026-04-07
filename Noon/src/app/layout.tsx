@@ -8,6 +8,9 @@ export const metadata: Metadata = {
   description:
     "Shop electronics, fashion, beauty, home & more at noon.com UAE. Get the best deals with fast delivery and secure payment.",
   keywords: "noon, online shopping, UAE, electronics, fashion, beauty, home",
+  icons: {
+    icon: "/favicon.svg",
+  },
 };
 
 export default async function RootLayout({

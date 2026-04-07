@@ -144,7 +144,7 @@ const MoviesPage: React.FC = () => {
                    <div className="text-center py-40 text-text-s">No content found matching your criteria.</div>
                 ) : (
                   <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
-                    {searchResults.results.map((movie: any) => (
+                    {searchResults?.results?.map((movie: any) => (
                       <div 
                         key={movie.id || movie._id}
                         onClick={() => navigate(`/movies/${movie.id || movie._id}`)}

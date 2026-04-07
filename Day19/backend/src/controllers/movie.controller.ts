@@ -9,7 +9,7 @@ export const listMovies = catchAsync(async (req, res) => {
 
   const filter: any = {};
   if (genre) {
-    filter.genres = Array.isArray(genre) ? { $in: genre } : genre;
+    filter.genres = genre;
   }
   if (year) filter.releaseYear = Number(year);
   if (category) filter.category = String(category);

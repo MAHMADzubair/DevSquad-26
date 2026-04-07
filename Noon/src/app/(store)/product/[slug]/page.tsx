@@ -3,6 +3,7 @@ import Image from "next/image";
 import { Star, ShieldCheck, Truck, RefreshCcw } from "lucide-react";
 import Link from "next/link";
 import AddToCartButton from "./AddToCartButton";
+import ImageGallery from "./ImageGallery";
 
 const prisma = new PrismaClient();
 
@@ -33,27 +34,8 @@ export default async function ProductPage({ params }: { params: { slug: string }
 
       <div className="bg-white rounded-lg shadow-sm border border-gray-100 p-6 flex flex-col md:flex-row gap-8 lg:gap-12">
         
-        {/* Left: Images */}
-        <div className="w-full md:w-1/3 flex flex-col gap-4">
-          <div className="w-full aspect-square relative border border-gray-100 rounded-lg shrink-0">
-             <Image src={images[0] || "https://via.placeholder.com/600"} alt={product.name} fill className="object-contain p-4" priority />
-             {product.badge && (
-               <div className="absolute top-4 left-4">
-                  <span className={`badge-${product.badge.toLowerCase().replace(' ', '')} text-[11px] px-2 py-1 shadow-sm`}>
-                    {product.badge}
-                  </span>
-               </div>
-             )}
-          </div>
-          {/* Thumbnails (Mocked) */}
-          <div className="flex gap-2 overflow-x-auto no-scrollbar">
-             {images.map((img: string, i: number) => (
-                <div key={i} className={`w-16 h-16 relative border rounded shrink-0 cursor-pointer hover:border-noon-blue ${i===0?'border-noon-blue':''}`}>
-                   <Image src={img} alt="" fill className="object-contain p-1" />
-                </div>
-             ))}
-          </div>
-        </div>
+        {/* Left: Interactive Image Gallery */}
+        <ImageGallery images={images} productName={product.name} badge={product.badge} />
 
         {/* Middle/Right: Details */}
         <div className="w-full md:w-2/3 flex flex-col lg:flex-row gap-8">

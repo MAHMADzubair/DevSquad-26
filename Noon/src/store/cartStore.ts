@@ -8,6 +8,7 @@ export interface CartItem {
   price: number;
   image: string;
   quantity: number;
+  stock: number;
   slug: string;
 }
 
@@ -32,16 +33,20 @@ export const useCartStore = create<CartStore>()(
       addItem: (item) => {
         const qtyToAdd = item.quantity || 1;
         const existing = get().items.find((i) => i.productId === item.productId);
+        
         if (existing) {
+          const totalAfterAdd = existing.quantity + qtyToAdd;
+          const finalQty = Math.min(totalAfterAdd, existing.stock);
+          
           set({
             items: get().items.map((i) =>
               i.productId === item.productId
-                ? { ...i, quantity: i.quantity + qtyToAdd }
+                ? { ...i, quantity: finalQty }
                 : i
             ),
           });
         } else {
-          set({ items: [...get().items, { ...item, quantity: qtyToAdd }] });
+          set({ items: [...get().items, { ...item, quantity: Math.min(qtyToAdd, item.stock) }] });
         }
       },
 
@@ -50,13 +55,18 @@ export const useCartStore = create<CartStore>()(
       },
 
       updateQuantity: (productId, quantity) => {
+        const item = get().items.find(i => i.productId === productId);
+        if (!item) return;
+
         if (quantity <= 0) {
           get().removeItem(productId);
           return;
         }
+
+        const finalQty = Math.min(quantity, item.stock);
         set({
           items: get().items.map((i) =>
-            i.productId === productId ? { ...i, quantity } : i
+            i.productId === productId ? { ...i, quantity: finalQty } : i
           ),
         });
       },

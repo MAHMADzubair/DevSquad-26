@@ -7,7 +7,7 @@ export async function GET() {
   if (!session?.user?.id) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
 
   const items = await prisma.wishlistItem.findMany({
-    where: { userId: session.user.id },
+    where: { userId: session!.user!.id as string },
     include: { product: { include: { category: true } } },
     orderBy: { createdAt: "desc" },
   });
@@ -21,7 +21,7 @@ export async function POST(req: NextRequest) {
   const { productId } = await req.json();
 
   const existing = await prisma.wishlistItem.findUnique({
-    where: { userId_productId: { userId: session.user.id, productId } },
+    where: { userId_productId: { userId: session!.user!.id as string, productId } },
   });
 
   if (existing) {
@@ -32,7 +32,7 @@ export async function POST(req: NextRequest) {
   }
 
   await prisma.wishlistItem.create({
-    data: { userId: session.user.id, productId },
+    data: { userId: session!.user!.id as string, productId },
   });
   return NextResponse.json({ action: "added" });
 }
@@ -43,7 +43,7 @@ export async function DELETE(req: NextRequest) {
 
   const { productId } = await req.json();
   await prisma.wishlistItem.deleteMany({
-    where: { userId: session.user.id, productId },
+    where: { userId: session!.user!.id as string, productId },
   });
   return NextResponse.json({ message: "Deleted" });
 }
